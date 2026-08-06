@@ -1,7 +1,7 @@
 # Images to supply
 
 These are **placeholders**. Replace each file in `assets/images/` with real art for
-nguyenda_microsoft/ai-news-digest. Keep the same filename (or update the reference in the site) and aim for
+june070212/ai-news-digest. Keep the same filename (or update the reference in the site) and aim for
 the listed dimensions. Delete this file once every image is real.
 
 | File | Purpose | Recommended size |

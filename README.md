@@ -3,7 +3,7 @@
 A static digest of **GitHub** and **Microsoft** developer news — pulled from public
 RSS feeds, de-duplicated, ranked by importance, and published to GitHub Pages.
 
-**Live site:** https://nguyenda_microsoft.github.io/ai-news-digest/
+**Live site:** https://june070212/ai-news-digest/
 
 ## How it works
 
