@@ -50,6 +50,10 @@ Environment overrides: `DIGEST_DAYS` (default `14`), `DIGEST_LIMIT` (default
 
 ## Deploy
 
+> **Re-homing the repo?** Run `node scripts/set-owner.mjs <new-owner>` first — it
+> rewrites the canonical/OG URLs and source links. The site's own links are all
+> relative, so nothing else needs changing.
+
 1. Push to the repo's `main` branch.
 2. **Settings → Pages → Source → GitHub Actions**.
 3. `.github/workflows/deploy.yml` runs on every push to `main`, twice daily on a
@@ -68,6 +72,7 @@ assets/
   images/                      Logo, social card, favicon, hero (+ IMAGES.md)
 scripts/
   build-digest.mjs             Build-time digest generator
+  set-owner.mjs                Repoint absolute URLs at a different GitHub owner
   feeds.mjs                    Feed list, RSS/Atom parser, scoring, de-duplication
   net.mjs                      Allow-listed, timeout-bounded fetch
 .nojekyll                      Serve files as-is (skip Jekyll)
