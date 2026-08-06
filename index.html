@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A digest of GitHub and Microsoft developer news, curated and ranked from public RSS feeds." />
+    <title>AI News Digest</title>
+    <meta property="og:title" content="AI News Digest" />
+    <meta property="og:description" content="A digest of GitHub and Microsoft developer news, curated and ranked from public RSS feeds." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://nguyenda_microsoft.github.io/ai-news-digest/" />
+    <meta property="og:image" content="https://nguyenda_microsoft.github.io/ai-news-digest/assets/images/og.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="./assets/images/favicon.svg" />
+    <!-- No-flash theme: set data-theme before first paint. -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("theme") ||
+            (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+          document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./index.html">
+        <img class="brand-mark" src="./assets/images/logo.svg" alt="" width="24" height="24" />
+        AI News Digest
+      </a>
+      <nav class="topnav">
+        <a href="./index.html" aria-current="page">Digest</a>
+        <a href="./about.html">About</a>
+      </nav>
+      <div class="bar-actions">
+        <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle color theme" title="Toggle theme"></button>
+        <a class="icon-btn" href="https://github.com/nguyenda_microsoft/ai-news-digest" target="_blank" rel="noopener" aria-label="View source on GitHub" title="View source on GitHub">
+          <svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        </a>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <header class="hero">
+        <p class="eyebrow">GitHub · Microsoft · developer news</p>
+        <h1>AI News Digest</h1>
+        <p class="lede">
+          Changelogs and blog posts from GitHub and Microsoft, pulled from public
+          RSS feeds, de-duplicated, and ranked so the shipping news floats to the top.
+        </p>
+        <p class="stamp" id="stamp">Loading the latest digest…</p>
+      </header>
+
+      <section class="metrics" aria-label="Digest summary">
+        <div class="metric"><span class="metric-label">Stories</span><span class="metric-value" id="m-total">—</span></div>
+        <div class="metric"><span class="metric-label">High impact</span><span class="metric-value" id="m-high">—</span></div>
+        <div class="metric"><span class="metric-label">GitHub</span><span class="metric-value" id="m-github">—</span></div>
+        <div class="metric"><span class="metric-label">Microsoft</span><span class="metric-value" id="m-microsoft">—</span></div>
+      </section>
+
+      <section class="card" aria-labelledby="tldr-h">
+        <h2 id="tldr-h">TL;DR</h2>
+        <p class="muted">The highest-ranked stories in the current window.</p>
+        <ol class="tldr" id="tldr"></ol>
+      </section>
+
+      <section class="card" aria-labelledby="filters-h">
+        <h2 id="filters-h">Filters</h2>
+        <p class="muted">Narrow the feed — everything runs in the browser.</p>
+        <div class="filters">
+          <label class="field">
+            <span class="field-label">Search</span>
+            <input id="f-query" type="search" placeholder="copilot, actions, .NET…" autocomplete="off" />
+          </label>
+          <label class="field">
+            <span class="field-label">Org</span>
+            <select id="f-org">
+              <option value="">All</option>
+              <option value="GitHub">GitHub</option>
+              <option value="Microsoft">Microsoft</option>
+            </select>
+          </label>
+          <label class="field">
+            <span class="field-label">Importance</span>
+            <select id="f-importance">
+              <option value="">All</option>
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </label>
+          <label class="field">
+            <span class="field-label">Tag</span>
+            <select id="f-tag"><option value="">All</option></select>
+          </label>
+          <label class="field">
+            <span class="field-label">Sort</span>
+            <select id="f-sort">
+              <option value="rank">Importance</option>
+              <option value="date">Newest first</option>
+            </select>
+          </label>
+          <button id="f-reset" class="btn" type="button">Reset</button>
+        </div>
+      </section>
+
+      <section aria-labelledby="stories-h">
+        <div class="section-head">
+          <h2 id="stories-h">Stories</h2>
+          <p class="count" id="count">—</p>
+        </div>
+        <ul class="stories" id="stories"></ul>
+        <p class="empty" id="empty" hidden>No stories match those filters.</p>
+      </section>
+
+      <section class="card" aria-labelledby="sources-h">
+        <h2 id="sources-h">Sources</h2>
+        <p class="muted">Every feed polled for this digest, and how many stories each contributed.</p>
+        <ul class="sources" id="sources"></ul>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <p>
+        Rebuilt automatically by
+        <a href="https://github.com/nguyenda_microsoft/ai-news-digest/blob/main/.github/workflows/deploy.yml">GitHub Actions</a>.
+        Headlines and links belong to their publishers.
+      </p>
+    </footer>
+
+    <script src="./assets/main.js" defer></script>
+  </body>
+</html>

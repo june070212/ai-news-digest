@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="How AI News Digest collects, de-duplicates, and ranks GitHub and Microsoft developer news." />
+    <title>About · AI News Digest</title>
+    <link rel="icon" href="./assets/images/favicon.svg" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("theme") ||
+            (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+          document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./index.html">
+        <img class="brand-mark" src="./assets/images/logo.svg" alt="" width="24" height="24" />
+        AI News Digest
+      </a>
+      <nav class="topnav">
+        <a href="./index.html">Digest</a>
+        <a href="./about.html" aria-current="page">About</a>
+      </nav>
+      <div class="bar-actions">
+        <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle color theme" title="Toggle theme"></button>
+        <a class="icon-btn" href="https://github.com/nguyenda_microsoft/ai-news-digest" target="_blank" rel="noopener" aria-label="View source on GitHub" title="View source on GitHub">
+          <svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        </a>
+      </div>
+    </header>
+
+    <main class="wrap prose">
+      <header class="hero">
+        <p class="eyebrow">How it works</p>
+        <h1>About</h1>
+        <p class="lede">
+          A static digest of GitHub and Microsoft developer news, rebuilt on a
+          schedule by GitHub Actions.
+        </p>
+      </header>
+
+      <h2>Why the digest is prerendered</h2>
+      <p>
+        GitHub Pages serves static files, and the upstream RSS feeds don't send
+        CORS headers — so the browser can't fetch them directly. Instead
+        <code>scripts/build-digest.mjs</code> runs in CI, collects every feed,
+        ranks the results, and writes <code>assets/data.json</code>. The page just
+        renders that file, so it loads instantly and works offline once cached.
+      </p>
+
+      <h2>Sources</h2>
+      <ul>
+        <li>GitHub Changelog — <code>github.blog/changelog/feed/</code></li>
+        <li>The GitHub Blog — <code>github.blog/feed/</code></li>
+        <li>Microsoft Developer Blogs — <code>devblogs.microsoft.com/feed/</code></li>
+        <li>.NET Blog — <code>devblogs.microsoft.com/dotnet/feed/</code></li>
+        <li>Microsoft Developer changelog — <code>developer.microsoft.com/api/changelog/rss</code></li>
+        <li>Azure Blog — <code>azure.microsoft.com/en-us/blog/feed/</code></li>
+      </ul>
+
+      <h2>Ranking</h2>
+      <p>
+        Scoring is deterministic — no model in the loop. Each story earns points
+        for its source weight, AI and shipping vocabulary, breaking-change
+        signals, an explicit bonus for Copilot news, and recency. The resulting
+        score maps to a <strong>high</strong>, <strong>medium</strong>, or
+        <strong>low</strong> importance badge.
+      </p>
+
+      <h2>De-duplication</h2>
+      <p>
+        The Microsoft Developer changelog republishes GitHub stories, so entries
+        are keyed on the normalized title plus the final URL path segment and the
+        highest-scoring copy wins. Org attribution comes from the destination
+        hostname rather than the feed it arrived on, so a republished GitHub post
+        is still labelled GitHub.
+      </p>
+
+      <h2>Rebuild schedule</h2>
+      <p>
+        The deploy workflow runs on every push to <code>main</code>, twice a day
+        on a cron, and on demand via <em>Run workflow</em>. If every feed fails
+        the build stops rather than publishing an empty digest, so the last good
+        digest stays live.
+      </p>
+
+      <h2>Run it locally</h2>
+      <pre><code>git clone https://github.com/nguyenda_microsoft/ai-news-digest.git
+cd ai-news-digest
+node scripts/build-digest.mjs
+python3 -m http.server 8000</code></pre>
+      <p>Then open <code>http://localhost:8000/</code>.</p>
+    </main>
+
+    <footer class="foot">
+      <p>
+        Source on
+        <a href="https://github.com/nguyenda_microsoft/ai-news-digest">GitHub</a>.
+        Headlines and links belong to their publishers.
+      </p>
+    </footer>
+
+    <script>
+      const t = document.getElementById("theme-toggle");
+      const paint = () => {
+        t.textContent = document.documentElement.getAttribute("data-theme") === "light" ? "☾" : "☀";
+      };
+      t.addEventListener("click", () => {
+        const next = document.documentElement.getAttribute("data-theme") === "light" ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", next);
+        try { localStorage.setItem("theme", next); } catch {}
+        paint();
+      });
+      paint();
+    </script>
+  </body>
+</html>
