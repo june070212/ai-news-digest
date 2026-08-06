@@ -16,6 +16,19 @@ export const FEEDS = [
   { id: "ms-dotnet", label: ".NET Blog", org: "Microsoft", url: "https://devblogs.microsoft.com/dotnet/feed/", weight: 1 },
   { id: "ms-changelog", label: "Microsoft Developer Changelog", org: "Microsoft", url: "https://developer.microsoft.com/api/changelog/rss", weight: 2 },
   { id: "azure-blog", label: "Azure Blog", org: "Microsoft", url: "https://azure.microsoft.com/en-us/blog/feed/", weight: 1 },
+  // The devblogs.microsoft.com root feed only carries ~10 recent items and does
+  // not aggregate the per-product blogs, so the active ones are pulled directly.
+  { id: "ms-visualstudio", label: "Visual Studio Blog", org: "Microsoft", url: "https://devblogs.microsoft.com/visualstudio/feed/", weight: 2 },
+  { id: "ms-devops", label: "Azure DevOps Blog", org: "Microsoft", url: "https://devblogs.microsoft.com/devops/feed/", weight: 1 },
+  { id: "ms-foundry", label: "Microsoft Foundry Blog", org: "Microsoft", url: "https://devblogs.microsoft.com/foundry/feed/", weight: 2 },
+  { id: "ms-semantic-kernel", label: "Semantic Kernel Blog", org: "Microsoft", url: "https://devblogs.microsoft.com/semantic-kernel/feed/", weight: 1 },
+  { id: "ms-azure-sdk", label: "Azure SDK Blog", org: "Microsoft", url: "https://devblogs.microsoft.com/azure-sdk/feed/", weight: 1 },
+  { id: "ms-typescript", label: "TypeScript Blog", org: "Microsoft", url: "https://devblogs.microsoft.com/typescript/feed/", weight: 1 },
+  { id: "ms-python", label: "Python Blog", org: "Microsoft", url: "https://devblogs.microsoft.com/python/feed/", weight: 1 },
+  { id: "ms-cpp", label: "C++ Team Blog", org: "Microsoft", url: "https://devblogs.microsoft.com/cppblog/feed/", weight: 1 },
+  { id: "ms-java", label: "Java at Microsoft", org: "Microsoft", url: "https://devblogs.microsoft.com/java/feed/", weight: 1 },
+  { id: "ms-commandline", label: "Windows Command Line", org: "Microsoft", url: "https://devblogs.microsoft.com/commandline/feed/", weight: 1 },
+  { id: "ms-powershell", label: "PowerShell Team Blog", org: "Microsoft", url: "https://devblogs.microsoft.com/powershell/feed/", weight: 1 },
 ];
 
 export const FEEDS_BY_ID = new Map(FEEDS.map((f) => [f.id, f]));
@@ -173,7 +186,7 @@ async function fetchFeed(feed) {
  * Fetch every enabled feed, curate, dedupe and rank.
  * Returns { stories, sources } — sources carry per-feed status for the UI.
  */
-export async function collectDigest({ feedIds, days = 14, limit = 40 } = {}) {
+export async function collectDigest({ feedIds, days = 14, limit = 40, perSourceShare = 0.35 } = {}) {
   const wanted = FEEDS.filter((f) => !feedIds?.length || feedIds.includes(f.id));
   const now = Date.now();
   const cutoff = now - days * 86400000;
@@ -215,9 +228,29 @@ export async function collectDigest({ feedIds, days = 14, limit = 40 } = {}) {
     sources.push({ ...feed, ok: true, count: kept, error: null });
   });
 
-  const stories = [...best.values()]
+  // One high-volume feed (the Developer changelog posts dozens of items a week)
+  // would otherwise fill the digest on volume alone and bury the product blogs.
+  // Cap each source at a share of the limit, then backfill by score so a quiet
+  // day still returns a full digest.
+  const ranked = [...best.values()]
+    .sort((a, b) => b.score - a.score || String(b.published).localeCompare(String(a.published)));
+
+  const cap = Math.max(3, Math.ceil(limit * perSourceShare));
+  const perSource = new Map();
+  const picked = [];
+  const overflow = [];
+  for (const story of ranked) {
+    const used = perSource.get(story.sourceId) || 0;
+    if (used < cap && picked.length < limit) {
+      perSource.set(story.sourceId, used + 1);
+      picked.push(story);
+    } else {
+      overflow.push(story);
+    }
+  }
+  const stories = picked
+    .concat(overflow.slice(0, Math.max(0, limit - picked.length)))
     .sort((a, b) => b.score - a.score || String(b.published).localeCompare(String(a.published)))
-    .slice(0, limit)
     .map((s, i) => ({ ...s, rank: i + 1 }));
 
   return { stories, sources };

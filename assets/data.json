@@ -1,48 +1,44 @@
 {
-  "generatedAt": "2026-08-06T04:28:32.972Z",
+  "generatedAt": "2026-08-06T04:41:38.444Z",
   "window": {
     "days": 14,
     "limit": 60
   },
   "totals": {
     "stories": 60,
-    "github": 37,
-    "microsoft": 23,
+    "github": 36,
+    "microsoft": 24,
     "high": 13,
-    "medium": 21,
-    "low": 26
+    "medium": 23,
+    "low": 24
   },
   "tags": [
     {
       "tag": "AI",
-      "count": 42
+      "count": 44
     },
     {
       "tag": "Copilot",
-      "count": 26
-    },
-    {
-      "tag": "Launched",
-      "count": 24
+      "count": 28
     },
     {
       "tag": "Agents",
-      "count": 23
+      "count": 28
     },
     {
       "tag": "GitHub",
-      "count": 23
-    },
-    {
-      "tag": "GA",
       "count": 17
     },
     {
-      "tag": "Azure",
-      "count": 15
+      "tag": "Launched",
+      "count": 13
     },
     {
       "tag": "Actions",
+      "count": 12
+    },
+    {
+      "tag": "Azure",
       "count": 11
     },
     {
@@ -50,23 +46,19 @@
       "count": 11
     },
     {
-      "tag": "Security",
-      "count": 9
-    },
-    {
-      "tag": "Preview",
-      "count": 8
-    },
-    {
-      "tag": "Deprecation",
-      "count": 5
+      "tag": "GA",
+      "count": 10
     },
     {
       "tag": ".NET",
-      "count": 5
+      "count": 9
     },
     {
-      "tag": "VS Code",
+      "tag": "Security",
+      "count": 7
+    },
+    {
+      "tag": "Deprecation",
       "count": 4
     },
     {
@@ -74,19 +66,15 @@
       "count": 4
     },
     {
-      "tag": "In preview",
+      "tag": "Improvement",
       "count": 4
     },
     {
-      "tag": "Retirements",
+      "tag": "Preview",
       "count": 3
     },
     {
-      "tag": "Developer Tools",
-      "count": 3
-    },
-    {
-      "tag": "Improvement",
+      "tag": "Agent Framework",
       "count": 3
     },
     {
@@ -94,8 +82,16 @@
       "count": 3
     },
     {
-      "tag": "Networking",
+      "tag": "Engineering",
       "count": 3
+    },
+    {
+      "tag": "Supply chain security",
+      "count": 3
+    },
+    {
+      "tag": "VS Code",
+      "count": 2
     },
     {
       "tag": "copilot",
@@ -110,11 +106,31 @@
       "count": 2
     },
     {
-      "tag": "Visual Studio Code",
+      "tag": "Java",
       "count": 2
     },
     {
+      "tag": "Open Source",
+      "count": 2
+    },
+    {
+      "tag": "Azure SDK",
+      "count": 2
+    },
+    {
+      "tag": "Retirements",
+      "count": 1
+    },
+    {
+      "tag": "Azure & Cloud",
+      "count": 1
+    },
+    {
       "tag": "Retired",
+      "count": 1
+    },
+    {
+      "tag": "Developer Tools",
       "count": 1
     },
     {
@@ -142,18 +158,6 @@
       "count": 1
     },
     {
-      "tag": "Regions & Datacenters",
-      "count": 1
-    },
-    {
-      "tag": "Compute",
-      "count": 1
-    },
-    {
-      "tag": "Engineering",
-      "count": 1
-    },
-    {
       "tag": "stacked pull requests",
       "count": 1
     },
@@ -174,15 +178,35 @@
       "count": 1
     },
     {
-      "tag": "Azure Private Link",
-      "count": 1
-    },
-    {
       "tag": "ASP.NET Core",
       "count": 1
     },
     {
-      "tag": "Virtual Network",
+      "tag": "Agent Skills",
+      "count": 1
+    },
+    {
+      "tag": "collaboration tools",
+      "count": 1
+    },
+    {
+      "tag": "GitHub Actions",
+      "count": 1
+    },
+    {
+      "tag": "Dependabot",
+      "count": 1
+    },
+    {
+      "tag": "OpenJDK",
+      "count": 1
+    },
+    {
+      "tag": "NuGet",
+      "count": 1
+    },
+    {
+      "tag": "azure-developer-cli",
       "count": 1
     },
     {
@@ -190,15 +214,39 @@
       "count": 1
     },
     {
-      "tag": "Hybrid + Multicloud",
+      "tag": "Hybrid + multicloud",
       "count": 1
     },
     {
-      "tag": "Automation",
+      "tag": "Internet of things",
       "count": 1
     },
     {
-      "tag": "Storage",
+      "tag": "Visual Studio",
+      "count": 1
+    },
+    {
+      "tag": "Announcement",
+      "count": 1
+    },
+    {
+      "tag": "release",
+      "count": 1
+    },
+    {
+      "tag": "sdk",
+      "count": 1
+    },
+    {
+      "tag": "Azure DevOps",
+      "count": 1
+    },
+    {
+      "tag": "DevOps",
+      "count": 1
+    },
+    {
+      "tag": "Git & Version Control",
       "count": 1
     }
   ],
@@ -249,6 +297,94 @@
       "org": "Microsoft",
       "ok": true,
       "count": 2,
+      "error": null
+    },
+    {
+      "id": "ms-visualstudio",
+      "label": "Visual Studio Blog",
+      "org": "Microsoft",
+      "ok": true,
+      "count": 3,
+      "error": null
+    },
+    {
+      "id": "ms-devops",
+      "label": "Azure DevOps Blog",
+      "org": "Microsoft",
+      "ok": true,
+      "count": 2,
+      "error": null
+    },
+    {
+      "id": "ms-foundry",
+      "label": "Microsoft Foundry Blog",
+      "org": "Microsoft",
+      "ok": true,
+      "count": 0,
+      "error": null
+    },
+    {
+      "id": "ms-semantic-kernel",
+      "label": "Semantic Kernel Blog",
+      "org": "Microsoft",
+      "ok": true,
+      "count": 4,
+      "error": null
+    },
+    {
+      "id": "ms-azure-sdk",
+      "label": "Azure SDK Blog",
+      "org": "Microsoft",
+      "ok": true,
+      "count": 2,
+      "error": null
+    },
+    {
+      "id": "ms-typescript",
+      "label": "TypeScript Blog",
+      "org": "Microsoft",
+      "ok": true,
+      "count": 0,
+      "error": null
+    },
+    {
+      "id": "ms-python",
+      "label": "Python Blog",
+      "org": "Microsoft",
+      "ok": true,
+      "count": 0,
+      "error": null
+    },
+    {
+      "id": "ms-cpp",
+      "label": "C++ Team Blog",
+      "org": "Microsoft",
+      "ok": true,
+      "count": 0,
+      "error": null
+    },
+    {
+      "id": "ms-java",
+      "label": "Java at Microsoft",
+      "org": "Microsoft",
+      "ok": true,
+      "count": 2,
+      "error": null
+    },
+    {
+      "id": "ms-commandline",
+      "label": "Windows Command Line",
+      "org": "Microsoft",
+      "ok": true,
+      "count": 0,
+      "error": null
+    },
+    {
+      "id": "ms-powershell",
+      "label": "PowerShell Team Blog",
+      "org": "Microsoft",
+      "ok": true,
+      "count": 0,
       "error": null
     }
   ],
@@ -574,6 +710,26 @@
       "rank": 16
     },
     {
+      "id": "ms-devops:azure devops remote mcp server is generally available|azure-devops-remote-mcp-server-ga",
+      "title": "Azure DevOps Remote MCP Server is generally available",
+      "url": "https://devblogs.microsoft.com/devops/azure-devops-remote-mcp-server-ga/",
+      "summary": "Today, we’re excited to announce the general availability of the Azure DevOps MCP Server 🎉 The Azure DevOps MCP Server gives AI assistants secure, contextual access to your Azure DevOps projects so they can help you plan, build, and ship software more effectively. With the Azure DevOps remote MCP Server, you can get s",
+      "published": "2026-08-05T12:58:52.000Z",
+      "sourceId": "ms-devops",
+      "source": "Azure DevOps Blog",
+      "org": "Microsoft",
+      "score": 58,
+      "importance": "medium",
+      "tags": [
+        "Agents",
+        "AI",
+        "Azure",
+        "GA",
+        "Azure & Cloud"
+      ],
+      "rank": 17
+    },
+    {
       "id": "github-changelog:upcoming deprecation of github spark on github com|2026-08-04-upcoming-deprecation-of-github-spark-on-github-com",
       "title": "Upcoming deprecation of GitHub Spark on github.com",
       "url": "https://github.blog/changelog/2026-08-04-upcoming-deprecation-of-github-spark-on-github-com",
@@ -589,7 +745,7 @@
         "Retired",
         "copilot"
       ],
-      "rank": 17
+      "rank": 18
     },
     {
       "id": "ms-changelog:github copilot app usage metrics now expand across report rollups|2026-07-28-github-copilot-app-usage-metrics-now-expand-across-report-rollups",
@@ -609,7 +765,7 @@
         "GitHub",
         "Launched"
       ],
-      "rank": 18
+      "rank": 19
     },
     {
       "id": "ms-changelog:visual studio july update meet the new agent powered by the github copilot sdk|visual-studio-july-update-meet-the-new-agent-powered-by-copilot-sdk",
@@ -629,7 +785,7 @@
         "API",
         "AI + Machine Learning"
       ],
-      "rank": 19
+      "rank": 20
     },
     {
       "id": "ms-changelog:github copilot for jetbrains adds improved opentelemetry configuration and model management|2026-07-27-github-copilot-for-jetbrains-adds-improvved-",
@@ -649,7 +805,7 @@
         "Actions",
         "GitHub"
       ],
-      "rank": 20
+      "rank": 21
     },
     {
       "id": "ms-changelog:manage github copilot app access with a dedicated policy|2026-07-27-manage-github-copilot-app-access-with-a-dedicated-policy",
@@ -669,7 +825,7 @@
         "Launched",
         "Developer Tools"
       ],
-      "rank": 21
+      "rank": 22
     },
     {
       "id": "ms-changelog:enterprise managed settings in the github copilot app and copilot cloud agent|2026-07-27-enterprise-managed-settings-now-apply-to-the-github-copilo",
@@ -689,7 +845,7 @@
         "GitHub",
         "Launched"
       ],
-      "rank": 22
+      "rank": 23
     },
     {
       "id": "github-blog:how the github legal team used copilot cli to streamline their workflows|how-the-github-legal-team-used-copilot-cli-to-streamline-their-workflows",
@@ -709,7 +865,7 @@
         "API",
         "AI & ML"
       ],
-      "rank": 23
+      "rank": 24
     },
     {
       "id": "ms-changelog:launched generally available claude opus 5 on azure databricks|updates",
@@ -729,7 +885,7 @@
         "Azure",
         "GA"
       ],
-      "rank": 24
+      "rank": 25
     },
     {
       "id": "github-blog:github copilot app for beginners getting started|github-copilot-app-for-beginners-getting-started",
@@ -749,7 +905,7 @@
         "Actions",
         "AI & ML"
       ],
-      "rank": 25
+      "rank": 26
     },
     {
       "id": "ms-changelog:github mcp server supports the next mcp specification|2026-07-23-github-mcp-server-supports-the-next-mcp-specification",
@@ -769,7 +925,7 @@
         "Launched",
         "AI + Machine Learning"
       ],
-      "rank": 26
+      "rank": 27
     },
     {
       "id": "ms-changelog:agent automation controls in github issues in public preview|2026-07-23-agent-automation-controls-in-github-issues-in-public-preview",
@@ -789,7 +945,7 @@
         "GitHub",
         "Launched"
       ],
-      "rank": 27
+      "rank": 28
     },
     {
       "id": "github-changelog:enterprise team specialization for managed settings|2026-08-03-enterprise-team-specialization-for-managed-settings",
@@ -807,7 +963,7 @@
         "client apps",
         "copilot"
       ],
-      "rank": 28
+      "rank": 29
     },
     {
       "id": "ms-dotnet:from generated code to trusted code with a unit test agent|polyglot-unit-testing-agent",
@@ -826,7 +982,27 @@
         ".NET",
         "C#"
       ],
-      "rank": 29
+      "rank": 30
+    },
+    {
+      "id": "ms-semantic-kernel:building agent teams with agent framework github copilot cli and squad|building-agent-teams-with-agent-framework-github-copilot-cli-and-squad",
+      "title": "Building agent teams with Agent Framework, GitHub Copilot CLI and Squad",
+      "url": "https://devblogs.microsoft.com/agent-framework/building-agent-teams-with-agent-framework-github-copilot-cli-and-squad/",
+      "summary": "Microsoft Agent Framework supports creating agents that use the GitHub Copilot SDK as their backend. GitHub Copilot agents provide access to powerful coding-oriented AI capabilities, including shell command execution, file operations, URL fetching, Model Context Protocol (MCP) server integration, and can be integrated ",
+      "published": "2026-07-30T17:18:53.000Z",
+      "sourceId": "ms-semantic-kernel",
+      "source": "Semantic Kernel Blog",
+      "org": "Microsoft",
+      "score": 50,
+      "importance": "medium",
+      "tags": [
+        "Copilot",
+        "Agents",
+        "AI",
+        "API",
+        "Agent Framework"
+      ],
+      "rank": 31
     },
     {
       "id": "github-changelog:code coverage automatic enablement in code quality settings|2026-08-04-code-coverage-automatic-enablement-in-code-quality-settings",
@@ -845,7 +1021,7 @@
         "Improvement",
         "application security"
       ],
-      "rank": 30
+      "rank": 32
     },
     {
       "id": "github-blog:stacked sessions and pull requests in the github copilot app|stacked-sessions-and-pull-requests-in-the-github-copilot-app",
@@ -865,7 +1041,7 @@
         "Collaboration",
         "Developer skills"
       ],
-      "rank": 31
+      "rank": 33
     },
     {
       "id": "ms-dotnet:analyze msbuild binary logs with copilot in vs code|msbuild-binlog-analyzer-vscode",
@@ -885,7 +1061,7 @@
         ".NET",
         "VS Code"
       ],
-      "rank": 32
+      "rank": 34
     },
     {
       "id": "ms-dotnet:beyond chat live speech to text with foundry local and c|foundry-local-live-speech-to-text-csharp",
@@ -903,7 +1079,7 @@
         ".NET",
         "Foundry Local"
       ],
-      "rank": 33
+      "rank": 35
     },
     {
       "id": "github-blog:the harness is all you need mostly|the-harness-is-all-you-need-mostly",
@@ -923,65 +1099,25 @@
         "AI & ML",
         "GitHub Copilot"
       ],
-      "rank": 34
-    },
-    {
-      "id": "ms-changelog:launched generally available explicit proxy in azure firewall|updates",
-      "title": "[Launched] Generally Available: Explicit proxy in Azure Firewall",
-      "url": "https://azure.microsoft.com/updates?id=568825",
-      "summary": "Azure Firewall explicit proxy is now generally available. Explicit proxy enables customers to configure applications and browsers to send HTTP and HTTPS traffic directly to Azure Firewall using proxy settings, providing an alternative to route-based traff...",
-      "published": "2026-08-05T14:54:08.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "Microsoft",
-      "score": 44,
-      "importance": "low",
-      "tags": [
-        "Azure",
-        "GA",
-        "Launched",
-        "Networking",
-        "Security"
-      ],
-      "rank": 35
-    },
-    {
-      "id": "ms-changelog:launched generally available microsoft azure now available from new cloud region in india india south central|updates",
-      "title": "[Launched] Generally Available: Microsoft Azure now available from new cloud region in India (India South Central)",
-      "url": "https://azure.microsoft.com/updates?id=568013",
-      "summary": "Microsoft announces the opening of its fourth datacenter region in India, India South Central, with campuses in Hyderabad, Telangana. The region will provide customers with local, secure, state-of-the-art cloud infrastructure designed with AI readiness as...",
-      "published": "2026-07-28T15:40:55.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "Microsoft",
-      "score": 43,
-      "importance": "low",
-      "tags": [
-        "AI",
-        "Azure",
-        "GA",
-        "Launched",
-        "Regions & Datacenters"
-      ],
       "rank": 36
     },
     {
-      "id": "ms-changelog:github mobile fix failing actions checks with copilot cloud agent|2026-07-23-github-mobile-fix-failing-actions-checks-with-copilot-cloud-agent",
-      "title": "GitHub Mobile: Fix failing Actions checks with Copilot cloud agent",
-      "url": "https://github.blog/changelog/2026-07-23-github-mobile-fix-failing-actions-checks-with-copilot-cloud-agent",
-      "summary": "Now when a GitHub Actions check fails on your pull request, you can ask Copilot coding agent to investigate and directly fix the problem from GitHub Mobile. From the failed… The post GitHub Mobile: Fix failing Actions checks with Copilot cloud agent appeared first on The GitHub Blog...",
-      "published": "2026-07-23T19:47:58.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "GitHub",
-      "score": 43,
+      "id": "ms-semantic-kernel:build production ready agents with the github copilot harness and agent framework|build-production-ready-agents-with-the-github-copilot-harne",
+      "title": "Build Production-Ready Agents with the GitHub Copilot Harness and Agent Framework",
+      "url": "https://devblogs.microsoft.com/agent-framework/build-production-ready-agents-with-the-github-copilot-harness-and-agent-framework/",
+      "summary": "Developers increasingly want to build agents that can reason about code, modify files, execute commands, interact with developer tools, and work across entire repositories. While GitHub Copilot already provides a powerful coding harness for these scenarios, developers often need additional capabilities such as observab",
+      "published": "2026-08-04T18:25:35.000Z",
+      "sourceId": "ms-semantic-kernel",
+      "source": "Semantic Kernel Blog",
+      "org": "Microsoft",
+      "score": 41,
       "importance": "low",
       "tags": [
         "Copilot",
         "Agents",
         "AI",
         "Actions",
-        "GitHub"
+        ".NET"
       ],
       "rank": 37
     },
@@ -1021,86 +1157,6 @@
       "rank": 39
     },
     {
-      "id": "ms-changelog:launched generally available trusted launch as default|updates",
-      "title": "[Launched] Generally Available: Trusted Launch as Default",
-      "url": "https://azure.microsoft.com/updates?id=568600",
-      "summary": "Trusted Launch as Default (TLaD) is now generally available for new Azure Gen2 virtual machines and virtual machine scale sets. TLaD automatically enables Secure Boot and vTPM for supported deployments, helping customers establish a stronger security base...",
-      "published": "2026-08-03T19:56:26.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "Microsoft",
-      "score": 39,
-      "importance": "low",
-      "tags": [
-        "Security",
-        "Azure",
-        "GA",
-        "Launched",
-        "Compute"
-      ],
-      "rank": 40
-    },
-    {
-      "id": "ms-changelog:in preview public preview symmetric keys on azure key vault premium|updates",
-      "title": "[In preview] Public Preview: Symmetric keys on Azure Key Vault Premium",
-      "url": "https://azure.microsoft.com/updates?id=566746",
-      "summary": "We’re announcing symmetric keys on Azure Key Vault Premium are now available in public preview. This preview enables customers and partners to evaluate symmetric encryption capabilities using the oct-HSM key type and the Advanced Encryption Standard (AES)...",
-      "published": "2026-07-30T18:57:18.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "Microsoft",
-      "score": 39,
-      "importance": "low",
-      "tags": [
-        "Azure",
-        "Preview",
-        "GA",
-        "In preview",
-        "Security"
-      ],
-      "rank": 41
-    },
-    {
-      "id": "ms-changelog:github models is now retired|2026-07-30-github-models-is-now-retired",
-      "title": "GitHub Models is now retired",
-      "url": "https://github.blog/changelog/2026-07-30-github-models-is-now-retired",
-      "summary": "As of July 30, 2026, GitHub Models is now retired. The playground, model catalog, inference API, and bring your own key (BYOK) are no longer available to any customer, including… The post GitHub Models is now retired appeared first on The GitHub Blog...",
-      "published": "2026-07-30T19:14:22.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "GitHub",
-      "score": 38,
-      "importance": "low",
-      "tags": [
-        "AI",
-        "API",
-        "Deprecation",
-        "GitHub",
-        "Retirements"
-      ],
-      "rank": 42
-    },
-    {
-      "id": "ms-changelog:in preview public preview ai gateway in azure api management|updates",
-      "title": "[In preview] Public Preview: AI Gateway in Azure API Management",
-      "url": "https://azure.microsoft.com/updates?id=568184",
-      "summary": "The AI Gateway tier for Azure API Management is now available in public preview. Building on the AI gateway capabilities already available across API Management tiers, the new AI Gateway tier provides a dedicated experience optimized for AI workloads.As o...",
-      "published": "2026-07-27T16:44:29.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "Microsoft",
-      "score": 38,
-      "importance": "low",
-      "tags": [
-        "AI",
-        "Azure",
-        "API",
-        "Preview",
-        "GA"
-      ],
-      "rank": 43
-    },
-    {
       "id": "ms-devblogs:the microsoft 365 copilot agent s playbook a practical livestream series for building better agents|the-microsoft-365-copilot-agents-playbook-a-prac",
       "title": "The Microsoft 365 Copilot Agent’s Playbook: A Practical Livestream Series for Building Better Agents",
       "url": "https://devblogs.microsoft.com/blog/the-microsoft-365-copilot-agents-playbook-a-practical-livestream-series-for-building-better-agents/",
@@ -1117,7 +1173,7 @@
         "AI",
         "Actions"
       ],
-      "rank": 44
+      "rank": 40
     },
     {
       "id": "github-blog:turn one giant ai generated pull request to a reviewable stack|turn-one-giant-ai-generated-pull-request-to-a-reviewable-stack",
@@ -1136,26 +1192,7 @@
         "Engineering",
         "stacked pull requests"
       ],
-      "rank": 45
-    },
-    {
-      "id": "ms-changelog:codeql 2 26 1 improves analysis accuracy and framework coverage|2026-07-29-codeql-2-26-1-improves-analysis-accuracy-and-framework-coverage",
-      "title": "CodeQL 2.26.1 improves analysis accuracy and framework coverage",
-      "url": "https://github.blog/changelog/2026-07-29-codeql-2-26-1-improves-analysis-accuracy-and-framework-coverage",
-      "summary": "CodeQL is the static analysis engine behind GitHub code scanning, which finds and remediates security issues in your code. We’ve recently released CodeQL 2.26.1, which improves framework coverage for Go,… The post CodeQL 2.26.1 improves analysis accuracy and framework coverage appeared first on The...",
-      "published": "2026-07-29T09:45:11.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "GitHub",
-      "score": 37,
-      "importance": "low",
-      "tags": [
-        "AI",
-        "Security",
-        "GitHub",
-        "Launched"
-      ],
-      "rank": 46
+      "rank": 41
     },
     {
       "id": "azure-blog:at t and microsoft scale trillion token workloads with microsoft foundry and amd|att-and-microsoft-scale-trillion-token-workloads-with-microsoft-foun",
@@ -1175,27 +1212,7 @@
         "AMD GPUs",
         "AT&T"
       ],
-      "rank": 47
-    },
-    {
-      "id": "ms-changelog:in preview public preview azure private link support over ipv6|updates",
-      "title": "[In preview] Public Preview: Azure Private Link support over IPv6",
-      "url": "https://azure.microsoft.com/updates?id=568842",
-      "summary": "Azure Private Link over IPv6 enables you to privately access Azure PaaS services, such as Azure Storage and Azure SQL Database, over IPv6-based connectivity. You can now use IPv6 private endpoints to connect from IPv6 clients in an Azure virtual network o...",
-      "published": "2026-08-04T18:29:36.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "Microsoft",
-      "score": 35,
-      "importance": "low",
-      "tags": [
-        "AI",
-        "Azure",
-        "API",
-        "Preview",
-        "In preview"
-      ],
-      "rank": 48
+      "rank": 42
     },
     {
       "id": "github-changelog:customize dependabot pull request branch names|2026-08-04-customize-dependabot-pull-request-branch-names",
@@ -1213,27 +1230,7 @@
         "Improvement",
         "supply chain security"
       ],
-      "rank": 49
-    },
-    {
-      "id": "ms-changelog:in preview public preview perimeter link feature in network security perimeter|updates",
-      "title": "[In preview] Public Preview: Perimeter link feature in network security perimeter",
-      "url": "https://azure.microsoft.com/updates?id=568837",
-      "summary": "Perimeter link (cross-perimeter connectivity) is a network security perimeter capability that allows trusted resources in two different network security perimeters to securely communicate with each other using Managed Identity (MSI), without requiring add...",
-      "published": "2026-08-04T18:30:09.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "Microsoft",
-      "score": 34,
-      "importance": "low",
-      "tags": [
-        "Security",
-        "Preview",
-        "In preview",
-        "Networking",
-        "Azure Private Link"
-      ],
-      "rank": 50
+      "rank": 43
     },
     {
       "id": "ms-dotnet:announcing v2 0 of the official mcp c sdk|announcing-v20-of-the-official-mcp-csharp-sdk",
@@ -1253,179 +1250,306 @@
         "API",
         "ASP.NET Core"
       ],
+      "rank": 44
+    },
+    {
+      "id": "ms-semantic-kernel:discover agent skills from mcp servers in net|discover-agent-skills-from-mcp-servers-in-net",
+      "title": "Discover Agent Skills from MCP servers in .NET",
+      "url": "https://devblogs.microsoft.com/agent-framework/discover-agent-skills-from-mcp-servers-in-net/",
+      "summary": "Your agents can now discover and load Agent Skills directly from a Model Context Protocol (MCP) server. Instead of shipping every skill inside your application or copying skill folders into each deployment, you point an agent at an MCP server and it pulls the skills it needs on demand. A central team can publish skills",
+      "published": "2026-07-28T09:01:13.000Z",
+      "sourceId": "ms-semantic-kernel",
+      "source": "Semantic Kernel Blog",
+      "org": "Microsoft",
+      "score": 34,
+      "importance": "low",
+      "tags": [
+        "Agents",
+        "AI",
+        ".NET",
+        "Agent Framework",
+        "Agent Skills"
+      ],
+      "rank": 45
+    },
+    {
+      "id": "ms-java:smarter spring development in eclipse with github copilot|smarter-spring-development-in-eclipse-with-github-copilot",
+      "title": "Smarter Spring Development in Eclipse with GitHub Copilot",
+      "url": "https://devblogs.microsoft.com/java/smarter-spring-development-in-eclipse-with-github-copilot/",
+      "summary": "How the Spring Tools MCP Server and GitHub Copilot together make Spring Development more efficient. Introduction If you write Spring Boot applications in Eclipse, you already know that Spring Tools for Eclipse brings best-in-class tooling right into your IDE, including quick navigation and visualization of core Spring ",
+      "published": "2026-07-23T11:13:52.000Z",
+      "sourceId": "ms-java",
+      "source": "Java at Microsoft",
+      "org": "Microsoft",
+      "score": 32,
+      "importance": "low",
+      "tags": [
+        "Copilot",
+        "Agents",
+        "AI",
+        "API",
+        "Java"
+      ],
+      "rank": 46
+    },
+    {
+      "id": "github-changelog:triage role can bypass issue creation restrictions|2026-08-03-triage-role-can-bypass-issue-creation-restrictions",
+      "title": "Triage role can bypass issue creation restrictions",
+      "url": "https://github.blog/changelog/2026-08-03-triage-role-can-bypass-issue-creation-restrictions",
+      "summary": "If your repository restricts issue creation to collaborators only, users with the triage role can now create issues. Previously, the restricted setting only allowed users with write access to create… The post Triage role can bypass issue creation restrictions appeared first on The GitHub Blog .",
+      "published": "2026-08-03T17:04:32.000Z",
+      "sourceId": "github-changelog",
+      "source": "GitHub Changelog",
+      "org": "GitHub",
+      "score": 29,
+      "importance": "low",
+      "tags": [
+        "API",
+        "Improvement",
+        "collaboration tools"
+      ],
+      "rank": 47
+    },
+    {
+      "id": "github-blog:disrupting supply chain attacks on npm and github actions|disrupting-supply-chain-attacks-on-npm-and-github-actions",
+      "title": "Disrupting supply chain attacks on npm and GitHub Actions",
+      "url": "https://github.blog/security/supply-chain-security/disrupting-supply-chain-attacks-on-npm-and-github-actions/",
+      "summary": "Explore the changes we've shipped across npm and GitHub Actions over the past few months to disrupt supply chain attack techniques and limit their impact. The post Disrupting supply chain attacks on npm and GitHub Actions appeared first on The GitHub Blog .",
+      "published": "2026-07-28T16:00:00.000Z",
+      "sourceId": "github-blog",
+      "source": "GitHub Blog",
+      "org": "GitHub",
+      "score": 25,
+      "importance": "low",
+      "tags": [
+        "Actions",
+        "Security",
+        "Supply chain security",
+        "GitHub Actions"
+      ],
+      "rank": 48
+    },
+    {
+      "id": "github-blog:the case for a cooldown why dependabot now waits before issuing version updates|the-case-for-a-cooldown-why-dependabot-now-waits-before-issuing-vers",
+      "title": "The case for a cooldown: Why Dependabot now waits before issuing version updates",
+      "url": "https://github.blog/security/supply-chain-security/the-case-for-a-cooldown-why-dependabot-now-waits-before-issuing-version-updates/",
+      "summary": "A new default three-day cooldown delays version update pull requests so maintainers and security researchers can address findings in a release before it gets into your code. The post The case for a cooldown: Why Dependabot now waits before issuing version updates appeared first on The GitHub Blog .",
+      "published": "2026-07-23T16:00:00.000Z",
+      "sourceId": "github-blog",
+      "source": "GitHub Blog",
+      "org": "GitHub",
+      "score": 25,
+      "importance": "low",
+      "tags": [
+        "Security",
+        "Supply chain security",
+        "Dependabot"
+      ],
+      "rank": 49
+    },
+    {
+      "id": "ms-java:java openjdk july 2026 patch security update|java-openjdk-july-2026-patch-security-update",
+      "title": "Java OpenJDK July 2026 Patch & Security Update",
+      "url": "https://devblogs.microsoft.com/java/java-openjdk-july-2026-patch-security-update/",
+      "summary": "Hello Java customers! We are happy to announce the latest July 2026 patch & security update release for the Microsoft Build of OpenJDK. Check our release notes page for details on fixes and enhancements or download and install the binaries today. The source code of our builds are now available on GitHub for further ins",
+      "published": "2026-07-25T00:54:43.000Z",
+      "sourceId": "ms-java",
+      "source": "Java at Microsoft",
+      "org": "Microsoft",
+      "score": 24,
+      "importance": "low",
+      "tags": [
+        "Security",
+        "GA",
+        "Java",
+        "Open Source",
+        "OpenJDK"
+      ],
+      "rank": 50
+    },
+    {
+      "id": "ms-visualstudio:build azure skills faster with cloud academy a visual studio subscriber benefit|build-azure-skills-faster-with-cloud-academy-a-visual-studio-sub",
+      "title": "Build Azure Skills Faster with Cloud Academy, a Visual Studio Subscriber Benefit",
+      "url": "https://devblogs.microsoft.com/visualstudio/build-azure-skills-faster-with-cloud-academy-a-visual-studio-subscriber-benefit/",
+      "summary": "If you’ve been looking for a practical way to build Azure skills, Cloud Academy (a QA company) gives Visual Studio subscribers hands-on learning that fits into busy schedules. Whether you’re new to Azure, expanding your cloud expertise, working towards certifications or preparing for more advanced projects, this benefi",
+      "published": "2026-08-04T14:00:38.000Z",
+      "sourceId": "ms-visualstudio",
+      "source": "Visual Studio Blog",
+      "org": "Microsoft",
+      "score": 23,
+      "importance": "low",
+      "tags": [
+        "Azure"
+      ],
       "rank": 51
     },
     {
-      "id": "ms-changelog:visual studio code 1 133 insiders|v1_133",
-      "title": "Visual Studio Code 1.133 (Insiders)",
-      "url": "https://code.visualstudio.com/updates/v1_133",
-      "summary": "Learn what's new in Visual Studio Code 1.133 (Insiders)...",
-      "published": "2026-08-11T17:00:00.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
+      "id": "ms-dotnet:strengthening nuget supply chain security reducing api key lifetime|strengthening-nuget-supply-chain-security-reducing-api-key-lifetime",
+      "title": "Strengthening NuGet Supply Chain Security: Reducing API Key Lifetime",
+      "url": "https://devblogs.microsoft.com/dotnet/strengthening-nuget-supply-chain-security-reducing-api-key-lifetime/",
+      "summary": "NuGet API key durations will be reduced to 30 days starting August 17th. This change will significantly strengthen the integrity of the NuGet supply chain. The post Strengthening NuGet Supply Chain Security: Reducing API Key Lifetime appeared first on .NET Blog .",
+      "published": "2026-08-03T18:10:00.000Z",
+      "sourceId": "ms-dotnet",
+      "source": ".NET Blog",
       "org": "Microsoft",
-      "score": 33,
+      "score": 23,
       "importance": "low",
       "tags": [
-        "VS Code",
-        "Launched",
-        "Developer Tools",
-        "Visual Studio Code"
+        "Security",
+        ".NET",
+        "API",
+        "NuGet"
       ],
       "rank": 52
     },
     {
-      "id": "ms-changelog:visual studio code 1 132|v1_132",
-      "title": "Visual Studio Code 1.132",
-      "url": "https://code.visualstudio.com/updates/v1_132",
-      "summary": "Learn what's new in Visual Studio Code 1.132...",
-      "published": "2026-08-05T17:00:00.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
+      "id": "ms-azure-sdk:azure developer cli azd july 2026|azure-developer-cli-azd-july-2026",
+      "title": "Azure Developer CLI (azd) July 2026",
+      "url": "https://devblogs.microsoft.com/azure-sdk/azure-developer-cli-azd-july-2026/",
+      "summary": "This is the July round-up for the Azure Developer CLI (azd). Five releases shipped since the last post: 1.27.0, 1.27.1, 1.28.0, 1.28.1, and 1.29.0. Below is what’s new, what changed, and what we fixed, with links to the pull requests if you want to dig in. Have feedback or questions? Join the release discussion on […] ",
+      "published": "2026-07-30T20:20:10.000Z",
+      "sourceId": "ms-azure-sdk",
+      "source": "Azure SDK Blog",
       "org": "Microsoft",
-      "score": 33,
+      "score": 22,
       "importance": "low",
       "tags": [
-        "VS Code",
-        "Launched",
-        "Developer Tools",
-        "Visual Studio Code"
+        "Azure",
+        "API",
+        "Azure SDK",
+        ".NET",
+        "azure-developer-cli"
       ],
       "rank": 53
     },
     {
-      "id": "ms-changelog:launched generally available azure virtual network routing appliance|updates",
-      "title": "[Launched] Generally Available: Azure Virtual Network routing appliance",
-      "url": "https://azure.microsoft.com/updates?id=568605",
-      "summary": "Azure Virtual Network routing appliance is now generally available. It delivers private connectivity across virtual networks, using specialized hardware for low latency, high throughput, and better performance than virtual machines. Key benefits and funct...",
-      "published": "2026-08-04T17:03:38.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
+      "id": "azure-blog:what customers value most in microsoft databases from reliability to ai readiness|what-customers-value-most-in-microsoft-databases-from-reliability-t",
+      "title": "What customers value most in Microsoft Databases—from reliability to AI readiness",
+      "url": "https://azure.microsoft.com/en-us/blog/what-customers-value-most-in-microsoft-databases-from-reliability-to-ai-readiness/",
+      "summary": "Every day, customers trust Microsoft Databases to power their most critical applications, business processes, and AI-powered experiences. The post What customers value most in Microsoft Databases—from reliability to AI readiness appeared first on Microsoft Azure Blog .",
+      "published": "2026-07-27T15:00:00.000Z",
+      "sourceId": "azure-blog",
+      "source": "Azure Blog",
       "org": "Microsoft",
-      "score": 33,
+      "score": 22,
       "importance": "low",
       "tags": [
+        "AI",
         "Azure",
-        "GA",
-        "Launched",
-        "Networking",
-        "Virtual Network"
+        "Databases",
+        "Hybrid + multicloud",
+        "Internet of things"
       ],
       "rank": 54
     },
     {
-      "id": "ms-changelog:launched generally available immutability to the most recent seven days of backups on azure sql database and azure sql managed instance|updates",
-      "title": "[Launched] Generally Available: Immutability to the most recent seven days of backups on Azure SQL Database and Azure SQL Managed Instance",
-      "url": "https://azure.microsoft.com/updates?id=568339",
-      "summary": "To enhance backup protection, Azure SQL Database and Azure SQL Managed Instance now automatically apply immutability to the most recent seven days of backups. This capability is enabled by default for all databases, regardless of the configured point-in-t...",
-      "published": "2026-08-03T17:00:56.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
+      "id": "ms-visualstudio:tell your model when to think harder|tell-your-model-when-to-think-harder",
+      "title": "Tell your model when to think harder",
+      "url": "https://devblogs.microsoft.com/visualstudio/tell-your-model-when-to-think-harder/",
+      "summary": "Not every question deserves the same amount of thought. Renaming a variable isn’t the same as debugging a memory leak, and they don’t need the same level of thinking. So why should your model treat them the same way every time? Starting in Visual Studio 18.9 Insiders 2, it doesn’t have to. Supported models now come wit",
+      "published": "2026-07-29T15:02:36.000Z",
+      "sourceId": "ms-visualstudio",
+      "source": "Visual Studio Blog",
       "org": "Microsoft",
-      "score": 33,
+      "score": 21,
       "importance": "low",
       "tags": [
-        "Azure",
-        "GA",
-        "Launched",
-        "Databases",
-        "Hybrid + Multicloud"
+        "AI",
+        "Visual Studio"
       ],
       "rank": 55
     },
     {
-      "id": "ms-changelog:migrate from gitlab to github with github enterprise importer|2026-08-03-migrate-from-gitlab-to-github-with-github-enterprise-importer",
-      "title": "Migrate from GitLab to GitHub with GitHub Enterprise Importer",
-      "url": "https://github.blog/changelog/2026-08-03-migrate-from-gitlab-to-github-with-github-enterprise-importer",
-      "summary": "Migrations from gitlab.com and GitLab Self-Managed to GitHub Enterprise Cloud with GitHub Enterprise Importer (GEI) are now generally available. You can now self-serve these migrations using GEI and the gh… The post Migrate from GitLab to GitHub with GitHub Enterprise Importer appeared first on The...",
-      "published": "2026-08-03T16:33:13.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
+      "id": "github-blog:tame dependabot group your updates slow the cadence keep security fast|tame-dependabot-group-your-updates-slow-the-cadence-keep-security-fast",
+      "title": "Tame Dependabot: Group your updates, slow the cadence, keep security fast",
+      "url": "https://github.blog/security/supply-chain-security/tame-dependabot-group-your-updates-slow-the-cadence-keep-security-fast/",
+      "summary": "Dependabot keeps your dependencies current, but its defaults can flood your repository with pull requests. Here's how grouping updates, slowing the cadence, and keeping security fixes fast cut the noise on a Microsoft open source project. The post Tame Dependabot: Group your updates, slow the cadence, keep security fas",
+      "published": "2026-07-29T16:00:00.000Z",
+      "sourceId": "github-blog",
+      "source": "GitHub Blog",
       "org": "GitHub",
-      "score": 33,
+      "score": 20,
       "importance": "low",
       "tags": [
-        "GA",
-        "GitHub",
-        "Launched"
+        "Security",
+        "Engineering",
+        "Supply chain security"
       ],
       "rank": 56
     },
     {
-      "id": "ms-changelog:launched generally available azure automation supports powershell 7 6 runbooks and runtime environment|updates",
-      "title": "[Launched] Generally Available: Azure Automation supports PowerShell 7.6 runbooks and Runtime environment",
-      "url": "https://azure.microsoft.com/updates?id=568102",
-      "summary": "Azure Automation is pleased to announce: General Availability of in-support PowerShell 7.6 runbooksRuntime Environment GA, enabling customers to seamlessly upgrade their outdated scripts to supported runtime versions. Support for Azure CLI commands in P...",
-      "published": "2026-07-30T19:10:35.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "Microsoft",
-      "score": 33,
+      "id": "github-blog:don t stop early case folding source code at memory speed|dont-stop-early-case-folding-source-code-at-memory-speed",
+      "title": "Don’t stop early: Case-folding source code at memory speed",
+      "url": "https://github.blog/engineering/architecture-optimization/dont-stop-early-case-folding-source-code-at-memory-speed/",
+      "summary": "How a branch-free loop and byte-space arithmetic let GitHub case-fold every byte of code search at >45 GiB/s on a single core. The post Don’t stop early: Case-folding source code at memory speed appeared first on The GitHub Blog .",
+      "published": "2026-07-31T16:00:00.000Z",
+      "sourceId": "github-blog",
+      "source": "GitHub Blog",
+      "org": "GitHub",
+      "score": 18,
       "importance": "low",
       "tags": [
-        "Azure",
-        "API",
-        "GA",
-        "Launched",
-        "Automation"
+        "Engineering",
+        "Open Source"
       ],
       "rank": 57
     },
     {
-      "id": "ms-changelog:restricting npm bypass 2fa granular access tokens|2026-07-31-restricting-npm-bypass-2fa-granular-access-tokens",
-      "title": "Restricting npm bypass-2FA granular access tokens",
-      "url": "https://github.blog/changelog/2026-07-31-restricting-npm-bypass-2fa-granular-access-tokens",
-      "summary": "npm granular access tokens (GATs) configured to bypass 2FA can no longer perform sensitive account, org, and package management actions. These now require an interactive 2FA challenge, closing one of… The post Restricting npm bypass-2FA granular access tokens appeared first on The GitHub Blog...",
-      "published": "2026-07-31T16:45:50.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "GitHub",
-      "score": 30,
+      "id": "ms-semantic-kernel:move agent orchestration workflows out of code with agent framework declarative workflows 1 0|move-agent-orchestration-workflows-out-of-code-",
+      "title": "Move Agent Orchestration/Workflows out of Code with Agent Framework Declarative Workflows 1.0",
+      "url": "https://devblogs.microsoft.com/agent-framework/move-agent-orchestration-workflows-out-of-code-with-agent-framework-declarative-workflows-1-0/",
+      "summary": "Most multi-agent apps wire every flow in application code: the sequence of steps, branching, and handoffs between agents all live inside the program, making the orchestration harder to review, version, and change. Declarative workflows make that orchestration explicit. In YAML, you define how agents coordinate, how sta",
+      "published": "2026-07-23T18:13:24.000Z",
+      "sourceId": "ms-semantic-kernel",
+      "source": "Semantic Kernel Blog",
+      "org": "Microsoft",
+      "score": 15,
       "importance": "low",
       "tags": [
+        "Agents",
+        "AI",
         "Actions",
-        "API",
-        "GitHub",
-        "Retirements",
-        "Security"
+        "Agent Framework",
+        "Announcement"
       ],
       "rank": 58
     },
     {
-      "id": "ms-changelog:in preview public preview support for smb opportunistic locking oplocks configuration|updates",
-      "title": "[In preview] Public Preview: Support for SMB Opportunistic Locking (Oplocks) configuration",
-      "url": "https://azure.microsoft.com/updates?id=568396",
-      "summary": "Azure NetApp Files now supports configuration of SMB opportunistic locking (oplocks) for SMB and dual-protocol volumes. Opportunistic locks (Oplocks) improve SMB client caching and are enabled by default. You can configure oplocks on new volumes or update...",
-      "published": "2026-07-30T16:38:15.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
+      "id": "ms-azure-sdk:azure sdk release july 2026|azure-sdk-release-july-2026",
+      "title": "Azure SDK Release (July 2026)",
+      "url": "https://devblogs.microsoft.com/azure-sdk/azure-sdk-release-july-2026/",
+      "summary": "Azure SDK releases every month. In this post, you'll find this month's highlights and release notes. The post Azure SDK Release (July 2026) appeared first on Azure SDK Blog .",
+      "published": "2026-07-29T17:18:25.000Z",
+      "sourceId": "ms-azure-sdk",
+      "source": "Azure SDK Blog",
       "org": "Microsoft",
-      "score": 30,
+      "score": 13,
       "importance": "low",
       "tags": [
         "Azure",
         "API",
-        "Preview",
-        "In preview",
-        "Storage"
+        "Azure SDK",
+        "release",
+        "sdk"
       ],
       "rank": 59
     },
     {
-      "id": "ms-changelog:npm publish time malware scanning and dual use metadata|2026-07-28-npm-publish-time-malware-scanning-and-dual-use-metadata",
-      "title": "npm publish-time malware scanning and dual-use metadata",
-      "url": "https://github.blog/changelog/2026-07-28-npm-publish-time-malware-scanning-and-dual-use-metadata",
-      "summary": "As part of our ongoing supply-chain security work, npm is introducing automatic scanning of packages at publish time. This changelog covers what publishers can expect and a new metadata requirement… The post npm publish-time malware scanning and dual-use metadata appeared first on The GitHub Blog...",
-      "published": "2026-07-28T22:50:05.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "GitHub",
-      "score": 30,
+      "id": "ms-devops:find any commit in seconds commit search comes to azure devops|find-any-commit-in-seconds-commit-search-comes-to-azure-devops",
+      "title": "Find any commit in seconds: Commit Search comes to Azure DevOps",
+      "url": "https://devblogs.microsoft.com/devops/find-any-commit-in-seconds-commit-search-comes-to-azure-devops/",
+      "summary": "Great code has a long memory. The fix you shipped last quarter, the refactor that touched a dozen files, the one-line change that explained why something works the way it does — it’s all there in your commit history. The hard part has always been finding it. Today, we’re excited to announce that Commit Search […] The p",
+      "published": "2026-07-28T15:24:55.000Z",
+      "sourceId": "ms-devops",
+      "source": "Azure DevOps Blog",
+      "org": "Microsoft",
+      "score": 13,
       "importance": "low",
       "tags": [
-        "Security",
-        "GitHub",
-        "Launched"
+        "Azure",
+        "Azure DevOps",
+        "DevOps",
+        "Git & Version Control"
       ],
       "rank": 60
     }
