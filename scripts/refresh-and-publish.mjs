@@ -53,6 +53,24 @@ async function summarize() {
   };
 }
 
+// `generatedAt` changes on every build, so a byte comparison always reports a
+// diff even when the news is identical. Compare everything else instead, or the
+// schedule commits noise forever.
+function contentFingerprint(raw) {
+  const data = JSON.parse(raw);
+  delete data.generatedAt;
+  delete data.window;
+  return JSON.stringify(data);
+}
+
+async function committedData() {
+  try {
+    return await git("show", `HEAD:assets/data.json`);
+  } catch {
+    return null;
+  }
+}
+
 async function main() {
   // Refuse to publish from a dirty tree: a scheduled job must never sweep up
   // unrelated edits that happen to be sitting in the worktree.
@@ -67,9 +85,18 @@ async function main() {
     await git("merge", "--ff-only", `origin/${BRANCH}`);
   }
 
+  const previous = await committedData();
   await run("node", [path.join(ROOT, "scripts", "build-digest.mjs")]);
   const summary = await summarize();
   if (summary.healthy === 0) throw new Error("no feeds were reachable; refusing to publish");
+
+  const current = await readFile(DATA, "utf8");
+  if (previous && contentFingerprint(previous) === contentFingerprint(current)) {
+    // Discard the timestamp-only churn so the worktree stays clean.
+    await git("checkout", "--", "assets/data.json");
+    console.log(`No change — digest already current (${summary.stories} stories, ${summary.healthy}/${summary.sources} feeds).`);
+    return;
+  }
 
   await git("add", "--", "assets/data.json");
   const staged = await git("diff", "--cached", "--name-only");
