@@ -1,0 +1,74 @@
+name: Build digest and deploy to GitHub Pages
+
+# Fetches the RSS feeds, prerenders assets/data.json, and publishes the
+# repository root using the official GitHub Pages Actions flow.
+# Set Settings → Pages → Source to "GitHub Actions".
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    # Twice daily (06:00 and 18:00 UTC) so the digest stays fresh.
+    - cron: "0 6,18 * * *"
+  workflow_dispatch:
+
+# Least-privilege permissions required to deploy to Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment; don't cancel an in-progress one.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build digest
+        run: node scripts/build-digest.mjs
+      # Surface what was published in the run summary. A scheduled job nobody
+      # watches is only useful if a failure or a degraded fetch is visible
+      # afterwards; build-digest.mjs already exits non-zero if no feed resolved.
+      - name: Summarize digest
+        run: |
+          node -e '
+            const d = require("./assets/data.json");
+            const ok = d.sources.filter((s) => s.ok);
+            const bad = d.sources.filter((s) => !s.ok);
+            const counts = d.stories.reduce((a, s) => (a[s.importance] = (a[s.importance] || 0) + 1, a), {});
+            const lines = [
+              "## AI News Digest",
+              "",
+              `- Generated: \`${d.generatedAt}\``,
+              `- Stories: **${d.stories.length}** (${counts.high || 0} high / ${counts.medium || 0} medium / ${counts.low || 0} low)`,
+              `- Feeds healthy: **${ok.length}/${d.sources.length}**`,
+            ];
+            if (bad.length) {
+              lines.push("", "### Unreachable feeds", ...bad.map((s) => `- \`${s.id}\` — ${s.error}`));
+            }
+            require("fs").appendFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join("\n") + "\n");
+            if (bad.length) console.log(`::warning::${bad.length} feed(s) unreachable; published ${d.stories.length} stories from ${ok.length} feeds.`);
+          '
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Publish the whole repo root. All links are relative, so no base
+          # path rewriting is needed.
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
