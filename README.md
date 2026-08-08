@@ -48,6 +48,10 @@ Requires Node 18+ (for global `fetch`). No dependencies, no build step.
 Environment overrides: `DIGEST_DAYS` (default `14`), `DIGEST_LIMIT` (default
 `60`), `FEED_TIMEOUT_MS` (default `12000`).
 
+The deployed site sets `DIGEST_DAYS=3` in the workflow so it shows only recent
+news; a local run without that override looks back further and returns more
+stories.
+
 ## Deploy
 
 > **Re-homing the repo?** Run `node scripts/set-owner.mjs <new-owner>` first — it

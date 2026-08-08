@@ -37,6 +37,10 @@ jobs:
         with:
           node-version: '22'
       - name: Build digest
+        # Match the canvas: a 3-day window keeps the site to genuinely recent
+        # news rather than a fortnight of backlog.
+        env:
+          DIGEST_DAYS: "3"
         run: node scripts/build-digest.mjs
       # Surface what was published in the run summary. A scheduled job nobody
       # watches is only useful if a failure or a degraded fetch is visible
