@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-09T14:00:32.937Z",
+  "generatedAt": "2026-08-09T23:12:30.229Z",
   "window": {
     "days": 14,
     "limit": 60
@@ -118,6 +118,10 @@
       "count": 1
     },
     {
+      "tag": "application security",
+      "count": 1
+    },
+    {
       "tag": "Analytics",
       "count": 1
     },
@@ -127,10 +131,6 @@
     },
     {
       "tag": "Containers",
-      "count": 1
-    },
-    {
-      "tag": "application security",
       "count": 1
     },
     {
@@ -202,10 +202,6 @@
       "count": 1
     },
     {
-      "tag": "ci",
-      "count": 1
-    },
-    {
       "tag": "Open Source",
       "count": 1
     },
@@ -227,6 +223,10 @@
     },
     {
       "tag": "Git & Version Control",
+      "count": 1
+    },
+    {
+      "tag": "ci",
       "count": 1
     },
     {
@@ -438,26 +438,6 @@
       "rank": 3
     },
     {
-      "id": "ms-changelog:kimi k3 is now available in github copilot|2026-08-06-kimi-k3-is-now-available-in-github-copilot",
-      "title": "Kimi K3 is now available in GitHub Copilot",
-      "url": "https://github.blog/changelog/2026-08-06-kimi-k3-is-now-available-in-github-copilot",
-      "summary": "Editor’s note (August 6, 2026): We have resumed rolling out Kimi K3 in GitHub Copilot. This model is billed at provider list pricing under usage-based billing. See GitHub Copilot’s pricing… The post Kimi K3 is now available in GitHub Copilot appeared first on The GitHub Blog...",
-      "published": "2026-08-06T17:27:25.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "GitHub",
-      "score": 71,
-      "importance": "high",
-      "tags": [
-        "Copilot",
-        "AI",
-        "GA",
-        "GitHub",
-        "Launched"
-      ],
-      "rank": 4
-    },
-    {
       "id": "ms-changelog:github copilot in visual studio code july 2026 releases|2026-07-30-github-copilot-in-visual-studio-code-july-2026-releases",
       "title": "GitHub Copilot in Visual Studio Code, July 2026 releases",
       "url": "https://github.blog/changelog/2026-07-30-github-copilot-in-visual-studio-code-july-2026-releases",
@@ -475,7 +455,7 @@
         "VS Code",
         "GitHub"
       ],
-      "rank": 5
+      "rank": 4
     },
     {
       "id": "ms-changelog:copilot code review agent skills and mcp now generally available|2026-07-29-copilot-code-review-agent-skills-and-mcp-now-generally-available",
@@ -495,7 +475,7 @@
         "Preview",
         "GA"
       ],
-      "rank": 6
+      "rank": 5
     },
     {
       "id": "ms-changelog:default model enablement for copilot business and enterprise|2026-07-29-default-model-enablement-for-copilot-business-and-enterprise",
@@ -515,7 +495,7 @@
         "GitHub",
         "Launched"
       ],
-      "rank": 7
+      "rank": 6
     },
     {
       "id": "ms-changelog:copilot impact dashboard adds a return on investment section|2026-08-07-copilot-impact-dashboard-adds-a-return-on-investment-section",
@@ -534,7 +514,7 @@
         "GitHub",
         "Launched"
       ],
-      "rank": 8
+      "rank": 7
     },
     {
       "id": "ms-changelog:copilot usage metrics api adds agent app activity|2026-08-07-copilot-usage-metrics-api-adds-agent-app-activity",
@@ -554,7 +534,7 @@
         "Actions",
         "API"
       ],
-      "rank": 9
+      "rank": 8
     },
     {
       "id": "ms-changelog:mcp allowlists in enterprise managed settings|2026-08-06-mcp-allowlists-in-enterprise-managed-settings",
@@ -573,6 +553,26 @@
         "AI",
         "API",
         "GitHub"
+      ],
+      "rank": 9
+    },
+    {
+      "id": "ms-changelog:kimi k3 is now available in github copilot|2026-08-06-kimi-k3-is-now-available-in-github-copilot",
+      "title": "Kimi K3 is now available in GitHub Copilot",
+      "url": "https://github.blog/changelog/2026-08-06-kimi-k3-is-now-available-in-github-copilot",
+      "summary": "Editor’s note (August 6, 2026): We have resumed rolling out Kimi K3 in GitHub Copilot. This model is billed at provider list pricing under usage-based billing. See GitHub Copilot’s pricing… The post Kimi K3 is now available in GitHub Copilot appeared first on The GitHub Blog...",
+      "published": "2026-08-06T17:27:25.000Z",
+      "sourceId": "ms-changelog",
+      "source": "Microsoft Developer Changelog",
+      "org": "GitHub",
+      "score": 66,
+      "importance": "high",
+      "tags": [
+        "Copilot",
+        "AI",
+        "GA",
+        "GitHub",
+        "Launched"
       ],
       "rank": 10
     },
@@ -857,26 +857,6 @@
       "rank": 24
     },
     {
-      "id": "ms-changelog:announcing azure databricks genie one and genie agents free usage extended through january 31 2027|updates",
-      "title": "Announcing: Azure Databricks Genie One and Genie Agents Free Usage extended through January 31, 2027",
-      "url": "https://azure.microsoft.com/updates?id=568964",
-      "summary": "Free usage of Genie One and Genie Agents in Azure Databricks is now extended through January 31, 2027, from the previous end date of July 31, 2026. Budget controls do not apply to these products during the promotional period. The promotion covers usage by...",
-      "published": "2026-08-06T19:41:52.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "Microsoft",
-      "score": 56,
-      "importance": "medium",
-      "tags": [
-        "Agents",
-        "AI",
-        "Azure",
-        "AI + Machine Learning",
-        "Analytics"
-      ],
-      "rank": 25
-    },
-    {
       "id": "ms-changelog:launched generally available unity ai gateway on azure databricks|updates",
       "title": "[Launched] Generally Available: Unity AI Gateway on Azure Databricks",
       "url": "https://azure.microsoft.com/updates?id=568910",
@@ -894,47 +874,7 @@
         "GA",
         "Launched"
       ],
-      "rank": 26
-    },
-    {
-      "id": "azure-blog:microsoft named a leader in the 2026 gartner magic quadrant for ai augmented code modernization tools|microsoft-named-a-leader-in-the-2026-gartner-ma",
-      "title": "Microsoft named a Leader in the 2026 Gartner® Magic Quadrant™ for AI-Augmented Code Modernization Tools",
-      "url": "https://azure.microsoft.com/en-us/blog/microsoft-named-a-leader-in-the-2026-gartner-magic-quadrant-for-ai-augmented-code-modernization-tools/",
-      "summary": "GitHub Copilot and Azure are helping organizations modernize legacy applications, reduce technical debt, and prepare for AI innovation. The post Microsoft named a Leader in the 2026 Gartner® Magic Quadrant™ for AI-Augmented Code Modernization Tools appeared first on Microsoft Azure Blog .",
-      "published": "2026-08-06T15:00:00.000Z",
-      "sourceId": "azure-blog",
-      "source": "Azure Blog",
-      "org": "Microsoft",
-      "score": 55,
-      "importance": "medium",
-      "tags": [
-        "Copilot",
-        "AI",
-        "Azure",
-        "Compute",
-        "Containers"
-      ],
-      "rank": 27
-    },
-    {
-      "id": "github-blog:a guide to slash commands in the github copilot app|a-guide-to-slash-commands-in-the-github-copilot-app",
-      "title": "A guide to slash commands in the GitHub Copilot app",
-      "url": "https://github.blog/ai-and-ml/github-copilot/a-guide-to-slash-commands-in-the-github-copilot-app/",
-      "summary": "Go beyond chat in the GitHub Copilot app with these slash commands. They'll help you plan, collaborate, automate, and customize your dev workflow. The post A guide to slash commands in the GitHub Copilot app appeared first on The GitHub Blog .",
-      "published": "2026-08-06T19:49:34.000Z",
-      "sourceId": "github-blog",
-      "source": "GitHub Blog",
-      "org": "GitHub",
-      "score": 54,
-      "importance": "medium",
-      "tags": [
-        "Copilot",
-        "AI",
-        "Actions",
-        "AI & ML",
-        "GitHub Copilot"
-      ],
-      "rank": 28
+      "rank": 25
     },
     {
       "id": "github-changelog:secret scanning coverage updates|2026-08-07-secret-scanning-coverage-updates",
@@ -953,7 +893,7 @@
         "Improvement",
         "application security"
       ],
-      "rank": 29
+      "rank": 26
     },
     {
       "id": "ms-changelog:launched generally available claude opus 5 on azure databricks|updates",
@@ -973,7 +913,7 @@
         "Azure",
         "GA"
       ],
-      "rank": 30
+      "rank": 27
     },
     {
       "id": "github-blog:github copilot app for beginners getting started|github-copilot-app-for-beginners-getting-started",
@@ -992,6 +932,66 @@
         "AI",
         "Actions",
         "AI & ML"
+      ],
+      "rank": 28
+    },
+    {
+      "id": "ms-changelog:announcing azure databricks genie one and genie agents free usage extended through january 31 2027|updates",
+      "title": "Announcing: Azure Databricks Genie One and Genie Agents Free Usage extended through January 31, 2027",
+      "url": "https://azure.microsoft.com/updates?id=568964",
+      "summary": "Free usage of Genie One and Genie Agents in Azure Databricks is now extended through January 31, 2027, from the previous end date of July 31, 2026. Budget controls do not apply to these products during the promotional period. The promotion covers usage by...",
+      "published": "2026-08-06T19:41:52.000Z",
+      "sourceId": "ms-changelog",
+      "source": "Microsoft Developer Changelog",
+      "org": "Microsoft",
+      "score": 51,
+      "importance": "medium",
+      "tags": [
+        "Agents",
+        "AI",
+        "Azure",
+        "AI + Machine Learning",
+        "Analytics"
+      ],
+      "rank": 29
+    },
+    {
+      "id": "azure-blog:microsoft named a leader in the 2026 gartner magic quadrant for ai augmented code modernization tools|microsoft-named-a-leader-in-the-2026-gartner-ma",
+      "title": "Microsoft named a Leader in the 2026 Gartner® Magic Quadrant™ for AI-Augmented Code Modernization Tools",
+      "url": "https://azure.microsoft.com/en-us/blog/microsoft-named-a-leader-in-the-2026-gartner-magic-quadrant-for-ai-augmented-code-modernization-tools/",
+      "summary": "GitHub Copilot and Azure are helping organizations modernize legacy applications, reduce technical debt, and prepare for AI innovation. The post Microsoft named a Leader in the 2026 Gartner® Magic Quadrant™ for AI-Augmented Code Modernization Tools appeared first on Microsoft Azure Blog .",
+      "published": "2026-08-06T15:00:00.000Z",
+      "sourceId": "azure-blog",
+      "source": "Azure Blog",
+      "org": "Microsoft",
+      "score": 50,
+      "importance": "medium",
+      "tags": [
+        "Copilot",
+        "AI",
+        "Azure",
+        "Compute",
+        "Containers"
+      ],
+      "rank": 30
+    },
+    {
+      "id": "github-blog:a guide to slash commands in the github copilot app|a-guide-to-slash-commands-in-the-github-copilot-app",
+      "title": "A guide to slash commands in the GitHub Copilot app",
+      "url": "https://github.blog/ai-and-ml/github-copilot/a-guide-to-slash-commands-in-the-github-copilot-app/",
+      "summary": "Go beyond chat in the GitHub Copilot app with these slash commands. They'll help you plan, collaborate, automate, and customize your dev workflow. The post A guide to slash commands in the GitHub Copilot app appeared first on The GitHub Blog .",
+      "published": "2026-08-06T19:49:34.000Z",
+      "sourceId": "github-blog",
+      "source": "GitHub Blog",
+      "org": "GitHub",
+      "score": 49,
+      "importance": "medium",
+      "tags": [
+        "Copilot",
+        "AI",
+        "Actions",
+        "AI & ML",
+        "GitHub Copilot"
       ],
       "rank": 31
     },
@@ -1284,23 +1284,6 @@
       "rank": 46
     },
     {
-      "id": "github-blog:how we took malware advisories beyond npm|how-we-took-malware-advisories-beyond-npm",
-      "title": "How we took malware advisories beyond npm",
-      "url": "https://github.blog/security/supply-chain-security/how-we-took-malware-advisories-beyond-npm/",
-      "summary": "GitHub malware advisories no longer stop at npm. Here's how we wired OpenSSF's malicious-packages data into the Advisory Database, and why we built the pipeline paranoid. The post How we took malware advisories beyond npm appeared first on The GitHub Blog .",
-      "published": "2026-08-06T16:51:12.000Z",
-      "sourceId": "github-blog",
-      "source": "GitHub Blog",
-      "org": "GitHub",
-      "score": 29,
-      "importance": "low",
-      "tags": [
-        "Security",
-        "Supply chain security"
-      ],
-      "rank": 47
-    },
-    {
       "id": "github-blog:disrupting supply chain attacks on npm and github actions|disrupting-supply-chain-attacks-on-npm-and-github-actions",
       "title": "Disrupting supply chain attacks on npm and GitHub Actions",
       "url": "https://github.blog/security/supply-chain-security/disrupting-supply-chain-attacks-on-npm-and-github-actions/",
@@ -1316,6 +1299,23 @@
         "Security",
         "Supply chain security",
         "GitHub Actions"
+      ],
+      "rank": 47
+    },
+    {
+      "id": "github-blog:how we took malware advisories beyond npm|how-we-took-malware-advisories-beyond-npm",
+      "title": "How we took malware advisories beyond npm",
+      "url": "https://github.blog/security/supply-chain-security/how-we-took-malware-advisories-beyond-npm/",
+      "summary": "GitHub malware advisories no longer stop at npm. Here's how we wired OpenSSF's malicious-packages data into the Advisory Database, and why we built the pipeline paranoid. The post How we took malware advisories beyond npm appeared first on The GitHub Blog .",
+      "published": "2026-08-06T16:51:12.000Z",
+      "sourceId": "github-blog",
+      "source": "GitHub Blog",
+      "org": "GitHub",
+      "score": 24,
+      "importance": "low",
+      "tags": [
+        "Security",
+        "Supply chain security"
       ],
       "rank": 48
     },
@@ -1448,26 +1448,6 @@
       "rank": 55
     },
     {
-      "id": "ms-dotnet:test reporting in microsoft testing platform from red build to root cause|microsoft-testing-platform-reporting",
-      "title": "Test reporting in Microsoft.Testing.Platform: from red build to root cause",
-      "url": "https://devblogs.microsoft.com/dotnet/microsoft-testing-platform-reporting/",
-      "summary": "Microsoft.Testing.Platform brings failures into GitHub Actions and Azure DevOps, uses pipeline history to separate regressions from flakes, and preserves usable reports when a test host crashes. The post Test reporting in Microsoft.Testing.Platform: from red build to root cause appeared first on .NET Blog .",
-      "published": "2026-08-06T17:05:00.000Z",
-      "sourceId": "ms-dotnet",
-      "source": ".NET Blog",
-      "org": "Microsoft",
-      "score": 17,
-      "importance": "low",
-      "tags": [
-        "Actions",
-        "Azure",
-        ".NET",
-        "C#",
-        "ci"
-      ],
-      "rank": 56
-    },
-    {
       "id": "github-blog:don t stop early case folding source code at memory speed|dont-stop-early-case-folding-source-code-at-memory-speed",
       "title": "Don’t stop early: Case-folding source code at memory speed",
       "url": "https://github.blog/engineering/architecture-optimization/dont-stop-early-case-folding-source-code-at-memory-speed/",
@@ -1482,7 +1462,7 @@
         "Engineering",
         "Open Source"
       ],
-      "rank": 57
+      "rank": 56
     },
     {
       "id": "ms-azure-sdk:azure sdk release july 2026|azure-sdk-release-july-2026",
@@ -1502,7 +1482,7 @@
         "release",
         "sdk"
       ],
-      "rank": 58
+      "rank": 57
     },
     {
       "id": "ms-devops:find any commit in seconds commit search comes to azure devops|find-any-commit-in-seconds-commit-search-comes-to-azure-devops",
@@ -1520,6 +1500,26 @@
         "Azure DevOps",
         "DevOps",
         "Git & Version Control"
+      ],
+      "rank": 58
+    },
+    {
+      "id": "ms-dotnet:test reporting in microsoft testing platform from red build to root cause|microsoft-testing-platform-reporting",
+      "title": "Test reporting in Microsoft.Testing.Platform: from red build to root cause",
+      "url": "https://devblogs.microsoft.com/dotnet/microsoft-testing-platform-reporting/",
+      "summary": "Microsoft.Testing.Platform brings failures into GitHub Actions and Azure DevOps, uses pipeline history to separate regressions from flakes, and preserves usable reports when a test host crashes. The post Test reporting in Microsoft.Testing.Platform: from red build to root cause appeared first on .NET Blog .",
+      "published": "2026-08-06T17:05:00.000Z",
+      "sourceId": "ms-dotnet",
+      "source": ".NET Blog",
+      "org": "Microsoft",
+      "score": 12,
+      "importance": "low",
+      "tags": [
+        "Actions",
+        "Azure",
+        ".NET",
+        "C#",
+        "ci"
       ],
       "rank": 59
     },
