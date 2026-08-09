@@ -1,0 +1,497 @@
+{
+  "schemaVersion": "1.0",
+  "analysisStartTime": "2026-08-07T09:14:51Z",
+  "analysisEndTime": "2026-08-07T09:21:38Z",
+  "settings": {
+    "solutionPath": "sample/ContosoOrders/ContosoOrders.sln",
+    "targetFramework": "net8.0",
+    "scenario": "dotnet-version-upgrade",
+    "strategy": "bottom-up",
+    "analyzerVersion": "1.14.0 (simulated)"
+  },
+  "rules": {
+    "Framework.NonSdkProject": {
+      "label": "Non-SDK-style project file",
+      "description": "The project uses the legacy MSBuild project format. It must be converted to SDK-style before it can target .NET 8.",
+      "severity": "Mandatory",
+      "category": "Framework.ProjectFormat"
+    },
+    "Framework.TargetFrameworkVersion": {
+      "label": "Targets .NET Framework",
+      "description": "TargetFrameworkVersion must be replaced with a TargetFramework of net8.0.",
+      "severity": "Mandatory",
+      "category": "Framework.Retarget"
+    },
+    "Api.ConfigurationManager": {
+      "label": "System.Configuration.ConfigurationManager",
+      "description": "ConfigurationManager.AppSettings and ConnectionStrings are not available from the BCL on .NET 8. Migrate to Microsoft.Extensions.Configuration or add the compatibility package.",
+      "severity": "Mandatory",
+      "category": "Api.Configuration"
+    },
+    "Api.Remoting": {
+      "label": "System.Runtime.Remoting removed",
+      "description": ".NET Remoting was removed in .NET Core and has no replacement. Cross-process calls must be re-implemented (named pipes, gRPC, or HTTP).",
+      "severity": "Mandatory",
+      "category": "Api.Removed"
+    },
+    "Api.SystemWeb": {
+      "label": "System.Web is not available",
+      "description": "HttpContext.Current, System.Web.Mvc, and the classic pipeline do not exist on .NET 8. Migrate to ASP.NET Core.",
+      "severity": "Mandatory",
+      "category": "Api.Web",
+      "isFeature": true
+    },
+    "Package.Incompatible": {
+      "label": "Package incompatible with target framework",
+      "description": "The referenced package version does not support net8.0 and must be upgraded or replaced.",
+      "severity": "Mandatory",
+      "category": "Package.Compatibility"
+    },
+    "Package.VersionDrift": {
+      "label": "Package version drift",
+      "description": "The same package is referenced at different versions across projects. Consolidate before upgrading.",
+      "severity": "Potential",
+      "category": "Package.Governance"
+    },
+    "Config.WebConfig": {
+      "label": "Web.config settings need migration",
+      "description": "appSettings and connectionStrings should move to appsettings.json.",
+      "severity": "Potential",
+      "category": "Config.Migration",
+      "isFeature": true
+    },
+    "Api.BinaryFormatter": {
+      "label": "BinaryFormatter is obsolete",
+      "description": "BinaryFormatter is disabled by default and removed from .NET 9+. Replace with System.Text.Json or a contract serializer.",
+      "severity": "Potential",
+      "category": "Api.Serialization"
+    },
+    "Info.NullableDisabled": {
+      "label": "Nullable reference types disabled",
+      "description": "Consider enabling nullable reference types after the upgrade lands.",
+      "severity": "Information",
+      "category": "Info.CodeQuality"
+    }
+  },
+  "projects": [
+    {
+      "path": "sample/ContosoOrders/src/Contoso.Orders.Web/Contoso.Orders.Web.csproj",
+      "startingProject": true,
+      "issues": 21,
+      "storyPoints": 34,
+      "properties": {
+        "appName": "Contoso.Orders.Web",
+        "frameworks": [
+          "net472"
+        ],
+        "projectKind": "Library",
+        "isSdkStyle": false
+      },
+      "features": [
+        {
+          "featureId": "Api.SystemWeb",
+          "incidents": [
+            {
+              "id": "sw0"
+            },
+            {
+              "id": "sw1"
+            },
+            {
+              "id": "sw2"
+            },
+            {
+              "id": "sw3"
+            },
+            {
+              "id": "sw4"
+            },
+            {
+              "id": "sw5"
+            },
+            {
+              "id": "sw6"
+            },
+            {
+              "id": "sw7"
+            },
+            {
+              "id": "sw8"
+            }
+          ]
+        },
+        {
+          "featureId": "Config.WebConfig",
+          "incidents": [
+            {
+              "id": "cfg0"
+            },
+            {
+              "id": "cfg1"
+            },
+            {
+              "id": "cfg2"
+            }
+          ]
+        }
+      ],
+      "ruleInstances": [
+        {
+          "incidentId": "Framework.NonSdkProject:sample/ContosoOrders/src/Contoso.Orders.Web/Contoso.Orders.Web.csproj:1",
+          "ruleId": "Framework.NonSdkProject",
+          "location": {
+            "path": "sample/ContosoOrders/src/Contoso.Orders.Web/Contoso.Orders.Web.csproj",
+            "line": 1,
+            "label": "sample/ContosoOrders/src/Contoso.Orders.Web/Contoso.Orders.Web.csproj:1",
+            "snippet": "<Project ToolsVersion=\"15.0\" xmlns=\"http://schemas.microsoft.com/developer/msbuild/2003\">"
+          },
+          "description": "Legacy project format blocks retargeting.",
+          "state": "Resolved"
+        },
+        {
+          "incidentId": "Framework.TargetFrameworkVersion:sample/ContosoOrders/src/Contoso.Orders.Web/Contoso.Orders.Web.csproj:6",
+          "ruleId": "Framework.TargetFrameworkVersion",
+          "location": {
+            "path": "sample/ContosoOrders/src/Contoso.Orders.Web/Contoso.Orders.Web.csproj",
+            "line": 6,
+            "label": "sample/ContosoOrders/src/Contoso.Orders.Web/Contoso.Orders.Web.csproj:6",
+            "snippet": "<TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>"
+          },
+          "state": "Resolved"
+        },
+        {
+          "incidentId": "Api.SystemWeb:sample/ContosoOrders/src/Contoso.Orders.Web/Contoso.Orders.Web.csproj:11",
+          "ruleId": "Api.SystemWeb",
+          "location": {
+            "path": "sample/ContosoOrders/src/Contoso.Orders.Web/Contoso.Orders.Web.csproj",
+            "line": 11,
+            "label": "sample/ContosoOrders/src/Contoso.Orders.Web/Contoso.Orders.Web.csproj:11",
+            "snippet": "<Reference Include=\"System.Web\" />"
+          },
+          "description": "System.Web reference must be dropped; controllers move to ASP.NET Core MVC."
+        },
+        {
+          "incidentId": "Api.SystemWeb:sample/ContosoOrders/src/Contoso.Orders.Web/Controllers/OrdersController.cs:42",
+          "ruleId": "Api.SystemWeb",
+          "location": {
+            "path": "sample/ContosoOrders/src/Contoso.Orders.Web/Controllers/OrdersController.cs",
+            "line": 42,
+            "label": "sample/ContosoOrders/src/Contoso.Orders.Web/Controllers/OrdersController.cs:42",
+            "snippet": "var user = HttpContext.Current.User;"
+          }
+        },
+        {
+          "incidentId": "Api.SystemWeb:sample/ContosoOrders/src/Contoso.Orders.Web/Controllers/OrdersController.cs:88",
+          "ruleId": "Api.SystemWeb",
+          "location": {
+            "path": "sample/ContosoOrders/src/Contoso.Orders.Web/Controllers/OrdersController.cs",
+            "line": 88,
+            "label": "sample/ContosoOrders/src/Contoso.Orders.Web/Controllers/OrdersController.cs:88",
+            "snippet": "return new HttpStatusCodeResult(409);"
+          }
+        },
+        {
+          "incidentId": "Api.SystemWeb:sample/ContosoOrders/src/Contoso.Orders.Web/Global.asax.cs:14",
+          "ruleId": "Api.SystemWeb",
+          "location": {
+            "path": "sample/ContosoOrders/src/Contoso.Orders.Web/Global.asax.cs",
+            "line": 14,
+            "label": "sample/ContosoOrders/src/Contoso.Orders.Web/Global.asax.cs:14",
+            "snippet": "AreaRegistration.RegisterAllAreas();"
+          }
+        },
+        {
+          "incidentId": "Api.ConfigurationManager:sample/ContosoOrders/src/Contoso.Orders.Web/Startup.cs:27",
+          "ruleId": "Api.ConfigurationManager",
+          "location": {
+            "path": "sample/ContosoOrders/src/Contoso.Orders.Web/Startup.cs",
+            "line": 27,
+            "label": "sample/ContosoOrders/src/Contoso.Orders.Web/Startup.cs:27",
+            "snippet": "var days = ConfigurationManager.AppSettings[\"Orders:RetentionDays\"];"
+          }
+        },
+        {
+          "incidentId": "Config.WebConfig:sample/ContosoOrders/src/Contoso.Orders.Web/Web.config:4",
+          "ruleId": "Config.WebConfig",
+          "location": {
+            "path": "sample/ContosoOrders/src/Contoso.Orders.Web/Web.config",
+            "line": 4,
+            "label": "sample/ContosoOrders/src/Contoso.Orders.Web/Web.config:4",
+            "snippet": "<add key=\"Orders:RetentionDays\" value=\"90\" />"
+          }
+        },
+        {
+          "incidentId": "Config.WebConfig:sample/ContosoOrders/src/Contoso.Orders.Web/Web.config:7",
+          "ruleId": "Config.WebConfig",
+          "location": {
+            "path": "sample/ContosoOrders/src/Contoso.Orders.Web/Web.config",
+            "line": 7,
+            "label": "sample/ContosoOrders/src/Contoso.Orders.Web/Web.config:7",
+            "snippet": "<add name=\"Orders\" connectionString=\"Server=.;Database=Orders;Integrated Security=true\" />"
+          }
+        },
+        {
+          "incidentId": "Info.NullableDisabled:sample/ContosoOrders/src/Contoso.Orders.Web/Contoso.Orders.Web.csproj:4",
+          "ruleId": "Info.NullableDisabled",
+          "location": {
+            "path": "sample/ContosoOrders/src/Contoso.Orders.Web/Contoso.Orders.Web.csproj",
+            "line": 4,
+            "label": "sample/ContosoOrders/src/Contoso.Orders.Web/Contoso.Orders.Web.csproj:4",
+            "snippet": "<OutputType>Library</OutputType>"
+          }
+        }
+      ]
+    },
+    {
+      "path": "sample/ContosoOrders/src/Contoso.Orders.Jobs/Contoso.Orders.Jobs.csproj",
+      "startingProject": false,
+      "issues": 14,
+      "storyPoints": 21,
+      "properties": {
+        "appName": "Contoso.Orders.Jobs",
+        "frameworks": [
+          "net472"
+        ],
+        "projectKind": "Exe",
+        "isSdkStyle": false
+      },
+      "features": [
+        {
+          "featureId": "Api.Removed",
+          "incidents": [
+            {
+              "id": "rm0"
+            },
+            {
+              "id": "rm1"
+            },
+            {
+              "id": "rm2"
+            },
+            {
+              "id": "rm3"
+            },
+            {
+              "id": "rm4"
+            }
+          ]
+        }
+      ],
+      "ruleInstances": [
+        {
+          "incidentId": "Framework.NonSdkProject:sample/ContosoOrders/src/Contoso.Orders.Jobs/Contoso.Orders.Jobs.csproj:1",
+          "ruleId": "Framework.NonSdkProject",
+          "location": {
+            "path": "sample/ContosoOrders/src/Contoso.Orders.Jobs/Contoso.Orders.Jobs.csproj",
+            "line": 1,
+            "label": "sample/ContosoOrders/src/Contoso.Orders.Jobs/Contoso.Orders.Jobs.csproj:1",
+            "snippet": "<Project ToolsVersion=\"15.0\" ...>"
+          },
+          "state": "Resolved"
+        },
+        {
+          "incidentId": "Framework.TargetFrameworkVersion:sample/ContosoOrders/src/Contoso.Orders.Jobs/Contoso.Orders.Jobs.csproj:5",
+          "ruleId": "Framework.TargetFrameworkVersion",
+          "location": {
+            "path": "sample/ContosoOrders/src/Contoso.Orders.Jobs/Contoso.Orders.Jobs.csproj",
+            "line": 5,
+            "label": "sample/ContosoOrders/src/Contoso.Orders.Jobs/Contoso.Orders.Jobs.csproj:5",
+            "snippet": "<TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>"
+          }
+        },
+        {
+          "incidentId": "Api.Remoting:sample/ContosoOrders/src/Contoso.Orders.Jobs/Contoso.Orders.Jobs.csproj:10",
+          "ruleId": "Api.Remoting",
+          "location": {
+            "path": "sample/ContosoOrders/src/Contoso.Orders.Jobs/Contoso.Orders.Jobs.csproj",
+            "line": 10,
+            "label": "sample/ContosoOrders/src/Contoso.Orders.Jobs/Contoso.Orders.Jobs.csproj:10",
+            "snippet": "<Reference Include=\"System.Runtime.Remoting\" />"
+          },
+          "description": "No .NET 8 equivalent \u2014 requires re-architecture."
+        },
+        {
+          "incidentId": "Api.Remoting:sample/ContosoOrders/src/Contoso.Orders.Jobs/JobDispatcher.cs:33",
+          "ruleId": "Api.Remoting",
+          "location": {
+            "path": "sample/ContosoOrders/src/Contoso.Orders.Jobs/JobDispatcher.cs",
+            "line": 33,
+            "label": "sample/ContosoOrders/src/Contoso.Orders.Jobs/JobDispatcher.cs:33",
+            "snippet": "RemotingConfiguration.RegisterWellKnownServiceType(typeof(JobHost), \"jobs\", WellKnownObjectMode.Singleton);"
+          }
+        },
+        {
+          "incidentId": "Api.Remoting:sample/ContosoOrders/src/Contoso.Orders.Jobs/JobDispatcher.cs:61",
+          "ruleId": "Api.Remoting",
+          "location": {
+            "path": "sample/ContosoOrders/src/Contoso.Orders.Jobs/JobDispatcher.cs",
+            "line": 61,
+            "label": "sample/ContosoOrders/src/Contoso.Orders.Jobs/JobDispatcher.cs:61",
+            "snippet": "var host = (JobHost)Activator.GetObject(typeof(JobHost), url);"
+          }
+        },
+        {
+          "incidentId": "Api.ConfigurationManager:sample/ContosoOrders/src/Contoso.Orders.Jobs/Program.cs:18",
+          "ruleId": "Api.ConfigurationManager",
+          "location": {
+            "path": "sample/ContosoOrders/src/Contoso.Orders.Jobs/Program.cs",
+            "line": 18,
+            "label": "sample/ContosoOrders/src/Contoso.Orders.Jobs/Program.cs:18",
+            "snippet": "ConfigurationManager.ConnectionStrings[\"Orders\"].ConnectionString"
+          }
+        },
+        {
+          "incidentId": "Api.BinaryFormatter:sample/ContosoOrders/src/Contoso.Orders.Jobs/JobPayload.cs:24",
+          "ruleId": "Api.BinaryFormatter",
+          "location": {
+            "path": "sample/ContosoOrders/src/Contoso.Orders.Jobs/JobPayload.cs",
+            "line": 24,
+            "label": "sample/ContosoOrders/src/Contoso.Orders.Jobs/JobPayload.cs:24",
+            "snippet": "new BinaryFormatter().Serialize(stream, payload);"
+          }
+        }
+      ]
+    },
+    {
+      "path": "sample/ContosoOrders/src/Contoso.Orders.Data/Contoso.Orders.Data.csproj",
+      "startingProject": false,
+      "issues": 6,
+      "storyPoints": 8,
+      "properties": {
+        "appName": "Contoso.Orders.Data",
+        "frameworks": [
+          "net8.0"
+        ],
+        "projectKind": "Microsoft.NET.Sdk",
+        "isSdkStyle": true
+      },
+      "features": [],
+      "ruleInstances": [
+        {
+          "incidentId": "Package.Incompatible:sample/ContosoOrders/src/Contoso.Orders.Data/Contoso.Orders.Data.csproj:8",
+          "ruleId": "Package.Incompatible",
+          "location": {
+            "path": "sample/ContosoOrders/src/Contoso.Orders.Data/Contoso.Orders.Data.csproj",
+            "line": 8,
+            "label": "sample/ContosoOrders/src/Contoso.Orders.Data/Contoso.Orders.Data.csproj:8",
+            "snippet": "<PackageReference Include=\"System.Data.SqlClient\" Version=\"4.8.5\" />"
+          },
+          "description": "System.Data.SqlClient is legacy; migrate to Microsoft.Data.SqlClient 5.x."
+        },
+        {
+          "incidentId": "Package.VersionDrift:sample/ContosoOrders/src/Contoso.Orders.Data/Contoso.Orders.Data.csproj:9",
+          "ruleId": "Package.VersionDrift",
+          "location": {
+            "path": "sample/ContosoOrders/src/Contoso.Orders.Data/Contoso.Orders.Data.csproj",
+            "line": 9,
+            "label": "sample/ContosoOrders/src/Contoso.Orders.Data/Contoso.Orders.Data.csproj:9",
+            "snippet": "<PackageReference Include=\"Newtonsoft.Json\" Version=\"12.0.3\" />"
+          }
+        },
+        {
+          "incidentId": "Api.BinaryFormatter:sample/ContosoOrders/src/Contoso.Orders.Data/OrderCache.cs:51",
+          "ruleId": "Api.BinaryFormatter",
+          "location": {
+            "path": "sample/ContosoOrders/src/Contoso.Orders.Data/OrderCache.cs",
+            "line": 51,
+            "label": "sample/ContosoOrders/src/Contoso.Orders.Data/OrderCache.cs:51",
+            "snippet": "return (Order)new BinaryFormatter().Deserialize(stream);"
+          }
+        }
+      ]
+    },
+    {
+      "path": "sample/ContosoOrders/src/Contoso.Orders.Domain/Contoso.Orders.Domain.csproj",
+      "startingProject": false,
+      "issues": 1,
+      "storyPoints": 1,
+      "properties": {
+        "appName": "Contoso.Orders.Domain",
+        "frameworks": [
+          "net8.0"
+        ],
+        "projectKind": "Microsoft.NET.Sdk",
+        "isSdkStyle": true
+      },
+      "features": [],
+      "ruleInstances": [
+        {
+          "incidentId": "Info.NullableDisabled:sample/ContosoOrders/src/Contoso.Orders.Domain/Contoso.Orders.Domain.csproj:5",
+          "ruleId": "Info.NullableDisabled",
+          "location": {
+            "path": "sample/ContosoOrders/src/Contoso.Orders.Domain/Contoso.Orders.Domain.csproj",
+            "line": 5,
+            "label": "sample/ContosoOrders/src/Contoso.Orders.Domain/Contoso.Orders.Domain.csproj:5",
+            "snippet": "<Nullable>enable</Nullable>"
+          },
+          "state": "Resolved"
+        }
+      ]
+    },
+    {
+      "path": "sample/ContosoOrders/tests/Contoso.Orders.Tests/Contoso.Orders.Tests.csproj",
+      "startingProject": false,
+      "issues": 2,
+      "storyPoints": 3,
+      "properties": {
+        "appName": "Contoso.Orders.Tests",
+        "frameworks": [
+          "net8.0"
+        ],
+        "projectKind": "Microsoft.NET.Sdk",
+        "isSdkStyle": true
+      },
+      "features": [],
+      "ruleInstances": [
+        {
+          "incidentId": "Package.VersionDrift:sample/ContosoOrders/tests/Contoso.Orders.Tests/Contoso.Orders.Tests.csproj:8",
+          "ruleId": "Package.VersionDrift",
+          "location": {
+            "path": "sample/ContosoOrders/tests/Contoso.Orders.Tests/Contoso.Orders.Tests.csproj",
+            "line": 8,
+            "label": "sample/ContosoOrders/tests/Contoso.Orders.Tests/Contoso.Orders.Tests.csproj:8",
+            "snippet": "<PackageReference Include=\"Newtonsoft.Json\" Version=\"11.0.2\" />"
+          }
+        },
+        {
+          "incidentId": "Package.Incompatible:sample/ContosoOrders/tests/Contoso.Orders.Tests/Contoso.Orders.Tests.csproj:7",
+          "ruleId": "Package.Incompatible",
+          "location": {
+            "path": "sample/ContosoOrders/tests/Contoso.Orders.Tests/Contoso.Orders.Tests.csproj",
+            "line": 7,
+            "label": "sample/ContosoOrders/tests/Contoso.Orders.Tests/Contoso.Orders.Tests.csproj:7",
+            "snippet": "<PackageReference Include=\"xunit\" Version=\"2.9.2\" />"
+          },
+          "description": "Compatible, but the runner package is missing for net8.0."
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "summary": {
+      "projects": 5,
+      "issues": 44,
+      "incidents": 23,
+      "effort": 67
+    },
+    "charts": {
+      "severity": {
+        "Mandatory": 15,
+        "Potential": 6,
+        "Information": 2
+      },
+      "category": {
+        "Framework.ProjectFormat": 2,
+        "Framework.Retarget": 2,
+        "Api.Web": 4,
+        "Api.Configuration": 2,
+        "Config.Migration": 2,
+        "Info.CodeQuality": 2,
+        "Api.Removed": 3,
+        "Api.Serialization": 2,
+        "Package.Compatibility": 2,
+        "Package.Governance": 2
+      }
+    }
+  }
+}
