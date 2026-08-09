@@ -1,2 +1,5 @@
 node_modules/
 .DS_Store
+
+# Local dashboard canvas telemetry (not part of the simulation fixture)
+.vs/upgrade/canvas-telemetry.jsonl

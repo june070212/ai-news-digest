@@ -1,0 +1,18 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contoso.Orders.Domain", "src\Contoso.Orders.Domain\Contoso.Orders.Domain.csproj", "{A1000000-0000-0000-0000-000000000001}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contoso.Orders.Data", "src\Contoso.Orders.Data\Contoso.Orders.Data.csproj", "{A1000000-0000-0000-0000-000000000002}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contoso.Orders.Web", "src\Contoso.Orders.Web\Contoso.Orders.Web.csproj", "{A1000000-0000-0000-0000-000000000003}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contoso.Orders.Jobs", "src\Contoso.Orders.Jobs\Contoso.Orders.Jobs.csproj", "{A1000000-0000-0000-0000-000000000004}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contoso.Orders.Tests", "tests\Contoso.Orders.Tests\Contoso.Orders.Tests.csproj", "{A1000000-0000-0000-0000-000000000005}"
+EndProject
+Global
+GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+EndGlobalSection
+EndGlobal

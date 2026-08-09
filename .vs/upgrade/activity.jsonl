@@ -1,0 +1,39 @@
+{"timestamp": "2026-08-07T09:12:04Z", "event": "phase_entered", "phase": "Assessment", "displayName": "Assessment"}
+{"timestamp": "2026-08-07T09:14:51Z", "event": "branch_changed", "branch": "nguyenda-microsoft-friendly-winner", "previousBranch": "main"}
+{"timestamp": "2026-08-07T09:24:10Z", "event": "phase_entered", "phase": "Planning", "displayName": "Planning"}
+{"timestamp": "2026-08-07T09:31:00Z", "event": "phase_entered", "phase": "Execution", "displayName": "Execution"}
+{"timestamp": "2026-08-07T09:32:11Z", "event": "task_started", "taskId": "01.01-baseline-build", "displayName": "Establish green baseline build"}
+{"timestamp": "2026-08-07T10:01:40Z", "event": "build_session_completed", "totalProjects": 5, "succeededProjects": 5, "failedProjects": 0, "errorCount": 0, "warningCount": 12}
+{"timestamp": "2026-08-07T10:02:03Z", "event": "task_completed", "taskId": "01.01-baseline-build", "displayName": "Establish green baseline build"}
+{"timestamp": "2026-08-07T14:40:00Z", "event": "task_started", "taskId": "01.02-central-package-management", "displayName": "Introduce Directory.Packages.props"}
+{"timestamp": "2026-08-07T14:52:31Z", "event": "file_created", "taskId": "01.02-central-package-management", "path": "sample/ContosoOrders/Directory.Packages.props", "linesAdded": 14, "linesRemoved": 0}
+{"timestamp": "2026-08-07T14:55:02Z", "event": "file_modified", "taskId": "01.02-central-package-management", "path": "sample/ContosoOrders/src/Contoso.Orders.Domain/Contoso.Orders.Domain.csproj", "linesAdded": 1, "linesRemoved": 1}
+{"timestamp": "2026-08-07T14:56:18Z", "event": "file_modified", "taskId": "01.02-central-package-management", "path": "sample/ContosoOrders/src/Contoso.Orders.Data/Contoso.Orders.Data.csproj", "linesAdded": 2, "linesRemoved": 2}
+{"timestamp": "2026-08-07T14:57:44Z", "event": "file_modified", "taskId": "01.02-central-package-management", "path": "sample/ContosoOrders/tests/Contoso.Orders.Tests/Contoso.Orders.Tests.csproj", "linesAdded": 2, "linesRemoved": 2}
+{"timestamp": "2026-08-07T15:10:22Z", "event": "build_completed", "errorCount": 0, "warningCount": 12, "totalProjects": 5}
+{"timestamp": "2026-08-07T15:19:05Z", "event": "commit_created", "taskId": "01.02-central-package-management", "commitHash": "7c41ab9e2f0d5a1b8c3e6f4d2a9b7c150e3d8a62", "commitMessage": "Adopt Central Package Management and consolidate Newtonsoft.Json to 13.0.3", "files": 4}
+{"timestamp": "2026-08-07T15:20:00Z", "event": "task_completed", "taskId": "01.02-central-package-management", "displayName": "Introduce Directory.Packages.props"}
+{"timestamp": "2026-08-08T13:05:00Z", "event": "task_started", "taskId": "02.01-contoso-orders-web", "displayName": "Convert Contoso.Orders.Web to SDK-style"}
+{"timestamp": "2026-08-08T13:41:12Z", "event": "file_modified", "taskId": "02.01-contoso-orders-web", "path": "sample/ContosoOrders/src/Contoso.Orders.Web/Contoso.Orders.Web.csproj", "linesAdded": 22, "linesRemoved": 118}
+{"timestamp": "2026-08-08T13:43:50Z", "event": "file_deleted", "taskId": "02.01-contoso-orders-web", "path": "sample/ContosoOrders/src/Contoso.Orders.Web/packages.config", "linesAdded": 0, "linesRemoved": 9}
+{"timestamp": "2026-08-08T13:45:02Z", "event": "file_deleted", "taskId": "02.01-contoso-orders-web", "path": "sample/ContosoOrders/src/Contoso.Orders.Web/Properties/AssemblyInfo.cs", "linesAdded": 0, "linesRemoved": 18}
+{"timestamp": "2026-08-08T13:58:30Z", "event": "build_completed", "errorCount": 0, "warningCount": 12, "totalProjects": 5}
+{"timestamp": "2026-08-08T14:02:11Z", "event": "commit_created", "taskId": "02.01-contoso-orders-web", "commitHash": "b93f2d70c8a4e15d6b0f39a7c2e84d15fa6b0c39", "commitMessage": "Convert Contoso.Orders.Web to SDK-style project format", "files": 3}
+{"timestamp": "2026-08-08T14:03:00Z", "event": "task_completed", "taskId": "02.01-contoso-orders-web", "displayName": "Convert Contoso.Orders.Web to SDK-style"}
+{"timestamp": "2026-08-08T15:30:00Z", "event": "task_started", "taskId": "02.02-contoso-orders-jobs", "displayName": "Convert Contoso.Orders.Jobs to SDK-style"}
+{"timestamp": "2026-08-08T15:52:40Z", "event": "file_modified", "taskId": "02.02-contoso-orders-jobs", "path": "sample/ContosoOrders/src/Contoso.Orders.Jobs/Contoso.Orders.Jobs.csproj", "linesAdded": 19, "linesRemoved": 94}
+{"timestamp": "2026-08-08T15:54:03Z", "event": "file_deleted", "taskId": "02.02-contoso-orders-jobs", "path": "sample/ContosoOrders/src/Contoso.Orders.Jobs/Properties/AssemblyInfo.cs", "linesAdded": 0, "linesRemoved": 18}
+{"timestamp": "2026-08-08T16:08:19Z", "event": "build_completed", "errorCount": 0, "warningCount": 12, "totalProjects": 5}
+{"timestamp": "2026-08-08T16:11:40Z", "event": "commit_created", "taskId": "02.02-contoso-orders-jobs", "commitHash": "e2a7c841b6d093f5c7a1e8b40d29f63a5c1e7b84", "commitMessage": "Convert Contoso.Orders.Jobs to SDK-style project format", "files": 2}
+{"timestamp": "2026-08-08T16:12:00Z", "event": "task_completed", "taskId": "02.02-contoso-orders-jobs", "displayName": "Convert Contoso.Orders.Jobs to SDK-style"}
+{"timestamp": "2026-08-09T08:20:00Z", "event": "task_started", "taskId": "03.01-contoso-orders-web", "displayName": "Retarget Contoso.Orders.Web to net8.0"}
+{"timestamp": "2026-08-09T08:34:55Z", "event": "file_modified", "taskId": "03.01-contoso-orders-web", "path": "sample/ContosoOrders/src/Contoso.Orders.Web/Contoso.Orders.Web.csproj", "linesAdded": 4, "linesRemoved": 6}
+{"timestamp": "2026-08-09T08:41:17Z", "event": "build_completed", "errorCount": 9, "warningCount": 3, "totalProjects": 5}
+{"timestamp": "2026-08-09T08:54:02Z", "event": "commit_created", "taskId": "03.01-contoso-orders-web", "commitHash": "4f8b12ce9a37d605e2b8f14c7a903d6e8b25f1a0", "commitMessage": "Retarget Contoso.Orders.Web to net8.0 (System.Web breaks deferred to phase 05)", "files": 1}
+{"timestamp": "2026-08-09T08:55:00Z", "event": "task_completed", "taskId": "03.01-contoso-orders-web", "displayName": "Retarget Contoso.Orders.Web to net8.0"}
+{"timestamp": "2026-08-09T09:05:00Z", "event": "task_started", "taskId": "05.02-remoting-removal", "displayName": "Replace System.Runtime.Remoting job dispatcher"}
+{"timestamp": "2026-08-09T09:21:44Z", "event": "build_completed", "errorCount": 6, "warningCount": 2, "totalProjects": 5}
+{"timestamp": "2026-08-09T09:28:00Z", "event": "task_failed", "taskId": "05.02-remoting-removal", "displayName": "Replace System.Runtime.Remoting job dispatcher", "reason": "System.Runtime.Remoting has no .NET 8 replacement; transparent-proxy semantics cannot be preserved. Needs API contract change and task breakdown."}
+{"timestamp": "2026-08-09T09:41:22Z", "event": "task_started", "taskId": "03.02-contoso-orders-jobs", "displayName": "Retarget Contoso.Orders.Jobs to net8.0"}
+{"timestamp": "2026-08-09T09:48:30Z", "event": "file_modified", "taskId": "03.02-contoso-orders-jobs", "path": "sample/ContosoOrders/src/Contoso.Orders.Jobs/Contoso.Orders.Jobs.csproj", "linesAdded": 2, "linesRemoved": 7}
+{"timestamp": "2026-08-09T09:52:10Z", "event": "build_completed", "errorCount": 11, "warningCount": 1, "totalProjects": 5}

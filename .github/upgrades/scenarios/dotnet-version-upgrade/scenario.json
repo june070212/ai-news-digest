@@ -1,0 +1,34 @@
+{
+  "id": "dotnet-version-upgrade",
+  "name": ".NET Version Upgrade",
+  "description": "Upgrade the ContosoOrders solution from .NET Framework 4.7.2 to .NET 8.0, converting legacy projects to SDK-style along the way.",
+  "status": "InProgress",
+  "createdAt": "2026-08-07T09:12:04Z",
+  "updatedAt": "2026-08-09T09:41:22Z",
+  "startedAt": "2026-08-07T09:14:51Z",
+  "properties": {
+    "UpgradeTargetFramework": "net8.0",
+    "UpgradeStrategy": "bottom-up",
+    "ExecutionMode": "guided",
+    "SolutionPath": "sample/ContosoOrders/ContosoOrders.sln",
+    "BranchStrategy": "single-branch",
+    "taskStates": {
+      "01-preparation": "Complete",
+      "01.01-baseline-build": "Complete",
+      "01.02-central-package-management": "Complete",
+      "02-sdk-style-conversion": "Complete",
+      "02.01-contoso-orders-web": "Complete",
+      "02.02-contoso-orders-jobs": "Complete",
+      "03-retarget-frameworks": "InProgress",
+      "03.01-contoso-orders-web": "Complete",
+      "03.02-contoso-orders-jobs": "InProgress",
+      "04-dependency-remediation": "NotStarted",
+      "04.01-system-data-sqlclient": "NotStarted",
+      "04.02-newtonsoft-consolidation": "NotStarted",
+      "05-api-remediation": "NotStarted",
+      "05.01-configurationmanager": "NotStarted",
+      "05.02-remoting-removal": "Failed",
+      "06-validation": "NotStarted"
+    }
+  }
+}

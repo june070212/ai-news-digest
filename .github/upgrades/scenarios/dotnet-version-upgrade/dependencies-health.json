@@ -1,0 +1,296 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-08-07T09:21:40Z",
+  "packageGovernance": {
+    "targetFramework": "net8.0",
+    "totalDistinctPackages": 5,
+    "totalVersionDriftInstances": 2,
+    "packages": [
+      {
+        "name": "Newtonsoft.Json",
+        "totalProjectCount": 3,
+        "distinctVersionCount": 3,
+        "recommendedVersion": "13.0.3",
+        "isCompatible": true,
+        "versions": [
+          {
+            "version": "13.0.3",
+            "projects": [
+              "sample/ContosoOrders/src/Contoso.Orders.Domain/Contoso.Orders.Domain.csproj"
+            ],
+            "isRecommended": true
+          },
+          {
+            "version": "12.0.3",
+            "projects": [
+              "sample/ContosoOrders/src/Contoso.Orders.Data/Contoso.Orders.Data.csproj"
+            ],
+            "isRecommended": false
+          },
+          {
+            "version": "11.0.2",
+            "projects": [
+              "sample/ContosoOrders/tests/Contoso.Orders.Tests/Contoso.Orders.Tests.csproj"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "action": "consolidate",
+          "targetVersion": "13.0.3",
+          "reason": "Three distinct versions across the solution; consolidate via Directory.Packages.props."
+        }
+      },
+      {
+        "name": "System.Data.SqlClient",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "4.9.0",
+        "isCompatible": false,
+        "versions": [
+          {
+            "version": "4.8.5",
+            "projects": [
+              "sample/ContosoOrders/src/Contoso.Orders.Data/Contoso.Orders.Data.csproj"
+            ],
+            "isRecommended": false
+          }
+        ],
+        "upgrade": {
+          "action": "replace",
+          "targetPackage": "Microsoft.Data.SqlClient",
+          "targetVersion": "5.2.2",
+          "reason": "System.Data.SqlClient is in maintenance mode and is not supported for new development on .NET 8."
+        }
+      },
+      {
+        "name": "xunit",
+        "totalProjectCount": 1,
+        "distinctVersionCount": 1,
+        "recommendedVersion": "2.9.2",
+        "isCompatible": true,
+        "versions": [
+          {
+            "version": "2.9.2",
+            "projects": [
+              "sample/ContosoOrders/tests/Contoso.Orders.Tests/Contoso.Orders.Tests.csproj"
+            ],
+            "isRecommended": true
+          }
+        ],
+        "upgrade": {
+          "action": "none",
+          "reason": "Already at the recommended version for net8.0."
+        }
+      },
+      {
+        "name": "xunit.runner.visualstudio",
+        "totalProjectCount": 0,
+        "distinctVersionCount": 0,
+        "recommendedVersion": "2.8.2",
+        "isCompatible": true,
+        "versions": [],
+        "upgrade": {
+          "action": "add",
+          "targetVersion": "2.8.2",
+          "reason": "Required to discover and run xunit tests under net8.0."
+        }
+      },
+      {
+        "name": "Microsoft.Extensions.Configuration",
+        "totalProjectCount": 0,
+        "distinctVersionCount": 0,
+        "recommendedVersion": "8.0.0",
+        "isCompatible": true,
+        "versions": [],
+        "upgrade": {
+          "action": "add",
+          "targetVersion": "8.0.0",
+          "reason": "Replacement for ConfigurationManager usage in Web and Jobs."
+        }
+      }
+    ]
+  },
+  "projects": [
+    {
+      "name": "Contoso.Orders.Domain",
+      "path": "sample/ContosoOrders/src/Contoso.Orders.Domain/Contoso.Orders.Domain.csproj",
+      "isSdk": true,
+      "currentFrameworks": [
+        "net8.0"
+      ],
+      "targetFramework": "net8.0",
+      "dependencies": {
+        "packages": [
+          {
+            "name": "Newtonsoft.Json",
+            "version": "13.0.3",
+            "compatibility": "compatible"
+          }
+        ],
+        "assemblies": [],
+        "projectReferences": [],
+        "frameworkReferences": []
+      },
+      "imports": []
+    },
+    {
+      "name": "Contoso.Orders.Data",
+      "path": "sample/ContosoOrders/src/Contoso.Orders.Data/Contoso.Orders.Data.csproj",
+      "isSdk": true,
+      "currentFrameworks": [
+        "net8.0"
+      ],
+      "targetFramework": "net8.0",
+      "dependencies": {
+        "packages": [
+          {
+            "name": "System.Data.SqlClient",
+            "version": "4.8.5",
+            "compatibility": "newVersionNeeded"
+          },
+          {
+            "name": "Newtonsoft.Json",
+            "version": "12.0.3",
+            "compatibility": "newVersionNeeded"
+          }
+        ],
+        "assemblies": [],
+        "projectReferences": [
+          {
+            "name": "Contoso.Orders.Domain",
+            "path": "sample/ContosoOrders/src/Contoso.Orders.Domain/Contoso.Orders.Domain.csproj",
+            "compatibility": "compatible"
+          }
+        ],
+        "frameworkReferences": []
+      },
+      "imports": []
+    },
+    {
+      "name": "Contoso.Orders.Web",
+      "path": "sample/ContosoOrders/src/Contoso.Orders.Web/Contoso.Orders.Web.csproj",
+      "isSdk": false,
+      "currentFrameworks": [
+        "net472"
+      ],
+      "targetFramework": "net8.0",
+      "dependencies": {
+        "packages": [],
+        "assemblies": [
+          {
+            "name": "System.Web",
+            "version": "4.0.0.0",
+            "compatibility": "notSupported"
+          },
+          {
+            "name": "System.Web.Mvc",
+            "version": "5.2.7.0",
+            "compatibility": "notSupported"
+          },
+          {
+            "name": "System.Configuration",
+            "version": "4.0.0.0",
+            "compatibility": "newVersionNeeded"
+          }
+        ],
+        "projectReferences": [
+          {
+            "name": "Contoso.Orders.Data",
+            "path": "sample/ContosoOrders/src/Contoso.Orders.Data/Contoso.Orders.Data.csproj",
+            "compatibility": "compatible"
+          },
+          {
+            "name": "Contoso.Orders.Domain",
+            "path": "sample/ContosoOrders/src/Contoso.Orders.Domain/Contoso.Orders.Domain.csproj",
+            "compatibility": "compatible"
+          }
+        ],
+        "frameworkReferences": [
+          {
+            "name": "Microsoft.AspNetCore.App",
+            "compatibility": "compatible"
+          }
+        ]
+      },
+      "imports": [
+        "$(MSBuildExtensionsPath)\\$(MSBuildToolsVersion)\\Microsoft.Common.props",
+        "$(MSBuildBinPath)\\Microsoft.CSharp.targets"
+      ]
+    },
+    {
+      "name": "Contoso.Orders.Jobs",
+      "path": "sample/ContosoOrders/src/Contoso.Orders.Jobs/Contoso.Orders.Jobs.csproj",
+      "isSdk": false,
+      "currentFrameworks": [
+        "net472"
+      ],
+      "targetFramework": "net8.0",
+      "dependencies": {
+        "packages": [],
+        "assemblies": [
+          {
+            "name": "System.Runtime.Remoting",
+            "version": "4.0.0.0",
+            "compatibility": "notSupported"
+          },
+          {
+            "name": "System.Configuration",
+            "version": "4.0.0.0",
+            "compatibility": "newVersionNeeded"
+          }
+        ],
+        "projectReferences": [
+          {
+            "name": "Contoso.Orders.Data",
+            "path": "sample/ContosoOrders/src/Contoso.Orders.Data/Contoso.Orders.Data.csproj",
+            "compatibility": "compatible"
+          }
+        ],
+        "frameworkReferences": []
+      },
+      "imports": [
+        "$(MSBuildExtensionsPath)\\$(MSBuildToolsVersion)\\Microsoft.Common.props",
+        "$(MSBuildBinPath)\\Microsoft.CSharp.targets"
+      ]
+    },
+    {
+      "name": "Contoso.Orders.Tests",
+      "path": "sample/ContosoOrders/tests/Contoso.Orders.Tests/Contoso.Orders.Tests.csproj",
+      "isSdk": true,
+      "currentFrameworks": [
+        "net8.0"
+      ],
+      "targetFramework": "net8.0",
+      "dependencies": {
+        "packages": [
+          {
+            "name": "xunit",
+            "version": "2.9.2",
+            "compatibility": "compatible"
+          },
+          {
+            "name": "Newtonsoft.Json",
+            "version": "11.0.2",
+            "compatibility": "newVersionNeeded"
+          }
+        ],
+        "assemblies": [],
+        "projectReferences": [
+          {
+            "name": "Contoso.Orders.Domain",
+            "path": "sample/ContosoOrders/src/Contoso.Orders.Domain/Contoso.Orders.Domain.csproj",
+            "compatibility": "compatible"
+          },
+          {
+            "name": "Contoso.Orders.Data",
+            "path": "sample/ContosoOrders/src/Contoso.Orders.Data/Contoso.Orders.Data.csproj",
+            "compatibility": "compatible"
+          }
+        ],
+        "frameworkReferences": []
+      },
+      "imports": []
+    }
+  ]
+}
