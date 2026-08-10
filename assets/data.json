@@ -1,128 +1,72 @@
 {
-  "generatedAt": "2026-08-09T23:12:30.229Z",
+  "generatedAt": "2026-08-10T13:16:36.201Z",
   "window": {
     "days": 14,
     "limit": 60
   },
   "totals": {
-    "stories": 60,
-    "github": 37,
-    "microsoft": 23,
-    "high": 15,
-    "medium": 23,
-    "low": 22
+    "stories": 12,
+    "github": 10,
+    "microsoft": 2,
+    "high": 0,
+    "medium": 8,
+    "low": 4
   },
   "tags": [
     {
       "tag": "AI",
-      "count": 45
-    },
-    {
-      "tag": "Copilot",
-      "count": 33
-    },
-    {
-      "tag": "Agents",
-      "count": 25
-    },
-    {
-      "tag": "GitHub",
-      "count": 19
-    },
-    {
-      "tag": "Azure",
-      "count": 14
-    },
-    {
-      "tag": "API",
-      "count": 12
-    },
-    {
-      "tag": "Launched",
-      "count": 12
-    },
-    {
-      "tag": "Actions",
-      "count": 11
-    },
-    {
-      "tag": ".NET",
-      "count": 10
-    },
-    {
-      "tag": "GA",
       "count": 9
     },
     {
-      "tag": "Security",
+      "tag": "Copilot",
       "count": 7
     },
     {
-      "tag": "AI & ML",
-      "count": 5
-    },
-    {
-      "tag": "VS Code",
-      "count": 3
-    },
-    {
-      "tag": "Preview",
-      "count": 3
-    },
-    {
-      "tag": "Deprecation",
-      "count": 3
+      "tag": "Release",
+      "count": 4
     },
     {
       "tag": "Improvement",
+      "count": 4
+    },
+    {
+      "tag": "API",
       "count": 3
     },
     {
-      "tag": "Engineering",
+      "tag": "copilot",
       "count": 3
     },
     {
-      "tag": "Supply chain security",
-      "count": 3
-    },
-    {
-      "tag": "Retirements",
+      "tag": "Agents",
       "count": 2
-    },
-    {
-      "tag": "AI + Machine Learning",
-      "count": 2
-    },
-    {
-      "tag": "GitHub Copilot",
-      "count": 2
-    },
-    {
-      "tag": "Azure & Cloud",
-      "count": 2
-    },
-    {
-      "tag": "C#",
-      "count": 2
-    },
-    {
-      "tag": "Agent Framework",
-      "count": 2
-    },
-    {
-      "tag": "Azure SDK",
-      "count": 2
-    },
-    {
-      "tag": "Developer Tools",
-      "count": 1
     },
     {
       "tag": "application security",
+      "count": 2
+    },
+    {
+      "tag": "GA",
+      "count": 2
+    },
+    {
+      "tag": "Azure",
+      "count": 2
+    },
+    {
+      "tag": "Actions",
       "count": 1
     },
     {
-      "tag": "Analytics",
+      "tag": "Retired",
+      "count": 1
+    },
+    {
+      "tag": "Security",
+      "count": 1
+    },
+    {
+      "tag": "VS Code",
       "count": 1
     },
     {
@@ -134,15 +78,11 @@
       "count": 1
     },
     {
-      "tag": "Collaboration",
+      "tag": "account management",
       "count": 1
     },
     {
-      "tag": "Developer skills",
-      "count": 1
-    },
-    {
-      "tag": "Release",
+      "tag": "Preview",
       "count": 1
     },
     {
@@ -150,27 +90,7 @@
       "count": 1
     },
     {
-      "tag": "Foundry Local",
-      "count": 1
-    },
-    {
-      "tag": "ASP.NET Core",
-      "count": 1
-    },
-    {
-      "tag": "Agent Skills",
-      "count": 1
-    },
-    {
-      "tag": "stacked pull requests",
-      "count": 1
-    },
-    {
       "tag": "collaboration tools",
-      "count": 1
-    },
-    {
-      "tag": "GitHub Actions",
       "count": 1
     },
     {
@@ -183,58 +103,6 @@
     },
     {
       "tag": "Internet of things",
-      "count": 1
-    },
-    {
-      "tag": "Visual Studio",
-      "count": 1
-    },
-    {
-      "tag": "CI/CD",
-      "count": 1
-    },
-    {
-      "tag": "NuGet",
-      "count": 1
-    },
-    {
-      "tag": "azure-developer-cli",
-      "count": 1
-    },
-    {
-      "tag": "Open Source",
-      "count": 1
-    },
-    {
-      "tag": "release",
-      "count": 1
-    },
-    {
-      "tag": "sdk",
-      "count": 1
-    },
-    {
-      "tag": "Azure DevOps",
-      "count": 1
-    },
-    {
-      "tag": "DevOps",
-      "count": 1
-    },
-    {
-      "tag": "Git & Version Control",
-      "count": 1
-    },
-    {
-      "tag": "ci",
-      "count": 1
-    },
-    {
-      "tag": "#DevOps",
-      "count": 1
-    },
-    {
-      "tag": "Azure Boards",
       "count": 1
     }
   ],
@@ -251,33 +119,33 @@
       "id": "github-blog",
       "label": "GitHub Blog",
       "org": "GitHub",
-      "ok": true,
-      "count": 10,
-      "error": null
+      "ok": false,
+      "count": 0,
+      "error": "The operation was aborted due to timeout"
     },
     {
       "id": "ms-devblogs",
       "label": "Microsoft DevBlogs",
       "org": "Microsoft",
-      "ok": true,
+      "ok": false,
       "count": 0,
-      "error": null
+      "error": "The operation was aborted due to timeout"
     },
     {
       "id": "ms-dotnet",
       "label": ".NET Blog",
       "org": "Microsoft",
-      "ok": true,
-      "count": 6,
-      "error": null
+      "ok": false,
+      "count": 0,
+      "error": "The operation was aborted due to timeout"
     },
     {
       "id": "ms-changelog",
       "label": "Microsoft Developer Changelog",
       "org": "Microsoft",
-      "ok": true,
-      "count": 81,
-      "error": null
+      "ok": false,
+      "count": 0,
+      "error": "The operation was aborted due to timeout"
     },
     {
       "id": "azure-blog",
@@ -291,41 +159,41 @@
       "id": "ms-visualstudio",
       "label": "Visual Studio Blog",
       "org": "Microsoft",
-      "ok": true,
-      "count": 3,
-      "error": null
+      "ok": false,
+      "count": 0,
+      "error": "The operation was aborted due to timeout"
     },
     {
       "id": "ms-devops",
       "label": "Azure DevOps Blog",
       "org": "Microsoft",
-      "ok": true,
-      "count": 4,
-      "error": null
+      "ok": false,
+      "count": 0,
+      "error": "The operation was aborted due to timeout"
     },
     {
       "id": "ms-foundry",
       "label": "Microsoft Foundry Blog",
       "org": "Microsoft",
-      "ok": true,
+      "ok": false,
       "count": 0,
-      "error": null
+      "error": "The operation was aborted due to timeout"
     },
     {
       "id": "ms-semantic-kernel",
       "label": "Semantic Kernel Blog",
       "org": "Microsoft",
-      "ok": true,
-      "count": 3,
-      "error": null
+      "ok": false,
+      "count": 0,
+      "error": "The operation was aborted due to timeout"
     },
     {
       "id": "ms-azure-sdk",
       "label": "Azure SDK Blog",
       "org": "Microsoft",
-      "ok": true,
-      "count": 2,
-      "error": null
+      "ok": false,
+      "count": 0,
+      "error": "The operation was aborted due to timeout"
     },
     {
       "id": "ms-typescript",
@@ -347,186 +215,47 @@
       "id": "ms-cpp",
       "label": "C++ Team Blog",
       "org": "Microsoft",
-      "ok": true,
+      "ok": false,
       "count": 0,
-      "error": null
+      "error": "The operation was aborted due to timeout"
     },
     {
       "id": "ms-java",
       "label": "Java at Microsoft",
       "org": "Microsoft",
-      "ok": true,
+      "ok": false,
       "count": 0,
-      "error": null
+      "error": "The operation was aborted due to timeout"
     },
     {
       "id": "ms-commandline",
       "label": "Windows Command Line",
       "org": "Microsoft",
-      "ok": true,
+      "ok": false,
       "count": 0,
-      "error": null
+      "error": "The operation was aborted due to timeout"
     },
     {
       "id": "ms-powershell",
       "label": "PowerShell Team Blog",
       "org": "Microsoft",
-      "ok": true,
+      "ok": false,
       "count": 0,
-      "error": null
+      "error": "The operation was aborted due to timeout"
     }
   ],
   "stories": [
     {
-      "id": "ms-changelog:github code quality no longer adds copilot as a reviewer|2026-08-07-github-code-quality-no-longer-adds-copilot-as-a-reviewer",
-      "title": "GitHub Code Quality no longer adds Copilot as a reviewer",
-      "url": "https://github.blog/changelog/2026-08-07-github-code-quality-no-longer-adds-copilot-as-a-reviewer",
-      "summary": "Enabling GitHub Code Quality on a repository no longer creates a ruleset that automatically requests a code review from GitHub Copilot on your pull requests. In repositories that already have… The post GitHub Code Quality no longer adds Copilot as a reviewer appeared first on The GitHub Blog...",
-      "published": "2026-08-07T15:07:25.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "GitHub",
-      "score": 73,
-      "importance": "high",
-      "tags": [
-        "Copilot",
-        "AI",
-        "GitHub",
-        "Retirements",
-        "Security"
-      ],
-      "rank": 1
-    },
-    {
-      "id": "ms-changelog:github copilot weekly releases august 3|2026-08-07-github-copilot-weekly-releases-august-3",
-      "title": "GitHub Copilot weekly releases — August 3",
-      "url": "https://github.blog/changelog/2026-08-07-github-copilot-weekly-releases-august-3",
-      "summary": "This week’s updates across GitHub Copilot in the desktop app, CLI, and VS Code help you resume and organize work, review changes, and ask questions without losing context. GitHub Copilot… The post GitHub Copilot weekly releases — August 3 appeared first on The GitHub Blog...",
-      "published": "2026-08-07T23:16:02.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "GitHub",
-      "score": 71,
-      "importance": "high",
-      "tags": [
-        "Copilot",
-        "AI",
-        "VS Code",
-        "API",
-        "GitHub"
-      ],
-      "rank": 2
-    },
-    {
-      "id": "ms-changelog:copilot code review effort levels are generally available|2026-08-07-copilot-code-review-effort-levels-are-generally-available",
-      "title": "Copilot code review effort levels are generally available",
-      "url": "https://github.blog/changelog/2026-08-07-copilot-code-review-effort-levels-are-generally-available",
-      "summary": "Lite and Balanced effort levels for GitHub Copilot code review are now generally available. They let you match the depth of a review to the complexity and risk of a… The post Copilot code review effort levels are generally available appeared first on The GitHub Blog...",
-      "published": "2026-08-07T20:49:26.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "GitHub",
-      "score": 71,
-      "importance": "high",
-      "tags": [
-        "Copilot",
-        "AI",
-        "GA",
-        "GitHub",
-        "Launched"
-      ],
-      "rank": 3
-    },
-    {
-      "id": "ms-changelog:github copilot in visual studio code july 2026 releases|2026-07-30-github-copilot-in-visual-studio-code-july-2026-releases",
-      "title": "GitHub Copilot in Visual Studio Code, July 2026 releases",
-      "url": "https://github.blog/changelog/2026-07-30-github-copilot-in-visual-studio-code-july-2026-releases",
-      "summary": "This changelog covers VS Code v1.127 through v1.131, shipped throughout July 2026. These releases improve how you work with agents, review changes, use chat, and navigate VS Code. They also… The post GitHub Copilot in Visual Studio Code, July 2026 releases appeared first on The GitHub Blog...",
-      "published": "2026-07-30T08:00:00.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "GitHub",
-      "score": 67,
-      "importance": "high",
-      "tags": [
-        "Copilot",
-        "Agents",
-        "AI",
-        "VS Code",
-        "GitHub"
-      ],
-      "rank": 4
-    },
-    {
-      "id": "ms-changelog:copilot code review agent skills and mcp now generally available|2026-07-29-copilot-code-review-agent-skills-and-mcp-now-generally-available",
-      "title": "Copilot code review: Agent skills and MCP now generally available",
-      "url": "https://github.blog/changelog/2026-07-29-copilot-code-review-agent-skills-and-mcp-now-generally-available",
-      "summary": "Copilot code review support for agent skills and MCP servers is now generally available for all Copilot Pro, Pro+, Business, and Enterprise users. Previously announced in public preview, these capabilities… The post Copilot code review: Agent skills and MCP now generally available appeared first on...",
-      "published": "2026-07-29T21:26:19.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "GitHub",
-      "score": 67,
-      "importance": "high",
-      "tags": [
-        "Copilot",
-        "Agents",
-        "AI",
-        "Preview",
-        "GA"
-      ],
-      "rank": 5
-    },
-    {
-      "id": "ms-changelog:default model enablement for copilot business and enterprise|2026-07-29-default-model-enablement-for-copilot-business-and-enterprise",
-      "title": "Default model enablement for Copilot Business and Enterprise",
-      "url": "https://github.blog/changelog/2026-07-29-default-model-enablement-for-copilot-business-and-enterprise",
-      "summary": "We’re introducing a global default enablement policy for generally available Copilot models on Copilot Business and Copilot Enterprise plans. Instead of requiring admins to manually turn on each new model… The post Default model enablement for Copilot Business and Enterprise appeared first on The...",
-      "published": "2026-07-29T14:01:07.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "GitHub",
-      "score": 67,
-      "importance": "high",
-      "tags": [
-        "Copilot",
-        "AI",
-        "GA",
-        "GitHub",
-        "Launched"
-      ],
-      "rank": 6
-    },
-    {
-      "id": "ms-changelog:copilot impact dashboard adds a return on investment section|2026-08-07-copilot-impact-dashboard-adds-a-return-on-investment-section",
-      "title": "Copilot impact dashboard adds a return on investment section",
-      "url": "https://github.blog/changelog/2026-08-07-copilot-impact-dashboard-adds-a-return-on-investment-section",
-      "summary": "The Copilot impact dashboard now includes a “Potential return on investment” section that connects what you spend on Copilot to the pull request output you get back. What’s new Two… The post Copilot impact dashboard adds a return on investment section appeared first on The GitHub Blog...",
-      "published": "2026-08-07T21:05:37.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "GitHub",
-      "score": 66,
-      "importance": "high",
-      "tags": [
-        "Copilot",
-        "AI",
-        "GitHub",
-        "Launched"
-      ],
-      "rank": 7
-    },
-    {
-      "id": "ms-changelog:copilot usage metrics api adds agent app activity|2026-08-07-copilot-usage-metrics-api-adds-agent-app-activity",
+      "id": "github-changelog:copilot usage metrics api adds agent app activity|2026-08-07-copilot-usage-metrics-api-adds-agent-app-activity",
       "title": "Copilot usage metrics API adds agent app activity",
       "url": "https://github.blog/changelog/2026-08-07-copilot-usage-metrics-api-adds-agent-app-activity",
-      "summary": "Since agent apps arrived on GitHub, teams have been able to run agents from partners like Claude and Codex directly in their GitHub workflows. The Copilot usage metrics API now… The post Copilot usage metrics API adds agent app activity appeared first on The GitHub Blog...",
+      "summary": "Since agent apps arrived on GitHub, teams have been able to run agents from partners like Claude and Codex directly in their GitHub workflows. The Copilot usage metrics API now… The post Copilot usage metrics API adds agent app activity appeared first on The GitHub Blog .",
       "published": "2026-08-07T18:20:47.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
+      "sourceId": "github-changelog",
+      "source": "GitHub Changelog",
       "org": "GitHub",
-      "score": 66,
-      "importance": "high",
+      "score": 60,
+      "importance": "medium",
       "tags": [
         "Copilot",
         "Agents",
@@ -534,347 +263,67 @@
         "Actions",
         "API"
       ],
-      "rank": 8
+      "rank": 1
     },
     {
-      "id": "ms-changelog:mcp allowlists in enterprise managed settings|2026-08-06-mcp-allowlists-in-enterprise-managed-settings",
+      "id": "github-changelog:mcp allowlists in enterprise managed settings|2026-08-06-mcp-allowlists-in-enterprise-managed-settings",
       "title": "MCP allowlists in enterprise managed settings",
       "url": "https://github.blog/changelog/2026-08-06-mcp-allowlists-in-enterprise-managed-settings",
-      "summary": "Enterprise owners can now centrally control which Model Context Protocol (MCP) servers GitHub Copilot clients are allowed to run by using the new allowedMcpServers and deniedMcpServers keys in enterprise managed… The post MCP allowlists in enterprise managed settings appeared first on The GitHub...",
+      "summary": "Enterprise owners can now centrally control which Model Context Protocol (MCP) servers GitHub Copilot clients are allowed to run by using the new allowedMcpServers and deniedMcpServers keys in enterprise managed… The post MCP allowlists in enterprise managed settings appeared first on The GitHub Blog .",
       "published": "2026-08-07T00:11:19.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
+      "sourceId": "github-changelog",
+      "source": "GitHub Changelog",
       "org": "GitHub",
-      "score": 66,
-      "importance": "high",
-      "tags": [
-        "Copilot",
-        "Agents",
-        "AI",
-        "API",
-        "GitHub"
-      ],
-      "rank": 9
-    },
-    {
-      "id": "ms-changelog:kimi k3 is now available in github copilot|2026-08-06-kimi-k3-is-now-available-in-github-copilot",
-      "title": "Kimi K3 is now available in GitHub Copilot",
-      "url": "https://github.blog/changelog/2026-08-06-kimi-k3-is-now-available-in-github-copilot",
-      "summary": "Editor’s note (August 6, 2026): We have resumed rolling out Kimi K3 in GitHub Copilot. This model is billed at provider list pricing under usage-based billing. See GitHub Copilot’s pricing… The post Kimi K3 is now available in GitHub Copilot appeared first on The GitHub Blog...",
-      "published": "2026-08-06T17:27:25.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "GitHub",
-      "score": 66,
-      "importance": "high",
-      "tags": [
-        "Copilot",
-        "AI",
-        "GA",
-        "GitHub",
-        "Launched"
-      ],
-      "rank": 10
-    },
-    {
-      "id": "ms-changelog:upcoming august 2026 model deprecations in github copilot|2026-07-31-upcoming-august-2026-model-deprecations-in-github-copilot",
-      "title": "Upcoming August 2026 model deprecations in GitHub Copilot",
-      "url": "https://github.blog/changelog/2026-07-31-upcoming-august-2026-model-deprecations-in-github-copilot",
-      "summary": "We will deprecate the following models across all GitHub Copilot experiences (including Copilot Chat, inline edits, ask and agent modes, and code completions), on September 1st, 2026: Model Deprecation date… The post Upcoming August 2026 model deprecations in GitHub Copilot appeared first on The...",
-      "published": "2026-07-31T21:26:48.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "GitHub",
-      "score": 64,
-      "importance": "high",
-      "tags": [
-        "Copilot",
-        "Agents",
-        "AI",
-        "Deprecation",
-        "GitHub"
-      ],
-      "rank": 11
-    },
-    {
-      "id": "ms-changelog:gemini 2 5 pro and gemini 3 flash deprecated|2026-07-31-gemini-2-5-pro-and-gemini-3-flash-deprecated",
-      "title": "Gemini 2.5 Pro and Gemini 3 Flash deprecated",
-      "url": "https://github.blog/changelog/2026-07-31-gemini-2-5-pro-and-gemini-3-flash-deprecated",
-      "summary": "As of today, July 31, 2026, we have deprecated the following models across all GitHub Copilot experiences (including Copilot Chat, inline edits, ask and agent modes, and code completions). Model… The post Gemini 2.5 Pro and Gemini 3 Flash deprecated appeared first on The GitHub Blog...",
-      "published": "2026-07-31T20:04:01.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "GitHub",
-      "score": 64,
-      "importance": "high",
-      "tags": [
-        "Copilot",
-        "Agents",
-        "AI",
-        "Deprecation",
-        "GitHub"
-      ],
-      "rank": 12
-    },
-    {
-      "id": "ms-changelog:retiring the copilot billing preview app|2026-08-04-retiring-the-copilot-billing-preview-app",
-      "title": "Retiring the Copilot Billing Preview app",
-      "url": "https://github.blog/changelog/2026-08-04-retiring-the-copilot-billing-preview-app",
-      "summary": "We’ve retired the GitHub Copilot Billing Preview app, and it’s no longer available. You can review and manage your Copilot spend directly in your GitHub billing settings. The app helped… The post Retiring the Copilot Billing Preview app appeared first on The GitHub Blog...",
-      "published": "2026-08-04T19:09:32.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "GitHub",
-      "score": 62,
-      "importance": "high",
-      "tags": [
-        "Copilot",
-        "AI",
-        "Deprecation",
-        "GitHub",
-        "Retirements"
-      ],
-      "rank": 13
-    },
-    {
-      "id": "ms-changelog:enterprise teams model policy targeting in public preview|2026-07-31-enterprise-teams-model-policy-targeting-in-public-preview",
-      "title": "Enterprise teams model policy targeting in public preview",
-      "url": "https://github.blog/changelog/2026-07-31-enterprise-teams-model-policy-targeting-in-public-preview",
-      "summary": "You can now take advantage of user-based model policy targeting for GitHub Enterprise customers with Copilot Business or Copilot Enterprise licenses. This feature empowers AI administrators to set a baseline… The post Enterprise teams model policy targeting in public preview appeared first on The...",
-      "published": "2026-07-31T18:11:50.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "GitHub",
-      "score": 62,
-      "importance": "high",
-      "tags": [
-        "Copilot",
-        "AI",
-        "Preview",
-        "GitHub",
-        "Launched"
-      ],
-      "rank": 14
-    },
-    {
-      "id": "ms-changelog:grok 4 5 is now available in github copilot|2026-07-28-grok-4-5-is-now-available-in-github-copilot",
-      "title": "Grok 4.5 is now available in GitHub Copilot",
-      "url": "https://github.blog/changelog/2026-07-28-grok-4-5-is-now-available-in-github-copilot",
-      "summary": "Grok 4.5, xAI’s latest reasoning model, is now rolling out in GitHub Copilot. It is designed for fast, agentic coding and complex multi-step workflows, with a context window of up… The post Grok 4.5 is now available in GitHub Copilot appeared first on The GitHub Blog...",
-      "published": "2026-07-28T19:10:45.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "GitHub",
-      "score": 62,
-      "importance": "high",
-      "tags": [
-        "Copilot",
-        "Agents",
-        "AI",
-        "Actions",
-        "GA"
-      ],
-      "rank": 15
-    },
-    {
-      "id": "ms-changelog:customize the reasoning level for copilot cloud agent|2026-08-03-customize-the-reasoning-level-for-copilot-cloud-agent",
-      "title": "Customize the reasoning level for Copilot cloud agent",
-      "url": "https://github.blog/changelog/2026-08-03-customize-the-reasoning-level-for-copilot-cloud-agent",
-      "summary": "When you delegate a task to GitHub Copilot cloud agent, you can now set the reasoning level for models that support it. This allows you to control how much the… The post Customize the reasoning level for Copilot cloud agent appeared first on The GitHub Blog...",
-      "published": "2026-08-03T23:27:35.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "GitHub",
-      "score": 61,
-      "importance": "medium",
-      "tags": [
-        "Copilot",
-        "Agents",
-        "AI",
-        "GitHub",
-        "Launched"
-      ],
-      "rank": 16
-    },
-    {
-      "id": "ms-changelog:trigger copilot automations with comments|2026-08-03-trigger-copilot-automations-with-comments",
-      "title": "Trigger Copilot automations with comments",
-      "url": "https://github.blog/changelog/2026-08-03-trigger-copilot-automations-with-comments",
-      "summary": "You can now create Copilot cloud agent automations that run when an issue comment or pull request comment is created. Common use cases include: Generate documentation: Comment on a pull… The post Trigger Copilot automations with comments appeared first on The GitHub Blog...",
-      "published": "2026-08-03T19:14:58.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "GitHub",
-      "score": 61,
-      "importance": "medium",
-      "tags": [
-        "Copilot",
-        "Agents",
-        "AI",
-        "GitHub",
-        "Launched"
-      ],
-      "rank": 17
-    },
-    {
-      "id": "ms-changelog:github copilot in visual studio july update|2026-07-30-github-copilot-in-visual-studio-july-update",
-      "title": "GitHub Copilot in Visual Studio — July update",
-      "url": "https://github.blog/changelog/2026-07-30-github-copilot-in-visual-studio-july-update",
-      "summary": "July 2026 brought a new agent based on the Copilot SDK, built-in expertise from the .NET and Azure teams, and more ways to tailor GitHub Copilot to how you and… The post GitHub Copilot in Visual Studio — July update appeared first on The GitHub Blog...",
-      "published": "2026-07-30T15:01:48.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "GitHub",
-      "score": 57,
-      "importance": "medium",
-      "tags": [
-        "Copilot",
-        "Agents",
-        "AI",
-        "Azure",
-        ".NET"
-      ],
-      "rank": 18
-    },
-    {
-      "id": "ms-changelog:limit remote control to managed devices|2026-07-30-limit-remote-control-to-managed-devices",
-      "title": "Limit remote control to managed devices",
-      "url": "https://github.blog/changelog/2026-07-30-limit-remote-control-to-managed-devices",
-      "summary": "Enterprises and organizations can now restrict which devices are eligible to host remotely controlled Copilot sessions, giving administrators fine-grained control over where remote control access is permitted. The new remoteControl… The post Limit remote control to managed devices appeared first on...",
-      "published": "2026-07-30T14:54:47.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "GitHub",
-      "score": 57,
-      "importance": "medium",
-      "tags": [
-        "Copilot",
-        "AI",
-        "API",
-        "GitHub",
-        "Launched"
-      ],
-      "rank": 19
-    },
-    {
-      "id": "ms-changelog:github copilot app usage metrics now expand across report rollups|2026-07-28-github-copilot-app-usage-metrics-now-expand-across-report-rollups",
-      "title": "GitHub Copilot app usage metrics now expand across report rollups",
-      "url": "https://github.blog/changelog/2026-07-28-github-copilot-app-usage-metrics-now-expand-across-report-rollups",
-      "summary": "Copilot app usage is now reported across much more of the Copilot usage metrics API. Individual Copilot app activity is now attributed to users in the enterprise-user and organization-user reports.… The post GitHub Copilot app usage metrics now expand across report rollups appeared first on The...",
-      "published": "2026-07-28T23:35:01.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "GitHub",
-      "score": 57,
-      "importance": "medium",
-      "tags": [
-        "Copilot",
-        "AI",
-        "API",
-        "GitHub",
-        "Launched"
-      ],
-      "rank": 20
-    },
-    {
-      "id": "ms-changelog:visual studio july update meet the new agent powered by the github copilot sdk|visual-studio-july-update-meet-the-new-agent-powered-by-copilot-sdk",
-      "title": "Visual Studio July Update — Meet the New Agent, Powered by the GitHub Copilot SDK",
-      "url": "https://devblogs.microsoft.com/visualstudio/visual-studio-july-update-meet-the-new-agent-powered-by-copilot-sdk/",
-      "summary": "There's a new Agent (Preview) in Copilot Chat, built on the same GitHub Copilot SDK that powers the GitHub Copilot CLI, that gets more done with less back-and-forth. The post Visual Studio July Update — Meet the New Agent, Powered by the GitHub Copilot SDK appeared first on Visual Studio Blog...",
-      "published": "2026-07-28T16:00:14.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "Microsoft",
-      "score": 57,
+      "score": 60,
       "importance": "medium",
       "tags": [
         "Copilot",
         "Agents",
         "AI",
         "API",
-        "AI + Machine Learning"
+        "Release"
       ],
-      "rank": 21
+      "rank": 2
     },
     {
-      "id": "ms-changelog:github copilot for jetbrains adds improved opentelemetry configuration and model management|2026-07-27-github-copilot-for-jetbrains-adds-improvved-",
-      "title": "GitHub Copilot for JetBrains adds improved OpenTelemetry configuration and model management",
-      "url": "https://github.blog/changelog/2026-07-27-github-copilot-for-jetbrains-adds-improvved-opentelemetry-configuration-and-model-management",
-      "summary": "This update brings more control and clarity to your GitHub Copilot for JetBrains workflows. You can now connect MCP servers and custom agents in Claude agent flows, tune telemetry and… The post GitHub Copilot for JetBrains adds improved OpenTelemetry configuration and model management appeared...",
-      "published": "2026-07-28T01:23:10.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
+      "id": "github-changelog:github code quality no longer adds copilot as a reviewer|2026-08-07-github-code-quality-no-longer-adds-copilot-as-a-reviewer",
+      "title": "GitHub Code Quality no longer adds Copilot as a reviewer",
+      "url": "https://github.blog/changelog/2026-08-07-github-code-quality-no-longer-adds-copilot-as-a-reviewer",
+      "summary": "Enabling GitHub Code Quality on a repository no longer creates a ruleset that automatically requests a code review from GitHub Copilot on your pull requests. In repositories that already have… The post GitHub Code Quality no longer adds Copilot as a reviewer appeared first on The GitHub Blog .",
+      "published": "2026-08-07T15:07:25.000Z",
+      "sourceId": "github-changelog",
+      "source": "GitHub Changelog",
       "org": "GitHub",
-      "score": 57,
-      "importance": "medium",
-      "tags": [
-        "Copilot",
-        "Agents",
-        "AI",
-        "Actions",
-        "GitHub"
-      ],
-      "rank": 22
-    },
-    {
-      "id": "ms-changelog:manage github copilot app access with a dedicated policy|2026-07-27-manage-github-copilot-app-access-with-a-dedicated-policy",
-      "title": "Manage GitHub Copilot app access with a dedicated policy",
-      "url": "https://github.blog/changelog/2026-07-27-manage-github-copilot-app-access-with-a-dedicated-policy",
-      "summary": "The GitHub Copilot app now has its own policy, so you can control who has access to it at the enterprise and organization levels. Until now, access to the Copilot… The post Manage GitHub Copilot app access with a dedicated policy appeared first on The GitHub Blog...",
-      "published": "2026-07-27T20:43:37.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "GitHub",
-      "score": 57,
+      "score": 58,
       "importance": "medium",
       "tags": [
         "Copilot",
         "AI",
-        "GitHub",
-        "Launched",
-        "Developer Tools"
+        "Retired",
+        "application security",
+        "copilot"
       ],
-      "rank": 23
+      "rank": 3
     },
     {
-      "id": "ms-changelog:enterprise managed settings in the github copilot app and copilot cloud agent|2026-07-27-enterprise-managed-settings-now-apply-to-the-github-copilo",
-      "title": "Enterprise managed settings in the GitHub Copilot app and Copilot cloud agent",
-      "url": "https://github.blog/changelog/2026-07-27-enterprise-managed-settings-now-apply-to-the-github-copilot-app",
-      "summary": "You can now govern the GitHub Copilot app and Copilot cloud agent with enterprise managed settings, the same centrally managed policies you use to control Copilot across your enterprise. With… The post Enterprise managed settings in the GitHub Copilot app and Copilot cloud agent appeared first on...",
-      "published": "2026-07-27T17:00:35.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
+      "id": "github-changelog:copilot code review effort levels are generally available|2026-08-07-copilot-code-review-effort-levels-are-generally-available",
+      "title": "Copilot code review effort levels are generally available",
+      "url": "https://github.blog/changelog/2026-08-07-copilot-code-review-effort-levels-are-generally-available",
+      "summary": "Lite and Balanced effort levels for GitHub Copilot code review are now generally available. They let you match the depth of a review to the complexity and risk of a… The post Copilot code review effort levels are generally available appeared first on The GitHub Blog .",
+      "published": "2026-08-07T20:49:26.000Z",
+      "sourceId": "github-changelog",
+      "source": "GitHub Changelog",
       "org": "GitHub",
-      "score": 57,
-      "importance": "medium",
-      "tags": [
-        "Copilot",
-        "Agents",
-        "AI",
-        "GitHub",
-        "Launched"
-      ],
-      "rank": 24
-    },
-    {
-      "id": "ms-changelog:launched generally available unity ai gateway on azure databricks|updates",
-      "title": "[Launched] Generally Available: Unity AI Gateway on Azure Databricks",
-      "url": "https://azure.microsoft.com/updates?id=568910",
-      "summary": "Unity AI Gateway is now generally available on Azure Databricks. Unity AI Gateway provides centralized governance for AI models, agents, tools, and MCP services, helping organizations monitor usage, manage costs, apply guardrails, and enforce access contr...",
-      "published": "2026-08-05T22:32:45.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "Microsoft",
       "score": 56,
       "importance": "medium",
       "tags": [
-        "Agents",
+        "Copilot",
         "AI",
-        "Azure",
         "GA",
-        "Launched"
+        "Release",
+        "copilot"
       ],
-      "rank": 25
+      "rank": 4
     },
     {
       "id": "github-changelog:secret scanning coverage updates|2026-08-07-secret-scanning-coverage-updates",
@@ -893,67 +342,27 @@
         "Improvement",
         "application security"
       ],
-      "rank": 26
+      "rank": 5
     },
     {
-      "id": "ms-changelog:launched generally available claude opus 5 on azure databricks|updates",
-      "title": "[Launched] Generally Available: Claude Opus 5 on Azure Databricks",
-      "url": "https://azure.microsoft.com/updates?id=568316",
-      "summary": "Azure Databricks now supports Anthropic Claude Opus 5 through AI Model Serving. Claude Opus 5 is Anthropic's latest model for advanced reasoning, coding, agentic workflows, and professional knowledge work. Claude Opus 5 is designed for complex tasks requi...",
-      "published": "2026-07-27T19:41:46.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "Microsoft",
-      "score": 52,
-      "importance": "medium",
-      "tags": [
-        "Agents",
-        "AI",
-        "Actions",
-        "Azure",
-        "GA"
-      ],
-      "rank": 27
-    },
-    {
-      "id": "github-blog:github copilot app for beginners getting started|github-copilot-app-for-beginners-getting-started",
-      "title": "GitHub Copilot app for Beginners: Getting started",
-      "url": "https://github.blog/ai-and-ml/github-copilot/github-copilot-app-for-beginners-getting-started/",
-      "summary": "New to the GitHub Copilot app? Learn how to start projects, work with AI agents, explore canvases, and streamline your development workflow. The post GitHub Copilot app for Beginners: Getting started appeared first on The GitHub Blog .",
-      "published": "2026-07-27T16:00:00.000Z",
-      "sourceId": "github-blog",
-      "source": "GitHub Blog",
+      "id": "github-changelog:github copilot weekly releases august 3|2026-08-07-github-copilot-weekly-releases-august-3",
+      "title": "GitHub Copilot weekly releases — August 3",
+      "url": "https://github.blog/changelog/2026-08-07-github-copilot-weekly-releases-august-3",
+      "summary": "This week’s updates across GitHub Copilot in the desktop app, CLI, and VS Code help you resume and organize work, review changes, and ask questions without losing context. GitHub Copilot… The post GitHub Copilot weekly releases — August 3 appeared first on The GitHub Blog .",
+      "published": "2026-08-07T23:16:02.000Z",
+      "sourceId": "github-changelog",
+      "source": "GitHub Changelog",
       "org": "GitHub",
-      "score": 52,
-      "importance": "medium",
-      "tags": [
-        "Copilot",
-        "Agents",
-        "AI",
-        "Actions",
-        "AI & ML"
-      ],
-      "rank": 28
-    },
-    {
-      "id": "ms-changelog:announcing azure databricks genie one and genie agents free usage extended through january 31 2027|updates",
-      "title": "Announcing: Azure Databricks Genie One and Genie Agents Free Usage extended through January 31, 2027",
-      "url": "https://azure.microsoft.com/updates?id=568964",
-      "summary": "Free usage of Genie One and Genie Agents in Azure Databricks is now extended through January 31, 2027, from the previous end date of July 31, 2026. Budget controls do not apply to these products during the promotional period. The promotion covers usage by...",
-      "published": "2026-08-06T19:41:52.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "Microsoft",
       "score": 51,
       "importance": "medium",
       "tags": [
-        "Agents",
+        "Copilot",
         "AI",
-        "Azure",
-        "AI + Machine Learning",
-        "Analytics"
+        "VS Code",
+        "API",
+        "Release"
       ],
-      "rank": 29
+      "rank": 6
     },
     {
       "id": "azure-blog:microsoft named a leader in the 2026 gartner magic quadrant for ai augmented code modernization tools|microsoft-named-a-leader-in-the-2026-gartner-ma",
@@ -973,166 +382,27 @@
         "Compute",
         "Containers"
       ],
-      "rank": 30
+      "rank": 7
     },
     {
-      "id": "github-blog:a guide to slash commands in the github copilot app|a-guide-to-slash-commands-in-the-github-copilot-app",
-      "title": "A guide to slash commands in the GitHub Copilot app",
-      "url": "https://github.blog/ai-and-ml/github-copilot/a-guide-to-slash-commands-in-the-github-copilot-app/",
-      "summary": "Go beyond chat in the GitHub Copilot app with these slash commands. They'll help you plan, collaborate, automate, and customize your dev workflow. The post A guide to slash commands in the GitHub Copilot app appeared first on The GitHub Blog .",
-      "published": "2026-08-06T19:49:34.000Z",
-      "sourceId": "github-blog",
-      "source": "GitHub Blog",
+      "id": "github-changelog:copilot impact dashboard adds a return on investment section|2026-08-07-copilot-impact-dashboard-adds-a-return-on-investment-section",
+      "title": "Copilot impact dashboard adds a return on investment section",
+      "url": "https://github.blog/changelog/2026-08-07-copilot-impact-dashboard-adds-a-return-on-investment-section",
+      "summary": "The Copilot impact dashboard now includes a “Potential return on investment” section that connects what you spend on Copilot to the pull request output you get back. What’s new Two… The post Copilot impact dashboard adds a return on investment section appeared first on The GitHub Blog .",
+      "published": "2026-08-07T21:05:37.000Z",
+      "sourceId": "github-changelog",
+      "source": "GitHub Changelog",
       "org": "GitHub",
-      "score": 49,
-      "importance": "medium",
-      "tags": [
-        "Copilot",
-        "AI",
-        "Actions",
-        "AI & ML",
-        "GitHub Copilot"
-      ],
-      "rank": 31
-    },
-    {
-      "id": "github-blog:how the github legal team used copilot cli to streamline their workflows|how-the-github-legal-team-used-copilot-cli-to-streamline-their-workflows",
-      "title": "How the GitHub legal team used Copilot CLI to streamline their workflows",
-      "url": "https://github.blog/ai-and-ml/github-copilot/how-the-github-legal-team-used-copilot-cli-to-streamline-their-workflows/",
-      "summary": "Learn how to build tools to simplify how you work—without writing a single line of code. The post How the GitHub legal team used Copilot CLI to streamline their workflows appeared first on The GitHub Blog .",
-      "published": "2026-08-04T19:02:34.000Z",
-      "sourceId": "github-blog",
-      "source": "GitHub Blog",
-      "org": "GitHub",
-      "score": 49,
-      "importance": "medium",
-      "tags": [
-        "Copilot",
-        "AI",
-        "Actions",
-        "API",
-        "AI & ML"
-      ],
-      "rank": 32
-    },
-    {
-      "id": "ms-devops:azure devops remote mcp server is generally available|azure-devops-remote-mcp-server-ga",
-      "title": "Azure DevOps Remote MCP Server is generally available",
-      "url": "https://devblogs.microsoft.com/devops/azure-devops-remote-mcp-server-ga/",
-      "summary": "Today, we’re excited to announce the general availability of the Azure DevOps MCP Server 🎉 The Azure DevOps MCP Server gives AI assistants secure, contextual access to your Azure DevOps projects so they can help you plan, build, and ship software more effectively. With the Azure DevOps remote MCP Server, you can get s",
-      "published": "2026-08-05T12:58:52.000Z",
-      "sourceId": "ms-devops",
-      "source": "Azure DevOps Blog",
-      "org": "Microsoft",
-      "score": 48,
-      "importance": "medium",
-      "tags": [
-        "Agents",
-        "AI",
-        "Azure",
-        "GA",
-        "Azure & Cloud"
-      ],
-      "rank": 33
-    },
-    {
-      "id": "ms-dotnet:from generated code to trusted code with a unit test agent|polyglot-unit-testing-agent",
-      "title": "From generated code to trusted code with a unit-test agent",
-      "url": "https://devblogs.microsoft.com/dotnet/polyglot-unit-testing-agent/",
-      "summary": "Meet the open-source polyglot testing agent that learns from a repository, writes unit tests, and checks that they build and pass. The post From generated code to trusted code with a unit-test agent appeared first on .NET Blog .",
-      "published": "2026-07-31T15:00:15.000Z",
-      "sourceId": "ms-dotnet",
-      "source": ".NET Blog",
-      "org": "Microsoft",
-      "score": 46,
-      "importance": "medium",
-      "tags": [
-        "Agents",
-        "AI",
-        ".NET",
-        "C#"
-      ],
-      "rank": 34
-    },
-    {
-      "id": "ms-semantic-kernel:building agent teams with agent framework github copilot cli and squad|building-agent-teams-with-agent-framework-github-copilot-cli-and-squad",
-      "title": "Building agent teams with Agent Framework, GitHub Copilot CLI and Squad",
-      "url": "https://devblogs.microsoft.com/agent-framework/building-agent-teams-with-agent-framework-github-copilot-cli-and-squad/",
-      "summary": "Microsoft Agent Framework supports creating agents that use the GitHub Copilot SDK as their backend. GitHub Copilot agents provide access to powerful coding-oriented AI capabilities, including shell command execution, file operations, URL fetching, Model Context Protocol (MCP) server integration, and can be integrated ",
-      "published": "2026-07-30T17:18:53.000Z",
-      "sourceId": "ms-semantic-kernel",
-      "source": "Semantic Kernel Blog",
-      "org": "Microsoft",
       "score": 46,
       "importance": "medium",
       "tags": [
         "Copilot",
-        "Agents",
         "AI",
-        "API",
-        "Agent Framework"
+        "Improvement",
+        "account management",
+        "copilot"
       ],
-      "rank": 35
-    },
-    {
-      "id": "ms-dotnet:analyze msbuild binary logs with copilot in vs code|msbuild-binlog-analyzer-vscode",
-      "title": "Analyze MSBuild Binary Logs with Copilot in VS Code",
-      "url": "https://devblogs.microsoft.com/dotnet/msbuild-binlog-analyzer-vscode/",
-      "summary": "Meet the MSBuild Binlog Analyzer for VS Code - a Copilot-powered way to read MSBuild binary logs, explain and fix build failures with one click, compare builds, and catch regressions, backed by the Microsoft.AITools.BinlogMcp MCP server. The post Analyze MSBuild Binary Logs with Copilot in VS Code appeared first on .NE",
-      "published": "2026-07-27T17:00:00.000Z",
-      "sourceId": "ms-dotnet",
-      "source": ".NET Blog",
-      "org": "Microsoft",
-      "score": 46,
-      "importance": "medium",
-      "tags": [
-        "Copilot",
-        "Agents",
-        "AI",
-        ".NET",
-        "VS Code"
-      ],
-      "rank": 36
-    },
-    {
-      "id": "github-blog:stacked sessions and pull requests in the github copilot app|stacked-sessions-and-pull-requests-in-the-github-copilot-app",
-      "title": "Stacked sessions and pull requests in the GitHub Copilot app",
-      "url": "https://github.blog/ai-and-ml/github-copilot/stacked-sessions-and-pull-requests-in-the-github-copilot-app/",
-      "summary": "Learn how I modernized an old codebase of mine using stacked sessions and pull requests in the GitHub Copilot app. The post Stacked sessions and pull requests in the GitHub Copilot app appeared first on The GitHub Blog .",
-      "published": "2026-07-30T17:30:24.000Z",
-      "sourceId": "github-blog",
-      "source": "GitHub Blog",
-      "org": "GitHub",
-      "score": 45,
-      "importance": "medium",
-      "tags": [
-        "Copilot",
-        "AI",
-        "AI & ML",
-        "Collaboration",
-        "Developer skills"
-      ],
-      "rank": 37
-    },
-    {
-      "id": "github-blog:the harness is all you need mostly|the-harness-is-all-you-need-mostly",
-      "title": "The harness is all you need (mostly)",
-      "url": "https://github.blog/ai-and-ml/github-copilot/the-harness-is-all-you-need-mostly/",
-      "summary": "A practical GitHub Copilot workflow for prototyping, planning, implementing, and reviewing software without chasing every new AI tool. The post The harness is all you need (mostly) appeared first on The GitHub Blog .",
-      "published": "2026-07-27T18:00:00.000Z",
-      "sourceId": "github-blog",
-      "source": "GitHub Blog",
-      "org": "GitHub",
-      "score": 45,
-      "importance": "medium",
-      "tags": [
-        "Copilot",
-        "AI",
-        "Actions",
-        "AI & ML",
-        "GitHub Copilot"
-      ],
-      "rank": 38
+      "rank": 8
     },
     {
       "id": "github-changelog:relates to issue relationship in public preview and multi select fields is generally available|2026-08-07-connecting-issues-and-multi-select-fi",
@@ -1151,104 +421,7 @@
         "Release",
         "projects & issues"
       ],
-      "rank": 39
-    },
-    {
-      "id": "ms-dotnet:beyond chat live speech to text with foundry local and c|foundry-local-live-speech-to-text-csharp",
-      "title": "Beyond Chat: live Speech-to-Text with Foundry Local and C#",
-      "url": "https://devblogs.microsoft.com/dotnet/foundry-local-live-speech-to-text-csharp/",
-      "summary": "Build a live speech-to-text app in C# with Foundry Local, a compact Nemotron model, and local model lifecycle management. The post Beyond Chat: live Speech-to-Text with Foundry Local and C# appeared first on .NET Blog .",
-      "published": "2026-08-04T21:00:00.000Z",
-      "sourceId": "ms-dotnet",
-      "source": ".NET Blog",
-      "org": "Microsoft",
-      "score": 40,
-      "importance": "low",
-      "tags": [
-        "AI",
-        ".NET",
-        "Foundry Local"
-      ],
-      "rank": 40
-    },
-    {
-      "id": "ms-semantic-kernel:build production ready agents with the github copilot harness and agent framework|build-production-ready-agents-with-the-github-copilot-harne",
-      "title": "Build Production-Ready Agents with the GitHub Copilot Harness and Agent Framework",
-      "url": "https://devblogs.microsoft.com/agent-framework/build-production-ready-agents-with-the-github-copilot-harness-and-agent-framework/",
-      "summary": "Developers increasingly want to build agents that can reason about code, modify files, execute commands, interact with developer tools, and work across entire repositories. While GitHub Copilot already provides a powerful coding harness for these scenarios, developers often need additional capabilities such as observab",
-      "published": "2026-08-04T18:25:35.000Z",
-      "sourceId": "ms-semantic-kernel",
-      "source": "Semantic Kernel Blog",
-      "org": "Microsoft",
-      "score": 36,
-      "importance": "low",
-      "tags": [
-        "Copilot",
-        "Agents",
-        "AI",
-        "Actions",
-        ".NET"
-      ],
-      "rank": 41
-    },
-    {
-      "id": "ms-dotnet:announcing v2 0 of the official mcp c sdk|announcing-v20-of-the-official-mcp-csharp-sdk",
-      "title": "Announcing v2.0 of the official MCP C# SDK",
-      "url": "https://devblogs.microsoft.com/dotnet/announcing-v20-of-the-official-mcp-csharp-sdk/",
-      "summary": "MCP C# SDK v2.0 implements the 2026-07-28 specification with a stateless-first protocol, standardized HTTP headers, and Multi Round-Trip Requests for interactive tools, all while staying backward compatible. The post Announcing v2.0 of the official MCP C# SDK appeared first on .NET Blog .",
-      "published": "2026-07-28T22:00:00.000Z",
-      "sourceId": "ms-dotnet",
-      "source": ".NET Blog",
-      "org": "Microsoft",
-      "score": 34,
-      "importance": "low",
-      "tags": [
-        "Agents",
-        "AI",
-        ".NET",
-        "API",
-        "ASP.NET Core"
-      ],
-      "rank": 42
-    },
-    {
-      "id": "ms-semantic-kernel:discover agent skills from mcp servers in net|discover-agent-skills-from-mcp-servers-in-net",
-      "title": "Discover Agent Skills from MCP servers in .NET",
-      "url": "https://devblogs.microsoft.com/agent-framework/discover-agent-skills-from-mcp-servers-in-net/",
-      "summary": "Your agents can now discover and load Agent Skills directly from a Model Context Protocol (MCP) server. Instead of shipping every skill inside your application or copying skill folders into each deployment, you point an agent at an MCP server and it pulls the skills it needs on demand. A central team can publish skills",
-      "published": "2026-07-28T09:01:13.000Z",
-      "sourceId": "ms-semantic-kernel",
-      "source": "Semantic Kernel Blog",
-      "org": "Microsoft",
-      "score": 34,
-      "importance": "low",
-      "tags": [
-        "Agents",
-        "AI",
-        ".NET",
-        "Agent Framework",
-        "Agent Skills"
-      ],
-      "rank": 43
-    },
-    {
-      "id": "github-blog:turn one giant ai generated pull request to a reviewable stack|turn-one-giant-ai-generated-pull-request-to-a-reviewable-stack",
-      "title": "Turn one giant AI-generated pull request to a reviewable stack",
-      "url": "https://github.blog/engineering/turn-one-giant-ai-generated-pull-request-to-a-reviewable-stack/",
-      "summary": "Instead of one huge, un-reviewable pull request, teach coding agents to decompose work into a clean, ordered stack with GitHub stacked pull requests. The post Turn one giant AI-generated pull request to a reviewable stack appeared first on The GitHub Blog .",
-      "published": "2026-08-04T16:47:18.000Z",
-      "sourceId": "github-blog",
-      "source": "GitHub Blog",
-      "org": "GitHub",
-      "score": 32,
-      "importance": "low",
-      "tags": [
-        "Agents",
-        "AI",
-        "Engineering",
-        "stacked pull requests"
-      ],
-      "rank": 44
+      "rank": 9
     },
     {
       "id": "github-changelog:enterprises can now install third party github apps|2026-08-07-enterprises-can-now-install-third-party-github-apps",
@@ -1264,7 +437,7 @@
       "tags": [
         "Improvement"
       ],
-      "rank": 45
+      "rank": 10
     },
     {
       "id": "github-changelog:set pull request limits at the organization level|2026-08-06-set-pull-request-limits-at-the-organization-level",
@@ -1275,49 +448,13 @@
       "sourceId": "github-changelog",
       "source": "GitHub Changelog",
       "org": "GitHub",
-      "score": 29,
+      "score": 24,
       "importance": "low",
       "tags": [
         "Improvement",
         "collaboration tools"
       ],
-      "rank": 46
-    },
-    {
-      "id": "github-blog:disrupting supply chain attacks on npm and github actions|disrupting-supply-chain-attacks-on-npm-and-github-actions",
-      "title": "Disrupting supply chain attacks on npm and GitHub Actions",
-      "url": "https://github.blog/security/supply-chain-security/disrupting-supply-chain-attacks-on-npm-and-github-actions/",
-      "summary": "Explore the changes we've shipped across npm and GitHub Actions over the past few months to disrupt supply chain attack techniques and limit their impact. The post Disrupting supply chain attacks on npm and GitHub Actions appeared first on The GitHub Blog .",
-      "published": "2026-07-28T16:00:00.000Z",
-      "sourceId": "github-blog",
-      "source": "GitHub Blog",
-      "org": "GitHub",
-      "score": 25,
-      "importance": "low",
-      "tags": [
-        "Actions",
-        "Security",
-        "Supply chain security",
-        "GitHub Actions"
-      ],
-      "rank": 47
-    },
-    {
-      "id": "github-blog:how we took malware advisories beyond npm|how-we-took-malware-advisories-beyond-npm",
-      "title": "How we took malware advisories beyond npm",
-      "url": "https://github.blog/security/supply-chain-security/how-we-took-malware-advisories-beyond-npm/",
-      "summary": "GitHub malware advisories no longer stop at npm. Here's how we wired OpenSSF's malicious-packages data into the Advisory Database, and why we built the pipeline paranoid. The post How we took malware advisories beyond npm appeared first on The GitHub Blog .",
-      "published": "2026-08-06T16:51:12.000Z",
-      "sourceId": "github-blog",
-      "source": "GitHub Blog",
-      "org": "GitHub",
-      "score": 24,
-      "importance": "low",
-      "tags": [
-        "Security",
-        "Supply chain security"
-      ],
-      "rank": 48
+      "rank": 11
     },
     {
       "id": "azure-blog:what customers value most in microsoft databases from reliability to ai readiness|what-customers-value-most-in-microsoft-databases-from-reliability-t",
@@ -1337,210 +474,7 @@
         "Hybrid + multicloud",
         "Internet of things"
       ],
-      "rank": 49
-    },
-    {
-      "id": "ms-visualstudio:tell your model when to think harder|tell-your-model-when-to-think-harder",
-      "title": "Tell your model when to think harder",
-      "url": "https://devblogs.microsoft.com/visualstudio/tell-your-model-when-to-think-harder/",
-      "summary": "Not every question deserves the same amount of thought. Renaming a variable isn’t the same as debugging a memory leak, and they don’t need the same level of thinking. So why should your model treat them the same way every time? Starting in Visual Studio 18.9 Insiders 2, it doesn’t have to. Supported models now come wit",
-      "published": "2026-07-29T15:02:36.000Z",
-      "sourceId": "ms-visualstudio",
-      "source": "Visual Studio Blog",
-      "org": "Microsoft",
-      "score": 21,
-      "importance": "low",
-      "tags": [
-        "AI",
-        "Visual Studio"
-      ],
-      "rank": 50
-    },
-    {
-      "id": "github-blog:tame dependabot group your updates slow the cadence keep security fast|tame-dependabot-group-your-updates-slow-the-cadence-keep-security-fast",
-      "title": "Tame Dependabot: Group your updates, slow the cadence, keep security fast",
-      "url": "https://github.blog/security/supply-chain-security/tame-dependabot-group-your-updates-slow-the-cadence-keep-security-fast/",
-      "summary": "Dependabot keeps your dependencies current, but its defaults can flood your repository with pull requests. Here's how grouping updates, slowing the cadence, and keeping security fixes fast cut the noise on a Microsoft open source project. The post Tame Dependabot: Group your updates, slow the cadence, keep security fas",
-      "published": "2026-07-29T16:00:00.000Z",
-      "sourceId": "github-blog",
-      "source": "GitHub Blog",
-      "org": "GitHub",
-      "score": 20,
-      "importance": "low",
-      "tags": [
-        "Security",
-        "Engineering",
-        "Supply chain security"
-      ],
-      "rank": 51
-    },
-    {
-      "id": "ms-devops:you can now use the azure devops service connection instead of a pat or build session token|you-can-now-use-the-azure-devops-service-connection-instea",
-      "title": "You can now use the Azure DevOps Service Connection instead of a PAT or Build Session token",
-      "url": "https://devblogs.microsoft.com/devops/you-can-now-use-the-azure-devops-service-connection-instead-of-a-pat-or-build-session-token/",
-      "summary": "We’re excited to announce the Azure DevOps service connection, a new way to access Azure DevOps from your pipelines using a Microsoft Entra workload identity (a service principal or managed identity) instead of a Personal Access Token (PAT) or session token. This post walks through what it is, how to set it up, and the",
-      "published": "2026-08-06T08:57:40.000Z",
-      "sourceId": "ms-devops",
-      "source": "Azure DevOps Blog",
-      "org": "Microsoft",
-      "score": 18,
-      "importance": "low",
-      "tags": [
-        "Azure",
-        "CI/CD",
-        "Security"
-      ],
-      "rank": 52
-    },
-    {
-      "id": "ms-visualstudio:build azure skills faster with cloud academy a visual studio subscriber benefit|build-azure-skills-faster-with-cloud-academy-a-visual-studio-sub",
-      "title": "Build Azure Skills Faster with Cloud Academy, a Visual Studio Subscriber Benefit",
-      "url": "https://devblogs.microsoft.com/visualstudio/build-azure-skills-faster-with-cloud-academy-a-visual-studio-subscriber-benefit/",
-      "summary": "If you’ve been looking for a practical way to build Azure skills, Cloud Academy (a QA company) gives Visual Studio subscribers hands-on learning that fits into busy schedules. Whether you’re new to Azure, expanding your cloud expertise, working towards certifications or preparing for more advanced projects, this benefi",
-      "published": "2026-08-04T14:00:38.000Z",
-      "sourceId": "ms-visualstudio",
-      "source": "Visual Studio Blog",
-      "org": "Microsoft",
-      "score": 18,
-      "importance": "low",
-      "tags": [
-        "Azure"
-      ],
-      "rank": 53
-    },
-    {
-      "id": "ms-dotnet:strengthening nuget supply chain security reducing api key lifetime|strengthening-nuget-supply-chain-security-reducing-api-key-lifetime",
-      "title": "Strengthening NuGet Supply Chain Security: Reducing API Key Lifetime",
-      "url": "https://devblogs.microsoft.com/dotnet/strengthening-nuget-supply-chain-security-reducing-api-key-lifetime/",
-      "summary": "NuGet API key durations will be reduced to 30 days starting August 17th. This change will significantly strengthen the integrity of the NuGet supply chain. The post Strengthening NuGet Supply Chain Security: Reducing API Key Lifetime appeared first on .NET Blog .",
-      "published": "2026-08-03T18:10:00.000Z",
-      "sourceId": "ms-dotnet",
-      "source": ".NET Blog",
-      "org": "Microsoft",
-      "score": 18,
-      "importance": "low",
-      "tags": [
-        "Security",
-        ".NET",
-        "API",
-        "NuGet"
-      ],
-      "rank": 54
-    },
-    {
-      "id": "ms-azure-sdk:azure developer cli azd july 2026|azure-developer-cli-azd-july-2026",
-      "title": "Azure Developer CLI (azd) July 2026",
-      "url": "https://devblogs.microsoft.com/azure-sdk/azure-developer-cli-azd-july-2026/",
-      "summary": "This is the July round-up for the Azure Developer CLI (azd). Five releases shipped since the last post: 1.27.0, 1.27.1, 1.28.0, 1.28.1, and 1.29.0. Below is what’s new, what changed, and what we fixed, with links to the pull requests if you want to dig in. Have feedback or questions? Join the release discussion on […] ",
-      "published": "2026-07-30T20:20:10.000Z",
-      "sourceId": "ms-azure-sdk",
-      "source": "Azure SDK Blog",
-      "org": "Microsoft",
-      "score": 18,
-      "importance": "low",
-      "tags": [
-        "Azure",
-        "API",
-        "Azure SDK",
-        ".NET",
-        "azure-developer-cli"
-      ],
-      "rank": 55
-    },
-    {
-      "id": "github-blog:don t stop early case folding source code at memory speed|dont-stop-early-case-folding-source-code-at-memory-speed",
-      "title": "Don’t stop early: Case-folding source code at memory speed",
-      "url": "https://github.blog/engineering/architecture-optimization/dont-stop-early-case-folding-source-code-at-memory-speed/",
-      "summary": "How a branch-free loop and byte-space arithmetic let GitHub case-fold every byte of code search at >45 GiB/s on a single core. The post Don’t stop early: Case-folding source code at memory speed appeared first on The GitHub Blog .",
-      "published": "2026-07-31T16:00:00.000Z",
-      "sourceId": "github-blog",
-      "source": "GitHub Blog",
-      "org": "GitHub",
-      "score": 14,
-      "importance": "low",
-      "tags": [
-        "Engineering",
-        "Open Source"
-      ],
-      "rank": 56
-    },
-    {
-      "id": "ms-azure-sdk:azure sdk release july 2026|azure-sdk-release-july-2026",
-      "title": "Azure SDK Release (July 2026)",
-      "url": "https://devblogs.microsoft.com/azure-sdk/azure-sdk-release-july-2026/",
-      "summary": "Azure SDK releases every month. In this post, you'll find this month's highlights and release notes. The post Azure SDK Release (July 2026) appeared first on Azure SDK Blog .",
-      "published": "2026-07-29T17:18:25.000Z",
-      "sourceId": "ms-azure-sdk",
-      "source": "Azure SDK Blog",
-      "org": "Microsoft",
-      "score": 13,
-      "importance": "low",
-      "tags": [
-        "Azure",
-        "API",
-        "Azure SDK",
-        "release",
-        "sdk"
-      ],
-      "rank": 57
-    },
-    {
-      "id": "ms-devops:find any commit in seconds commit search comes to azure devops|find-any-commit-in-seconds-commit-search-comes-to-azure-devops",
-      "title": "Find any commit in seconds: Commit Search comes to Azure DevOps",
-      "url": "https://devblogs.microsoft.com/devops/find-any-commit-in-seconds-commit-search-comes-to-azure-devops/",
-      "summary": "Great code has a long memory. The fix you shipped last quarter, the refactor that touched a dozen files, the one-line change that explained why something works the way it does — it’s all there in your commit history. The hard part has always been finding it. Today, we’re excited to announce that Commit Search […] The p",
-      "published": "2026-07-28T15:24:55.000Z",
-      "sourceId": "ms-devops",
-      "source": "Azure DevOps Blog",
-      "org": "Microsoft",
-      "score": 13,
-      "importance": "low",
-      "tags": [
-        "Azure",
-        "Azure DevOps",
-        "DevOps",
-        "Git & Version Control"
-      ],
-      "rank": 58
-    },
-    {
-      "id": "ms-dotnet:test reporting in microsoft testing platform from red build to root cause|microsoft-testing-platform-reporting",
-      "title": "Test reporting in Microsoft.Testing.Platform: from red build to root cause",
-      "url": "https://devblogs.microsoft.com/dotnet/microsoft-testing-platform-reporting/",
-      "summary": "Microsoft.Testing.Platform brings failures into GitHub Actions and Azure DevOps, uses pipeline history to separate regressions from flakes, and preserves usable reports when a test host crashes. The post Test reporting in Microsoft.Testing.Platform: from red build to root cause appeared first on .NET Blog .",
-      "published": "2026-08-06T17:05:00.000Z",
-      "sourceId": "ms-dotnet",
-      "source": ".NET Blog",
-      "org": "Microsoft",
-      "score": 12,
-      "importance": "low",
-      "tags": [
-        "Actions",
-        "Azure",
-        ".NET",
-        "C#",
-        "ci"
-      ],
-      "rank": 59
-    },
-    {
-      "id": "ms-devops:pull request annotations on work item cards|pull-request-annotations-on-work-item-cards",
-      "title": "Pull request annotations on work item cards",
-      "url": "https://devblogs.microsoft.com/devops/pull-request-annotations-on-work-item-cards/",
-      "summary": "It’s now easier to track development progress without leaving your Kanban board. Azure Boards now displays pull request annotations directly on work item cards, making it easy to see at a glance when work is actively moving through code review. With pull request status visible directly on the board, your team can quick",
-      "published": "2026-08-06T14:00:21.000Z",
-      "sourceId": "ms-devops",
-      "source": "Azure DevOps Blog",
-      "org": "Microsoft",
-      "score": 12,
-      "importance": "low",
-      "tags": [
-        "Azure",
-        "Azure & Cloud",
-        "#DevOps",
-        "Azure Boards"
-      ],
-      "rank": 60
+      "rank": 12
     }
   ]
 }
