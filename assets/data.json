@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-10T23:58:59.666Z",
+  "generatedAt": "2026-08-11T02:05:37.810Z",
   "window": {
     "days": 14,
     "limit": 60
@@ -30,12 +30,12 @@
       "count": 19
     },
     {
-      "tag": "Azure",
+      "tag": "Launched",
       "count": 14
     },
     {
-      "tag": "Launched",
-      "count": 13
+      "tag": "Azure",
+      "count": 14
     },
     {
       "tag": "API",
@@ -47,7 +47,7 @@
     },
     {
       "tag": "Actions",
-      "count": 10
+      "count": 9
     },
     {
       "tag": ".NET",
@@ -284,7 +284,7 @@
       "label": "Microsoft Developer Changelog",
       "org": "Microsoft",
       "ok": true,
-      "count": 80,
+      "count": 79,
       "error": null
     },
     {
@@ -725,6 +725,26 @@
       "rank": 17
     },
     {
+      "id": "ms-changelog:customize the reasoning level for copilot cloud agent|2026-08-03-customize-the-reasoning-level-for-copilot-cloud-agent",
+      "title": "Customize the reasoning level for Copilot cloud agent",
+      "url": "https://github.blog/changelog/2026-08-03-customize-the-reasoning-level-for-copilot-cloud-agent",
+      "summary": "When you delegate a task to GitHub Copilot cloud agent, you can now set the reasoning level for models that support it. This allows you to control how much the… The post Customize the reasoning level for Copilot cloud agent appeared first on The GitHub Blog...",
+      "published": "2026-08-03T23:27:35.000Z",
+      "sourceId": "ms-changelog",
+      "source": "Microsoft Developer Changelog",
+      "org": "GitHub",
+      "score": 57,
+      "importance": "medium",
+      "tags": [
+        "Copilot",
+        "Agents",
+        "AI",
+        "GitHub",
+        "Launched"
+      ],
+      "rank": 18
+    },
+    {
       "id": "ms-changelog:trigger copilot automations with comments|2026-08-03-trigger-copilot-automations-with-comments",
       "title": "Trigger Copilot automations with comments",
       "url": "https://github.blog/changelog/2026-08-03-trigger-copilot-automations-with-comments",
@@ -742,7 +762,7 @@
         "GitHub",
         "Launched"
       ],
-      "rank": 18
+      "rank": 19
     },
     {
       "id": "ms-changelog:github copilot in visual studio july update|2026-07-30-github-copilot-in-visual-studio-july-update",
@@ -762,7 +782,7 @@
         "Azure",
         ".NET"
       ],
-      "rank": 19
+      "rank": 20
     },
     {
       "id": "ms-changelog:limit remote control to managed devices|2026-07-30-limit-remote-control-to-managed-devices",
@@ -782,7 +802,7 @@
         "GitHub",
         "Launched"
       ],
-      "rank": 20
+      "rank": 21
     },
     {
       "id": "ms-changelog:github copilot app usage metrics now expand across report rollups|2026-07-28-github-copilot-app-usage-metrics-now-expand-across-report-rollups",
@@ -802,7 +822,7 @@
         "GitHub",
         "Launched"
       ],
-      "rank": 21
+      "rank": 22
     },
     {
       "id": "ms-changelog:visual studio july update meet the new agent powered by the github copilot sdk|visual-studio-july-update-meet-the-new-agent-powered-by-copilot-sdk",
@@ -821,26 +841,6 @@
         "AI",
         "API",
         "AI + Machine Learning"
-      ],
-      "rank": 22
-    },
-    {
-      "id": "ms-changelog:github copilot for jetbrains adds improved opentelemetry configuration and model management|2026-07-27-github-copilot-for-jetbrains-adds-improvved-",
-      "title": "GitHub Copilot for JetBrains adds improved OpenTelemetry configuration and model management",
-      "url": "https://github.blog/changelog/2026-07-27-github-copilot-for-jetbrains-adds-improvved-opentelemetry-configuration-and-model-management",
-      "summary": "This update brings more control and clarity to your GitHub Copilot for JetBrains workflows. You can now connect MCP servers and custom agents in Claude agent flows, tune telemetry and… The post GitHub Copilot for JetBrains adds improved OpenTelemetry configuration and model management appeared...",
-      "published": "2026-07-28T01:23:10.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "GitHub",
-      "score": 57,
-      "importance": "medium",
-      "tags": [
-        "Copilot",
-        "Agents",
-        "AI",
-        "Actions",
-        "GitHub"
       ],
       "rank": 23
     },
