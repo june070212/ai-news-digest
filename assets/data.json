@@ -1,37 +1,37 @@
 {
-  "generatedAt": "2026-08-11T02:05:37.810Z",
+  "generatedAt": "2026-08-11T15:13:20.820Z",
   "window": {
     "days": 14,
     "limit": 60
   },
   "totals": {
     "stories": 60,
-    "github": 37,
-    "microsoft": 23,
-    "high": 13,
-    "medium": 23,
+    "github": 38,
+    "microsoft": 22,
+    "high": 14,
+    "medium": 22,
     "low": 24
   },
   "tags": [
     {
       "tag": "AI",
-      "count": 43
+      "count": 42
     },
     {
       "tag": "Copilot",
       "count": 29
     },
     {
-      "tag": "Agents",
-      "count": 21
+      "tag": "GitHub",
+      "count": 20
     },
     {
-      "tag": "GitHub",
-      "count": 19
+      "tag": "Agents",
+      "count": 20
     },
     {
       "tag": "Launched",
-      "count": 14
+      "count": 15
     },
     {
       "tag": "Azure",
@@ -47,15 +47,15 @@
     },
     {
       "tag": "Actions",
-      "count": 9
+      "count": 8
     },
     {
       "tag": ".NET",
-      "count": 9
+      "count": 8
     },
     {
       "tag": "Security",
-      "count": 8
+      "count": 7
     },
     {
       "tag": "Deprecation",
@@ -74,6 +74,10 @@
       "count": 4
     },
     {
+      "tag": "Improvement",
+      "count": 3
+    },
+    {
       "tag": "Retirements",
       "count": 3
     },
@@ -82,12 +86,12 @@
       "count": 3
     },
     {
-      "tag": "Improvement",
+      "tag": "Supply chain security",
       "count": 3
     },
     {
-      "tag": "Supply chain security",
-      "count": 3
+      "tag": "account management",
+      "count": 2
     },
     {
       "tag": "VS Code",
@@ -102,12 +106,12 @@
       "count": 2
     },
     {
-      "tag": "Agent Framework",
+      "tag": "Azure SDK",
       "count": 2
     },
     {
-      "tag": "Azure SDK",
-      "count": 2
+      "tag": "copilot",
+      "count": 1
     },
     {
       "tag": "Analytics",
@@ -126,19 +130,7 @@
       "count": 1
     },
     {
-      "tag": "application security",
-      "count": 1
-    },
-    {
-      "tag": "Retired",
-      "count": 1
-    },
-    {
-      "tag": "collaboration tools",
-      "count": 1
-    },
-    {
-      "tag": "community engagement",
+      "tag": "Agent Framework",
       "count": 1
     },
     {
@@ -162,7 +154,23 @@
       "count": 1
     },
     {
+      "tag": "Retired",
+      "count": 1
+    },
+    {
+      "tag": "collaboration tools",
+      "count": 1
+    },
+    {
+      "tag": "community engagement",
+      "count": 1
+    },
+    {
       "tag": "Foundry Local",
+      "count": 1
+    },
+    {
+      "tag": "Developer Tools",
       "count": 1
     },
     {
@@ -174,15 +182,7 @@
       "count": 1
     },
     {
-      "tag": "account management",
-      "count": 1
-    },
-    {
       "tag": "ASP.NET Core",
-      "count": 1
-    },
-    {
-      "tag": "Agent Skills",
       "count": 1
     },
     {
@@ -284,7 +284,7 @@
       "label": "Microsoft Developer Changelog",
       "org": "Microsoft",
       "ok": true,
-      "count": 79,
+      "count": 77,
       "error": null
     },
     {
@@ -324,7 +324,7 @@
       "label": "Semantic Kernel Blog",
       "org": "Microsoft",
       "ok": true,
-      "count": 3,
+      "count": 2,
       "error": null
     },
     {
@@ -386,22 +386,21 @@
   ],
   "stories": [
     {
-      "id": "ms-changelog:copilot on web expands conversation controls|2026-08-10-copilot-on-web-expands-conversation-controls",
-      "title": "Copilot on web expands conversation controls",
-      "url": "https://github.blog/changelog/2026-08-10-copilot-on-web-expands-conversation-controls",
-      "summary": "We’ve made improvements to Copilot Chat on github.com that make it easier to use. These include easier access to your recent conversations in chat, the ability to minimize the chat… The post Copilot on web expands conversation controls appeared first on The GitHub Blog...",
-      "published": "2026-08-10T14:27:04.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
+      "id": "github-changelog:per model token breakdown in the usage report|2026-08-11-per-model-token-breakdown-in-the-usage-report",
+      "title": "Per-model token breakdown in the usage report",
+      "url": "https://github.blog/changelog/2026-08-11-per-model-token-breakdown-in-the-usage-report",
+      "summary": "You can now see a per-model breakdown of the tokens behind your AI credits in the usage report. For each model, the AI usage report shows the input, output, cache… The post Per-model token breakdown in the usage report appeared first on The GitHub Blog .",
+      "published": "2026-08-11T14:41:52.000Z",
+      "sourceId": "github-changelog",
+      "source": "GitHub Changelog",
       "org": "GitHub",
-      "score": 71,
+      "score": 72,
       "importance": "high",
       "tags": [
-        "Copilot",
         "AI",
-        "GitHub",
-        "Launched",
-        "AI + Machine Learning"
+        "Improvement",
+        "account management",
+        "copilot"
       ],
       "rank": 1
     },
@@ -486,6 +485,26 @@
       "rank": 5
     },
     {
+      "id": "ms-changelog:copilot on web expands conversation controls|2026-08-10-copilot-on-web-expands-conversation-controls",
+      "title": "Copilot on web expands conversation controls",
+      "url": "https://github.blog/changelog/2026-08-10-copilot-on-web-expands-conversation-controls",
+      "summary": "We’ve made improvements to Copilot Chat on github.com that make it easier to use. These include easier access to your recent conversations in chat, the ability to minimize the chat… The post Copilot on web expands conversation controls appeared first on The GitHub Blog...",
+      "published": "2026-08-10T14:27:04.000Z",
+      "sourceId": "ms-changelog",
+      "source": "Microsoft Developer Changelog",
+      "org": "GitHub",
+      "score": 66,
+      "importance": "high",
+      "tags": [
+        "Copilot",
+        "AI",
+        "GitHub",
+        "Launched",
+        "AI + Machine Learning"
+      ],
+      "rank": 6
+    },
+    {
       "id": "ms-changelog:github copilot weekly releases august 3|2026-08-07-github-copilot-weekly-releases-august-3",
       "title": "GitHub Copilot weekly releases — August 3",
       "url": "https://github.blog/changelog/2026-08-07-github-copilot-weekly-releases-august-3",
@@ -503,7 +522,7 @@
         "API",
         "GitHub"
       ],
-      "rank": 6
+      "rank": 7
     },
     {
       "id": "ms-changelog:copilot code review effort levels are generally available|2026-08-07-copilot-code-review-effort-levels-are-generally-available",
@@ -523,7 +542,7 @@
         "GitHub",
         "Launched"
       ],
-      "rank": 7
+      "rank": 8
     },
     {
       "id": "ms-changelog:kimi k3 is now available in github copilot|2026-08-06-kimi-k3-is-now-available-in-github-copilot",
@@ -543,7 +562,7 @@
         "GitHub",
         "Launched"
       ],
-      "rank": 8
+      "rank": 9
     },
     {
       "id": "ms-changelog:upcoming august 2026 model deprecations in github copilot|2026-07-31-upcoming-august-2026-model-deprecations-in-github-copilot",
@@ -563,7 +582,7 @@
         "Deprecation",
         "GitHub"
       ],
-      "rank": 9
+      "rank": 10
     },
     {
       "id": "ms-changelog:gemini 2 5 pro and gemini 3 flash deprecated|2026-07-31-gemini-2-5-pro-and-gemini-3-flash-deprecated",
@@ -583,7 +602,7 @@
         "Deprecation",
         "GitHub"
       ],
-      "rank": 10
+      "rank": 11
     },
     {
       "id": "ms-changelog:retiring the copilot billing preview app|2026-08-04-retiring-the-copilot-billing-preview-app",
@@ -603,7 +622,7 @@
         "GitHub",
         "Retirements"
       ],
-      "rank": 11
+      "rank": 12
     },
     {
       "id": "ms-changelog:enterprise teams model policy targeting in public preview|2026-07-31-enterprise-teams-model-policy-targeting-in-public-preview",
@@ -623,7 +642,7 @@
         "GitHub",
         "Launched"
       ],
-      "rank": 12
+      "rank": 13
     },
     {
       "id": "ms-changelog:grok 4 5 is now available in github copilot|2026-07-28-grok-4-5-is-now-available-in-github-copilot",
@@ -643,7 +662,7 @@
         "Actions",
         "GA"
       ],
-      "rank": 13
+      "rank": 14
     },
     {
       "id": "ms-changelog:copilot impact dashboard adds a return on investment section|2026-08-07-copilot-impact-dashboard-adds-a-return-on-investment-section",
@@ -662,7 +681,7 @@
         "GitHub",
         "Launched"
       ],
-      "rank": 14
+      "rank": 15
     },
     {
       "id": "ms-changelog:copilot usage metrics api adds agent app activity|2026-08-07-copilot-usage-metrics-api-adds-agent-app-activity",
@@ -682,7 +701,7 @@
         "Actions",
         "API"
       ],
-      "rank": 15
+      "rank": 16
     },
     {
       "id": "ms-changelog:mcp allowlists in enterprise managed settings|2026-08-06-mcp-allowlists-in-enterprise-managed-settings",
@@ -702,7 +721,7 @@
         "API",
         "GitHub"
       ],
-      "rank": 16
+      "rank": 17
     },
     {
       "id": "github-blog:using the github copilot sdk for java|using-the-github-copilot-sdk-for-java",
@@ -722,7 +741,7 @@
         "AI & ML",
         "Engineering"
       ],
-      "rank": 17
+      "rank": 18
     },
     {
       "id": "ms-changelog:customize the reasoning level for copilot cloud agent|2026-08-03-customize-the-reasoning-level-for-copilot-cloud-agent",
@@ -742,7 +761,7 @@
         "GitHub",
         "Launched"
       ],
-      "rank": 18
+      "rank": 19
     },
     {
       "id": "ms-changelog:trigger copilot automations with comments|2026-08-03-trigger-copilot-automations-with-comments",
@@ -762,7 +781,7 @@
         "GitHub",
         "Launched"
       ],
-      "rank": 19
+      "rank": 20
     },
     {
       "id": "ms-changelog:github copilot in visual studio july update|2026-07-30-github-copilot-in-visual-studio-july-update",
@@ -782,7 +801,7 @@
         "Azure",
         ".NET"
       ],
-      "rank": 20
+      "rank": 21
     },
     {
       "id": "ms-changelog:limit remote control to managed devices|2026-07-30-limit-remote-control-to-managed-devices",
@@ -802,7 +821,7 @@
         "GitHub",
         "Launched"
       ],
-      "rank": 21
+      "rank": 22
     },
     {
       "id": "ms-changelog:github copilot app usage metrics now expand across report rollups|2026-07-28-github-copilot-app-usage-metrics-now-expand-across-report-rollups",
@@ -822,7 +841,7 @@
         "GitHub",
         "Launched"
       ],
-      "rank": 22
+      "rank": 23
     },
     {
       "id": "ms-changelog:visual studio july update meet the new agent powered by the github copilot sdk|visual-studio-july-update-meet-the-new-agent-powered-by-copilot-sdk",
@@ -842,7 +861,7 @@
         "API",
         "AI + Machine Learning"
       ],
-      "rank": 23
+      "rank": 24
     },
     {
       "id": "ms-changelog:launched generally available unity ai gateway on azure databricks|updates",
@@ -862,7 +881,7 @@
         "GA",
         "Launched"
       ],
-      "rank": 24
+      "rank": 25
     },
     {
       "id": "ms-changelog:announcing azure databricks genie one and genie agents free usage extended through january 31 2027|updates",
@@ -882,7 +901,7 @@
         "AI + Machine Learning",
         "Analytics"
       ],
-      "rank": 25
+      "rank": 26
     },
     {
       "id": "ms-changelog:upcoming deprecation of github spark on github com|2026-08-04-upcoming-deprecation-of-github-spark-on-github-com",
@@ -901,7 +920,7 @@
         "Retirements",
         "AI + Machine Learning"
       ],
-      "rank": 26
+      "rank": 27
     },
     {
       "id": "azure-blog:microsoft named a leader in the 2026 gartner magic quadrant for ai augmented code modernization tools|microsoft-named-a-leader-in-the-2026-gartner-ma",
@@ -921,7 +940,7 @@
         "Compute",
         "Containers"
       ],
-      "rank": 27
+      "rank": 28
     },
     {
       "id": "github-blog:a guide to slash commands in the github copilot app|a-guide-to-slash-commands-in-the-github-copilot-app",
@@ -941,7 +960,7 @@
         "AI & ML",
         "GitHub Copilot"
       ],
-      "rank": 28
+      "rank": 29
     },
     {
       "id": "ms-changelog:launched generally available sharepoint connector for azure databricks|updates",
@@ -961,7 +980,7 @@
         "GA",
         "Launched"
       ],
-      "rank": 29
+      "rank": 30
     },
     {
       "id": "github-blog:how the github legal team used copilot cli to streamline their workflows|how-the-github-legal-team-used-copilot-cli-to-streamline-their-workflows",
@@ -981,7 +1000,7 @@
         "API",
         "AI & ML"
       ],
-      "rank": 30
+      "rank": 31
     },
     {
       "id": "ms-devops:azure devops remote mcp server is generally available|azure-devops-remote-mcp-server-ga",
@@ -1001,43 +1020,24 @@
         "GA",
         "Azure & Cloud"
       ],
-      "rank": 31
-    },
-    {
-      "id": "github-changelog:secret scanning coverage updates|2026-08-07-secret-scanning-coverage-updates",
-      "title": "Secret scanning coverage updates",
-      "url": "https://github.blog/changelog/2026-08-07-secret-scanning-coverage-updates",
-      "summary": "This release expands secret scanning’s coverage with more secrets blocked by push protection, one new secret scanning partner, and richer metadata on alerts. Secret scanning partnership program Lovable Labs is… The post Secret scanning coverage updates appeared first on The GitHub Blog .",
-      "published": "2026-08-07T16:54:47.000Z",
-      "sourceId": "github-changelog",
-      "source": "GitHub Changelog",
-      "org": "GitHub",
-      "score": 47,
-      "importance": "medium",
-      "tags": [
-        "AI",
-        "Security",
-        "Improvement",
-        "application security"
-      ],
       "rank": 32
     },
     {
-      "id": "github-changelog:custom thread subscriptions are being deprecated|2026-08-10-custom-thread-subscriptions-are-being-deprecated",
-      "title": "Custom thread subscriptions are being deprecated",
-      "url": "https://github.blog/changelog/2026-08-10-custom-thread-subscriptions-are-being-deprecated",
-      "summary": "You’ll no longer be able to configure custom thread subscriptions for GitHub notifications. What’s changing As part of this rollout, GitHub will remove support for custom thread subscription settings. If… The post Custom thread subscriptions are being deprecated appeared first on The GitHub Blog .",
-      "published": "2026-08-10T12:45:49.000Z",
-      "sourceId": "github-changelog",
-      "source": "GitHub Changelog",
+      "id": "ms-changelog:secret scanning coverage updates|2026-08-07-secret-scanning-coverage-updates",
+      "title": "Secret scanning coverage updates",
+      "url": "https://github.blog/changelog/2026-08-07-secret-scanning-coverage-updates",
+      "summary": "This release expands secret scanning’s coverage with more secrets blocked by push protection, one new secret scanning partner, and richer metadata on alerts. Secret scanning partnership program Lovable Labs is… The post Secret scanning coverage updates appeared first on The GitHub Blog...",
+      "published": "2026-08-07T16:54:47.000Z",
+      "sourceId": "ms-changelog",
+      "source": "Microsoft Developer Changelog",
       "org": "GitHub",
       "score": 46,
       "importance": "medium",
       "tags": [
-        "Deprecation",
-        "Retired",
-        "collaboration tools",
-        "community engagement"
+        "AI",
+        "Security",
+        "GitHub",
+        "Launched"
       ],
       "rank": 33
     },
@@ -1101,26 +1101,6 @@
       "rank": 36
     },
     {
-      "id": "ms-changelog:code coverage automatic enablement in code quality settings|2026-08-04-code-coverage-automatic-enablement-in-code-quality-settings",
-      "title": "Code coverage automatic enablement in Code Quality settings",
-      "url": "https://github.blog/changelog/2026-08-04-code-coverage-automatic-enablement-in-code-quality-settings",
-      "summary": "We’re making code coverage setup faster and simpler. You’ll now see a new option in your repository’s Code Quality settings that lets GitHub generate your coverage workflow automatically with AI.… The post Code coverage automatic enablement in Code Quality settings appeared first on The GitHub Blog...",
-      "published": "2026-08-04T12:36:32.000Z",
-      "sourceId": "ms-changelog",
-      "source": "Microsoft Developer Changelog",
-      "org": "GitHub",
-      "score": 43,
-      "importance": "low",
-      "tags": [
-        "AI",
-        "Actions",
-        "GitHub",
-        "Launched",
-        "Security"
-      ],
-      "rank": 37
-    },
-    {
       "id": "ms-changelog:launched generally available microsoft azure now available from new cloud region in india india south central|updates",
       "title": "[Launched] Generally Available: Microsoft Azure now available from new cloud region in India (India South Central)",
       "url": "https://azure.microsoft.com/updates?id=568013",
@@ -1138,7 +1118,7 @@
         "Launched",
         "Regions & Datacenters"
       ],
-      "rank": 38
+      "rank": 37
     },
     {
       "id": "ms-commandline:intelligent terminal 0 2 is here with local model support|intelligent-terminal-0-2-is-here-with-local-model-support",
@@ -1156,6 +1136,25 @@
         "AI",
         "Command Line",
         "Intelligent Terminal"
+      ],
+      "rank": 38
+    },
+    {
+      "id": "github-changelog:custom thread subscriptions are being deprecated|2026-08-10-custom-thread-subscriptions-are-being-deprecated",
+      "title": "Custom thread subscriptions are being deprecated",
+      "url": "https://github.blog/changelog/2026-08-10-custom-thread-subscriptions-are-being-deprecated",
+      "summary": "You’ll no longer be able to configure custom thread subscriptions for GitHub notifications. What’s changing As part of this rollout, GitHub will remove support for custom thread subscription settings. If… The post Custom thread subscriptions are being deprecated appeared first on The GitHub Blog .",
+      "published": "2026-08-10T12:45:49.000Z",
+      "sourceId": "github-changelog",
+      "source": "GitHub Changelog",
+      "org": "GitHub",
+      "score": 41,
+      "importance": "low",
+      "tags": [
+        "Deprecation",
+        "Retired",
+        "collaboration tools",
+        "community engagement"
       ],
       "rank": 39
     },
@@ -1178,6 +1177,24 @@
       "rank": 40
     },
     {
+      "id": "ms-changelog:enterprise team specialization for managed settings|2026-08-03-enterprise-team-specialization-for-managed-settings",
+      "title": "Enterprise team specialization for managed settings",
+      "url": "https://github.blog/changelog/2026-08-03-enterprise-team-specialization-for-managed-settings",
+      "summary": "Enterprise administrators can now customize managed settings by targeting enterprise teams with itemized configuration files. Large enterprises can scale governance without bottlenecking every configuration change through central administrators or one-size-fits-all… The post Enterprise team...",
+      "published": "2026-08-03T22:55:29.000Z",
+      "sourceId": "ms-changelog",
+      "source": "Microsoft Developer Changelog",
+      "org": "GitHub",
+      "score": 40,
+      "importance": "low",
+      "tags": [
+        "GitHub",
+        "Launched",
+        "Developer Tools"
+      ],
+      "rank": 41
+    },
+    {
       "id": "github-changelog:relates to issue relationship in public preview and multi select fields is generally available|2026-08-07-connecting-issues-and-multi-select-fi",
       "title": "“Relates to” issue relationship in public preview and multi-select fields is generally available",
       "url": "https://github.blog/changelog/2026-08-07-connecting-issues-and-multi-select-field-support",
@@ -1194,7 +1211,7 @@
         "Release",
         "projects & issues"
       ],
-      "rank": 41
+      "rank": 42
     },
     {
       "id": "ms-semantic-kernel:build production ready agents with the github copilot harness and agent framework|build-production-ready-agents-with-the-github-copilot-harne",
@@ -1213,23 +1230,6 @@
         "AI",
         "Actions",
         ".NET"
-      ],
-      "rank": 42
-    },
-    {
-      "id": "github-changelog:github billing in india now supports automatic recurring payments|2026-08-10-github-billing-in-india-now-supports-automatic-recurring-payments",
-      "title": "GitHub billing in India now supports automatic recurring payments",
-      "url": "https://github.blog/changelog/2026-08-10-github-billing-in-india-now-supports-automatic-recurring-payments",
-      "summary": "Customers in India can now use eligible saved credit cards for automatic recurring payments on monthly and annual GitHub bills. This update uses a payment mandate, also known in the… The post GitHub billing in India now supports automatic recurring payments appeared first on The GitHub Blog .",
-      "published": "2026-08-10T14:00:58.000Z",
-      "sourceId": "github-changelog",
-      "source": "GitHub Changelog",
-      "org": "GitHub",
-      "score": 34,
-      "importance": "low",
-      "tags": [
-        "Improvement",
-        "account management"
       ],
       "rank": 43
     },
@@ -1254,26 +1254,6 @@
       "rank": 44
     },
     {
-      "id": "ms-semantic-kernel:discover agent skills from mcp servers in net|discover-agent-skills-from-mcp-servers-in-net",
-      "title": "Discover Agent Skills from MCP servers in .NET",
-      "url": "https://devblogs.microsoft.com/agent-framework/discover-agent-skills-from-mcp-servers-in-net/",
-      "summary": "Your agents can now discover and load Agent Skills directly from a Model Context Protocol (MCP) server. Instead of shipping every skill inside your application or copying skill folders into each deployment, you point an agent at an MCP server and it pulls the skills it needs on demand. A central team can publish skills",
-      "published": "2026-07-28T09:01:13.000Z",
-      "sourceId": "ms-semantic-kernel",
-      "source": "Semantic Kernel Blog",
-      "org": "Microsoft",
-      "score": 34,
-      "importance": "low",
-      "tags": [
-        "Agents",
-        "AI",
-        ".NET",
-        "Agent Framework",
-        "Agent Skills"
-      ],
-      "rank": 45
-    },
-    {
       "id": "github-blog:turn one giant ai generated pull request to a reviewable stack|turn-one-giant-ai-generated-pull-request-to-a-reviewable-stack",
       "title": "Turn one giant AI-generated pull request to a reviewable stack",
       "url": "https://github.blog/engineering/turn-one-giant-ai-generated-pull-request-to-a-reviewable-stack/",
@@ -1289,6 +1269,23 @@
         "AI",
         "Engineering",
         "stacked pull requests"
+      ],
+      "rank": 45
+    },
+    {
+      "id": "github-changelog:github billing in india now supports automatic recurring payments|2026-08-10-github-billing-in-india-now-supports-automatic-recurring-payments",
+      "title": "GitHub billing in India now supports automatic recurring payments",
+      "url": "https://github.blog/changelog/2026-08-10-github-billing-in-india-now-supports-automatic-recurring-payments",
+      "summary": "Customers in India can now use eligible saved credit cards for automatic recurring payments on monthly and annual GitHub bills. This update uses a payment mandate, also known in the… The post GitHub billing in India now supports automatic recurring payments appeared first on The GitHub Blog .",
+      "published": "2026-08-10T14:00:58.000Z",
+      "sourceId": "github-changelog",
+      "source": "GitHub Changelog",
+      "org": "GitHub",
+      "score": 29,
+      "importance": "low",
+      "tags": [
+        "Improvement",
+        "account management"
       ],
       "rank": 46
     },
@@ -1398,22 +1395,6 @@
       "rank": 52
     },
     {
-      "id": "ms-visualstudio:build azure skills faster with cloud academy a visual studio subscriber benefit|build-azure-skills-faster-with-cloud-academy-a-visual-studio-sub",
-      "title": "Build Azure Skills Faster with Cloud Academy, a Visual Studio Subscriber Benefit",
-      "url": "https://devblogs.microsoft.com/visualstudio/build-azure-skills-faster-with-cloud-academy-a-visual-studio-subscriber-benefit/",
-      "summary": "If you’ve been looking for a practical way to build Azure skills, Cloud Academy (a QA company) gives Visual Studio subscribers hands-on learning that fits into busy schedules. Whether you’re new to Azure, expanding your cloud expertise, working towards certifications or preparing for more advanced projects, this benefi",
-      "published": "2026-08-04T14:00:38.000Z",
-      "sourceId": "ms-visualstudio",
-      "source": "Visual Studio Blog",
-      "org": "Microsoft",
-      "score": 18,
-      "importance": "low",
-      "tags": [
-        "Azure"
-      ],
-      "rank": 53
-    },
-    {
       "id": "ms-azure-sdk:azure developer cli azd july 2026|azure-developer-cli-azd-july-2026",
       "title": "Azure Developer CLI (azd) July 2026",
       "url": "https://devblogs.microsoft.com/azure-sdk/azure-developer-cli-azd-july-2026/",
@@ -1430,6 +1411,22 @@
         "Azure SDK",
         ".NET",
         "azure-developer-cli"
+      ],
+      "rank": 53
+    },
+    {
+      "id": "ms-visualstudio:build azure skills faster with cloud academy a visual studio subscriber benefit|build-azure-skills-faster-with-cloud-academy-a-visual-studio-sub",
+      "title": "Build Azure Skills Faster with Cloud Academy, a Visual Studio Subscriber Benefit",
+      "url": "https://devblogs.microsoft.com/visualstudio/build-azure-skills-faster-with-cloud-academy-a-visual-studio-subscriber-benefit/",
+      "summary": "If you’ve been looking for a practical way to build Azure skills, Cloud Academy (a QA company) gives Visual Studio subscribers hands-on learning that fits into busy schedules. Whether you’re new to Azure, expanding your cloud expertise, working towards certifications or preparing for more advanced projects, this benefi",
+      "published": "2026-08-04T14:00:38.000Z",
+      "sourceId": "ms-visualstudio",
+      "source": "Visual Studio Blog",
+      "org": "Microsoft",
+      "score": 14,
+      "importance": "low",
+      "tags": [
+        "Azure"
       ],
       "rank": 54
     },
