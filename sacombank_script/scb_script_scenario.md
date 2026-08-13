@@ -8,6 +8,147 @@ the action is prevented, **ALLOW** = the action proceeds.
 
 ---
 
+## Execution sequence
+
+Six scripts, run in a fixed order. Every one needs an **elevated 64-bit**
+`powershell.exe` (SCCM: *Run as 32-bit process* **unchecked**, *Run with
+administrative rights* **checked**, install behaviour **Install for system**).
+
+```
+Package 1 — Copilot policy          Package 2 — Secret scanning
+  1. Apply-CopilotPolicy.ps1          4. Install-GitleaksHook.ps1
+  2. Detect-CopilotPolicy.ps1         5. Detect-GitleaksHook.ps1
+  3. Remove-CopilotPolicy.ps1         6. Remove-GitleaksHook.ps1
+     (uninstall only)                    (uninstall only)
+```
+
+Order matters in exactly two places: **install Git for Windows before step 4**
+(make it an SCCM dependency), and **run step 4 before step 5** — detection is
+meaningless until the binary and hook exist. Package 1 and Package 2 are
+otherwise independent and may deploy in parallel.
+
+### Step 1 — Apply the Copilot policy  *(SCCM: Install program)*
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\Apply-CopilotPolicy.ps1" `
+  -OtlpEndpoint "https://otel.sacombank.local:4318" `
+  -OtlpProtocol otlp-http `
+  -McpAccess registry `
+  -ServiceName "vscode-copilot" `
+  -ApprovedGitHubOrgs "sacombank" `
+  -IncludeFileChannel
+```
+
+| Parameter | Default | Notes |
+| --- | --- | --- |
+| `-OtlpEndpoint` | `https://otel-collector.contoso.com:4318` | **Change this** to your collector |
+| `-OtlpProtocol` | `otlp-http` | or `otlp-grpc` |
+| `-McpAccess` | `registry` | `all` \| `registry` \| `none` |
+| `-ServiceName` | `vscode-copilot` | OTel `service.name` attribute |
+| `-ApprovedGitHubOrgs` | none | Gates AI features behind approved orgs |
+| `-IncludeFileChannel` | off | Also write `managed-settings.json` (covers Copilot CLI) |
+| `-LogPath` | CCM logs | Override only for manual troubleshooting |
+
+Exit **0** = applied. Exit **1** = failed; read the log. Idempotent — safe to
+re-run on every SCCM evaluation cycle (case A5).
+
+### Step 2 — Detect compliance  *(SCCM: Detection method → Custom script)*
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\Detect-CopilotPolicy.ps1" `
+  -OtlpEndpoint "https://otel.sacombank.local:4318" -McpAccess registry
+```
+
+The arguments **must match step 1** or the device reports non-compliant
+forever. Follows the SCCM contract: prints `Installed` and exits 0 when
+compliant, prints **nothing** and exits 0 when not — never exit non-zero, or
+SCCM treats it as a script error instead of a remediation trigger (cases D1/D2).
+
+### Step 3 — Remove the policy  *(SCCM: Uninstall program)*
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\Remove-CopilotPolicy.ps1" -RemoveFileChannel
+```
+
+Pass `-RemoveFileChannel` only if step 1 used `-IncludeFileChannel`. Safe to
+re-run (case F6).
+
+### Step 4 — Install the gitleaks hook  *(SCCM: Install program)*
+
+Requires **Git for Windows already installed** — declare it as a dependency.
+Stage `gitleaks.exe` next to the scripts in the package source.
+
+```powershell
+# Pilot ring — detect and log, but let the commit through
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\Install-GitleaksHook.ps1" `
+  -GitleaksSource ".\gitleaks.exe" -AuditOnly
+
+# Production ring — block the commit
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\Install-GitleaksHook.ps1" `
+  -GitleaksSource ".\gitleaks.exe"
+```
+
+| Parameter | Default | Notes |
+| --- | --- | --- |
+| `-GitleaksSource` | none | Path to a staged `gitleaks.exe`. **Preferred** — no internet needed |
+| `-DownloadIfMissing` | off | Pull from GitHub Releases instead. Needs proxy access; avoid on locked-down fleets |
+| `-Version` | `8.28.0` | Only used with `-DownloadIfMissing` |
+| `-AuditOnly` | off | Log the detection, **allow** the commit. Use for the whole pilot ring |
+| `-FailClosed` | off | Block the commit if the scanner is missing/broken. Enable **only** after E2 shows the binary is stable |
+| `-NoEventLog` | off | Suppress the Application-log event. Leave off so SIEM keeps receiving alerts |
+| `-LogPath` | CCM logs | Manual troubleshooting only |
+
+Writes the hook, a baseline `gitleaks.toml`, and sets system-wide
+`core.hooksPath`. Exit **1** if Git or the binary is missing (cases K1/K2).
+
+### Step 5 — Detect the hook  *(SCCM: Detection method → Custom script)*
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\Detect-GitleaksHook.ps1"
+```
+
+No parameters. Verifies the binary, the hook file, **and** that `core.hooksPath`
+still points at the managed directory — so a developer who repoints it is
+reported non-compliant and auto-remediated on the next cycle (case D-series).
+
+### Step 6 — Remove the hook  *(SCCM: Uninstall program)*
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\Remove-GitleaksHook.ps1" -KeepDetectionLog
+```
+
+Clears `core.hooksPath` **only if it still points at our directory**, so a
+team's own hooks survive. `-KeepDetectionLog` preserves the audit trail for
+forensics — recommended in a bank.
+
+### Verifying a run by hand
+
+```powershell
+# 1. Policy landed in the 64-bit hive
+reg query "HKLM\SOFTWARE\Policies\Microsoft\VSCode" /s
+
+# 2. Both detection scripts report compliant
+.\Detect-CopilotPolicy.ps1 -OtlpEndpoint "https://otel.sacombank.local:4318"
+.\Detect-GitleaksHook.ps1
+
+# 3. Hook is wired up machine-wide
+git config --system --get core.hooksPath
+
+# 4. Live block test (case H2) — expect the commit to be REJECTED
+git init C:\Temp\hooktest; cd C:\Temp\hooktest
+'aws_secret_access_key = "AKIAIOSFODNN7EXAMPLE"' | Out-File secrets.txt
+git add .; git commit -m "test"
+
+# 5. Read the logs
+notepad "$env:WinDir\CCM\Logs\CopilotPolicy.log"
+notepad "$env:ProgramData\CopilotPolicy\logs\detections.log"
+```
+
+In VS Code, confirm enforcement with **`Developer: Policy Diagnostics`** from
+the command palette — managed settings show a *Managed by organization* badge.
+
+---
+
 ## A. Pre-flight / environment
 
 | # | Scenario | How to test | Expected |
