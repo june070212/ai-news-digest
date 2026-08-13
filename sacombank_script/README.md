@@ -174,6 +174,40 @@ Useful parameters:
 | `-ApprovedGitHubOrgs` | none | Gates all AI features behind approved orgs; `*` allows any GitHub account |
 | `-IncludeFileChannel` | off | Also write `managed-settings.json` |
 
+## Validation status
+
+All six scripts were exercised end-to-end against a simulated Windows client
+(emulated `HKLM` hive, Windows environment variables, and stubbed `git.exe`,
+`gitleaks.exe`, `icacls.exe`, `eventcreate.exe`), invoked exactly the way SCCM
+invokes them. **64 of the 64 cases in `scb_script_scenario.md` that can be
+simulated off-box pass.** `PSScriptAnalyzer`'s `PSUseCompatibleSyntax` rule
+reports no Windows PowerShell 5.1 incompatibilities - important because SCCM
+runs `powershell.exe` (5.1), not `pwsh` 7.
+
+### Defects the simulation caught
+
+These all reproduce only on Windows PowerShell 5.1, so none of them would
+surface on a `pwsh` 7 developer machine:
+
+| # | Defect | Impact | Fix |
+| --- | --- | --- | --- |
+| 1 | `Set-Content -Encoding UTF8` emits a **UTF-8 BOM** on 5.1 | BOM ahead of `{` breaks strict JSON parsers (`managed-settings.json`); BOM on line 1 makes TOML parsers fail, which silently disables `gitleaks.toml` | Write with `[IO.File]::WriteAllText` and `UTF8Encoding($false)` |
+| 2 | `& gitleaks.exe version 2>&1` under `$ErrorActionPreference='Stop'` | Real `gitleaks` prints its banner to **stderr**; 5.1 turns those lines into terminating `ErrorRecord`s, so a *working* binary aborted the install | Isolate the call, check `$LASTEXITCODE` explicitly |
+| 3 | `${env:ProgramFiles(x86)}` is `$null` on ARM64 hosts | `Join-Path` throws and kills the script while building the search path | Filter roots before joining; also probe `Git\bin\git.exe` |
+| 4 | `.Trim()` on possibly-null `git config` output | Throws under `Set-StrictMode` | Null guard, plus assert the value actually persisted |
+| 5 | Inline `WindowsIdentity::GetCurrent()` | Admin check was untestable | Extracted to `Test-Administrator` |
+
+### What the simulation does *not* prove
+
+Still requires a pilot VM before broad rollout:
+
+- Real NTFS ACL enforcement by `icacls.exe`
+- Real registry behaviour, including 32-bit **WOW6432Node redirection** - run the package 64-bit
+- `git config --system` against the real Git for Windows `gitconfig`
+- `eventcreate.exe` writing to the Windows Application log
+- Downloading `gitleaks.exe` from GitHub Releases through the corporate proxy
+- The exact `CopilotOtel*` ADMX value names - confirm against the shipped `vscode.admx`
+
 ## References
 
 - [Centrally manage VS Code settings with policies](https://code.visualstudio.com/docs/enterprise/policies)

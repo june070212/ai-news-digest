@@ -170,6 +170,14 @@ $copilotManagedSettings = @(
 
 #region helpers -------------------------------------------------------------
 
+function Test-Administrator {
+    # Isolated so the deployment can be exercised on a test harness where the
+    # Windows identity APIs are not available.
+    $id = [Security.Principal.WindowsIdentity]::GetCurrent()
+    return ([Security.Principal.WindowsPrincipal] $id).IsInRole(
+        [Security.Principal.WindowsBuiltInRole]::Administrator)
+}
+
 function Set-PolicyKey {
     param(
         [Parameter(Mandatory)][string]   $Path,
@@ -227,8 +235,10 @@ function Write-ManagedSettingsFile {
         }
     }
 
-    Set-Content -LiteralPath $Path -Encoding UTF8 -Force `
-                -Value (ConvertTo-Json -InputObject $payload -Depth 6)
+    # Windows PowerShell 5.1 emits a UTF-8 BOM for -Encoding UTF8, and a BOM
+    # ahead of "{" breaks strict JSON parsers. Write BOM-less UTF-8 explicitly.
+    $json = ConvertTo-Json -InputObject $payload -Depth 6
+    [IO.File]::WriteAllText($Path, $json, (New-Object Text.UTF8Encoding $false))
     Write-Log "Wrote managed settings file $Path"
 
     # The file channel is ignored when the file is world-writable, so drop
@@ -252,9 +262,7 @@ try {
         throw 'Running 32-bit on a 64-bit OS: registry writes would be redirected to WOW6432Node and ignored. Re-run 64-bit (uncheck "Run as 32-bit process" in the SCCM deployment type).'
     }
 
-    $isAdmin = ([Security.Principal.WindowsPrincipal] `
-        [Security.Principal.WindowsIdentity]::GetCurrent()
-    ).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+    $isAdmin = Test-Administrator
     if (-not $isAdmin) {
         throw 'Administrator or SYSTEM rights are required to write HKLM policy keys.'
     }

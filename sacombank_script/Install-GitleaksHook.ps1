@@ -230,14 +230,25 @@ function Resolve-GitExe {
     $cmd = Get-Command git.exe -ErrorAction SilentlyContinue
     if ($cmd) { return $cmd.Source }
 
-    $candidates = @(
-        (Join-Path $env:ProgramFiles 'Git\cmd\git.exe'),
-        (Join-Path ${env:ProgramFiles(x86)} 'Git\cmd\git.exe')
-    )
-    foreach ($c in $candidates) {
-        if ($c -and (Test-Path -LiteralPath $c)) { return $c }
+    # ${env:ProgramFiles(x86)} is absent on ARM64 and 32-bit-only hosts, and
+    # Join-Path throws on a null path, so filter before joining.
+    $roots = @($env:ProgramFiles, ${env:ProgramFiles(x86)}, $env:ProgramW6432) |
+             Where-Object { $_ }
+    foreach ($root in ($roots | Select-Object -Unique)) {
+        foreach ($leaf in @('Git\cmd\git.exe', 'Git\bin\git.exe')) {
+            $c = Join-Path $root $leaf
+            if (Test-Path -LiteralPath $c) { return $c }
+        }
     }
     return $null
+}
+
+function Test-Administrator {
+    # Isolated so the deployment can be exercised on a test harness where the
+    # Windows identity APIs are not available.
+    $id = [Security.Principal.WindowsIdentity]::GetCurrent()
+    return ([Security.Principal.WindowsPrincipal] $id).IsInRole(
+        [Security.Principal.WindowsBuiltInRole]::Administrator)
 }
 
 function Install-GitleaksBinary {
@@ -278,7 +289,16 @@ function Install-GitleaksBinary {
     & icacls.exe $InstallDir /inheritance:r /grant:r `
         'SYSTEM:(OI)(CI)(F)' 'BUILTIN\Administrators:(OI)(CI)(F)' 'BUILTIN\Users:(OI)(CI)(RX)' | Out-Null
 
-    $reported = & $GitleaksExe version 2>&1
+    # Native stderr captured with 2>&1 surfaces as ErrorRecords, and with
+    # $ErrorActionPreference = 'Stop' that would abort the install even though
+    # gitleaks ran fine. Suppress locally and report the exit code instead.
+    $reported = & {
+        $ErrorActionPreference = 'Continue'
+        (& $GitleaksExe version 2>&1) -join ' '
+    }
+    if ($LASTEXITCODE -ne 0) {
+        throw "gitleaks.exe failed to execute (exit $LASTEXITCODE): $reported"
+    }
     Write-Log "gitleaks reports version: $reported"
 }
 
@@ -317,7 +337,9 @@ paths = [
     '''(.*?)\.md$''',
 ]
 '@
-        Set-Content -LiteralPath $ConfigFile -Value $toml -Encoding UTF8 -Force
+        # BOM-less UTF-8: Windows PowerShell 5.1 would otherwise prefix a BOM,
+        # which the TOML parser reports as a syntax error on line 1.
+        [IO.File]::WriteAllText($ConfigFile, $toml, (New-Object Text.UTF8Encoding $false))
         Write-Log "Wrote baseline config $ConfigFile"
     }
     else {
@@ -341,7 +363,11 @@ function Set-SystemHooksPath {
     & $GitExe config --system core.hooksPath $value
     if ($LASTEXITCODE -ne 0) { throw "git config --system core.hooksPath failed with $LASTEXITCODE" }
 
-    $applied = (& $GitExe config --system --get core.hooksPath).Trim()
+    $applied = & $GitExe config --system --get core.hooksPath
+    if ($applied) { $applied = "$applied".Trim() }
+    if ($applied -ne $value) {
+        throw "core.hooksPath did not persist: expected '$value', got '$applied'."
+    }
     Write-Log "System core.hooksPath = $applied"
 
     # A per-user value silently wins over the system scope. Report it so the
@@ -364,9 +390,7 @@ try {
         throw 'Running 32-bit on a 64-bit OS. Re-run 64-bit so ProgramFiles resolves correctly.'
     }
 
-    $isAdmin = ([Security.Principal.WindowsPrincipal] `
-        [Security.Principal.WindowsIdentity]::GetCurrent()
-    ).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+    $isAdmin = Test-Administrator
     if (-not $isAdmin) { throw 'Administrator or SYSTEM rights are required.' }
 
     $gitExe = Resolve-GitExe
