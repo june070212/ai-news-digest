@@ -1,14 +1,21 @@
 # GitHub Copilot enterprise policy package (SCCM / MECM)
 
 Deploys GitHub Copilot and VS Code enterprise policies to managed Windows
-clients through Configuration Manager. All settings are device-scoped and
-override user and workspace settings on the machine.
+clients through Configuration Manager, plus a machine-wide secret-scanning
+pre-commit hook. All settings are device-scoped and override user and workspace
+settings on the machine.
 
 | File | Role in SCCM |
 | --- | --- |
 | `Apply-CopilotPolicy.ps1` | Install program / CI remediation script |
 | `Detect-CopilotPolicy.ps1` | Detection method / CI compliance rule |
 | `Remove-CopilotPolicy.ps1` | Uninstall program / rollback |
+| `Install-GitleaksHook.ps1` | Install program for the secret-scanning hook |
+| `Detect-GitleaksHook.ps1` | Detection method / CI compliance rule |
+| `Remove-GitleaksHook.ps1` | Uninstall program / rollback |
+
+Deploy them as two Applications: policy enforcement and secret scanning are
+independent and have different prerequisites (the hook needs Git for Windows).
 
 ## Configuration channels written
 
@@ -74,9 +81,74 @@ Create a CI setting of type **Script**, data type **String**:
 
 This re-applies the policy whenever a local admin edits or clears the keys.
 
+## Block hardcoded secrets at commit time
+
+`Install-GitleaksHook.ps1` deploys client-side secret scanning. The Copilot
+policies stop the agent from *reading* credential stores; this stops a
+credential that is already in the working tree from reaching a commit.
+
+What it installs:
+
+| Item | Path |
+| --- | --- |
+| Scanner | `%ProgramFiles%\Gitleaks\gitleaks.exe` |
+| Hook | `%ProgramData%\CopilotPolicy\git-hooks\pre-commit` |
+| Ruleset | `%ProgramData%\CopilotPolicy\gitleaks.toml` |
+| Detections | `%ProgramData%\CopilotPolicy\logs\gitleaks-precommit.log` |
+| Wiring | `git config --system core.hooksPath` |
+
+Behaviour on a blocked commit: the scan output is echoed to the developer with
+values redacted, the finding is appended to the detection log, and an
+Application event log entry is raised under source `GitleaksPreCommit`,
+event ID **1001**, for SIEM alerting.
+
+Ship `gitleaks.exe` in the package content next to the script, or pass
+`-DownloadIfMissing` to pull it from GitHub Releases at install time.
+
+```
+:: Pilot ring - report only, never blocks a commit
+powershell.exe -ExecutionPolicy Bypass -NoProfile -File ".\Install-GitleaksHook.ps1" -AuditOnly
+
+:: Production - block commits, and block if the scanner itself is missing
+powershell.exe -ExecutionPolicy Bypass -NoProfile -File ".\Install-GitleaksHook.ps1" -FailClosed
+
+:: Uninstall
+powershell.exe -ExecutionPolicy Bypass -NoProfile -File ".\Remove-GitleaksHook.ps1"
+```
+
+Set Git for Windows as a **dependency** of this deployment type; the install
+fails deliberately when `git.exe` is absent.
+
+### Behaviour matrix
+
+| Situation | Default | `-AuditOnly` | `-FailClosed` |
+| --- | --- | --- | --- |
+| Clean staged diff | commit proceeds | commit proceeds | commit proceeds |
+| Secret detected | **blocked** + logged + event 1001 | allowed + logged + event 1001 | **blocked** + logged + event 1001 |
+| gitleaks missing or broken | warning, commit proceeds | warning, commit proceeds | **blocked** |
+| Repo has its own `.git/hooks/pre-commit` | chained; its non-zero exit still aborts | chained | chained |
+
+That last row matters: `core.hooksPath` normally *replaces* a repository's own
+hooks, which would silently break husky, pre-commit, and lefthook setups. The
+deployed hook invokes the repository hook itself so existing workflows survive.
+
+### Limits you must plan around
+
+- `git commit --no-verify` skips every hook. Git offers no way to prevent this.
+  Treat the endpoint control as defence in depth and keep **GitHub secret
+  scanning push protection** as the enforcing gate on the server side.
+- A per-user or per-repo `core.hooksPath` overrides the system value. Deploy
+  this as a **Configuration Item on a schedule** so drift is re-remediated, and
+  watch the install log, which warns when a global override is present.
+- Scanning covers the staged diff only. Secrets already in history need
+  `gitleaks git` run across the repo, and rotation.
+- Tune false positives in `gitleaks.toml`; the file is preserved across
+  reinstalls so local allowlist entries are not clobbered.
+
 ## Logging and verification
 
-Both scripts append to `%WinDir%\CCM\Logs\Apply-CopilotPolicy.log`
+The policy scripts append to `%WinDir%\CCM\Logs\Apply-CopilotPolicy.log` and
+the hook scripts to `Install-GitleaksHook.log` in the same folder
 (CMTrace-readable, falls back to `%WinDir%\Logs` on machines without the CCM
 client). Override with `-LogPath`.
 
@@ -107,3 +179,5 @@ Useful parameters:
 - [Centrally manage VS Code settings with policies](https://code.visualstudio.com/docs/enterprise/policies)
 - [Manage AI settings in enterprise environments](https://code.visualstudio.com/docs/enterprise/ai-settings)
 - [Configure enterprise managed settings](https://docs.github.com/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-agents/configure-enterprise-managed-settings)
+- [gitleaks](https://github.com/gitleaks/gitleaks)
+- [GitHub secret scanning push protection](https://docs.github.com/code-security/secret-scanning/introduction/about-push-protection)
