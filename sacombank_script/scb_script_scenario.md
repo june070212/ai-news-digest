@@ -154,6 +154,138 @@ the command palette — managed settings show a *Managed by organization* badge.
 
 ---
 
+## Policy inventory
+
+Everything the package writes. All of it lives in **`Apply-CopilotPolicy.ps1`**;
+`Detect-CopilotPolicy.ps1` re-reads the baseline rows and
+`Remove-CopilotPolicy.ps1` deletes every row listed here.
+
+Two registry keys are written, both under `HKLM\SOFTWARE\Policies\`:
+
+- `Microsoft\VSCode` — VS Code ADMX policies (40 values)
+- `GitHubCopilot` — Copilot managed settings (14 values), also read by Copilot CLI
+
+54 values in total: **36 always-on baseline** and **18 conditional** (17 opt-in
+parameters plus `ExtensionsAutoUpdateDelay`, which is on by default at 168 h but
+skipped if you pass `-ExtensionUpdateDelayHours 0`).
+No value is written to both keys, so there is no intra-package precedence
+conflict.
+
+With `-IncludeFileChannel`, the `GitHubCopilot` rows are additionally written to
+`%ProgramFiles%\GitHubCopilot\managed-settings.json`. **Precedence is native MDM
+> server-managed > file**, resolved per key — values are *not* merged.
+
+### 1. Baseline — always written (`Microsoft\VSCode`)
+
+| # | Registry value | Type | Value | Setting enforced |
+| --- | --- | --- | --- | --- |
+| 1 | `ChatAgentMode` | DWORD | `0` | `chat.agent.enabled` — agent mode cannot be selected |
+| 2 | `ChatToolsAutoApprove` | DWORD | `0` | `chat.tools.global.autoApprove` — "YOLO mode" hidden |
+| 3 | `ChatMCP` | String | `-McpAccess` (`registry`) | `chat.mcp.access` |
+| 4 | `ChatAgentExtensionTools` | DWORD | `0` | `chat.extensionTools.enabled` — no third-party extension tools |
+| 5 | `ChatToolsTerminalEnableAutoApprove` | DWORD | `0` | `chat.tools.terminal.enableAutoApprove` |
+| 6 | `ChatHooks` | DWORD | `0` | `chat.useHooks` — no shell hooks on agent lifecycle |
+| 7 | `EnableFeedback` | DWORD | `0` | `telemetry.feedback.enabled` — issue reporter/surveys hidden |
+| 8 | `CopilotOtelEnabled` | DWORD | `1` | `chat.agentHost.otel.enabled` |
+| 9 | `CopilotOtelEndpoint` | String | `-OtlpEndpoint` | `...otel.otlpEndpoint` |
+| 10 | `CopilotOtelProtocol` | String | `-OtlpProtocol` | `...otel.exporterType` — **not** `CopilotOtelExporterType` |
+| 11 | `CopilotOtelCaptureContent` | DWORD | `0` | Prompt/response bodies never leave the device |
+| 12 | `CopilotOtelServiceName` | String | `-ServiceName` | `...otel.serviceName` |
+| 13 | `CopilotSessionSync` | DWORD | `0` | Chat history stays local, no sync to GitHub.com |
+| 14 | `Claude3PIntegration` | DWORD | `0` | No prompts/code to Anthropic |
+| 15 | `Codex3PIntegration` | DWORD | `0` | No prompts/code to OpenAI Codex |
+| 16 | `ChatAgentSandboxEnabled` | String | `on` | OS-level isolation for anything the agent runs |
+| 17 | `ChatAgentSandboxAllowNetwork` | DWORD | `0` | No egress from sandboxed commands |
+| 18 | `ChatAgentSandboxAllowUnsandboxedCommands` | DWORD | `0` | No escape hatch out of the sandbox |
+| 19 | `ChatAgentSandboxAllowAutoApprove` | DWORD | `0` | Sandbox cannot self-approve |
+| 20 | `ChatAllowManagedHooksOnly` | DWORD | `1` | Only admin-delivered hooks run |
+| 21 | `ChatPluginsEnabled` | DWORD | `0` | `chat.plugins.enabled` — no agent plugin marketplaces |
+| 22 | `ChatToolsEligibleForAutoApproval` | String (JSON) | `runInTerminal`, `runTask`, `fetch` all `false` | Shell/network/task tools can never be auto-approved |
+| 23 | `BrowserChatTools` | DWORD | `0` | `workbench.browser.enableChatTools` — closes a proxy-bypassing egress path |
+| 24 | `DictationEnabled` | DWORD | `0` | No microphone capture |
+| 25 | `TelemetryLevel` | String | `-TelemetryLevel` (`off`) | Microsoft product telemetry; the bank's own OTel export is unaffected |
+| 26 | `UpdateMode` | String | `-UpdateMode` (`manual`) | SCCM owns the update cadence |
+| 27 | `ExtensionsAutoUpdateDelay` | DWORD | `-ExtensionUpdateDelayHours` (`168`) | Conditional: skipped when set to `0`. Lets a malicious marketplace release be pulled before it reaches the fleet |
+
+Items 13–15 flip to `1` if you pass `-AllowSessionSync` / `-AllowThirdPartyAgents`.
+
+### 2. Baseline — always written (`GitHubCopilot`)
+
+| # | Value | Type | Value |
+| --- | --- | --- | --- |
+| 28 | `permissions.disableBypassPermissionsMode` | String | `disable` |
+| 29 | `telemetry.enabled` | String | `true` |
+| 30 | `telemetry.endpoint` | String | `-OtlpEndpoint` |
+| 31 | `telemetry.protocol` | String | `-OtlpProtocol` |
+| 32 | `telemetry.captureContent` | String | `false` |
+| 33 | `telemetry.lockCaptureContent` | String | `true` — user cannot re-enable content capture |
+| 34 | `telemetry.serviceName` | String | `-ServiceName` |
+| 35 | `allowManagedMcpServersOnly` | String | `true` |
+| 36 | `permissions.deny` | String (JSON) | 26 rules — see below |
+| 37 | `permissions.ask` | String (JSON) | 6 rules — see below |
+
+### 3. `permissions` rules
+
+Precedence is **deny > ask > allow > default-ask**. A `deny` rule blocks with no
+approval option. An `ask` rule forces a human decision every time and cannot be
+bypassed by "Bypass Approvals" or "Autopilot". Path prefixes: `/` = workspace
+root, `./` = cwd, `~/` = user home, `//` = filesystem root.
+
+Both lists are defined once as `$DenyRules` / `$AskRules` and shared by the
+registry and file channels, so the two channels cannot drift apart.
+
+**`permissions.deny` (26)**
+
+| Group | Count | Rules |
+| --- | --- | --- |
+| Destructive shell | 3 | `Shell(rm -rf *)`, `Shell(format *)`, `Shell(reg delete *)` |
+| Credential stores (read) | 7 | `Read(~/.ssh/**)`, `Read(~/.aws/**)`, `Read(~/.azure/**)`, `Read(~/.kube/**)`, `Read(~/.gnupg/**)`, `Read(~/.docker/config.json)`, `Read(~/AppData/Roaming/gcloud/**)` |
+| Secrets in-repo (read) | 8 | `Read(**/.env)`, `Read(**/.env.*)`, `Read(**/*.pem)`, `Read(**/*.pfx)`, `Read(**/*.p12)`, `Read(**/id_rsa*)`, `Read(**/id_ed25519*)`, `Read(**/appsettings.Production.json)` |
+| Writes | 5 | `Edit(~/.ssh/**)`, `Edit(~/.aws/**)`, `Edit(~/.azure/**)`, `Edit(//etc/**)`, `Edit(//Windows/**)` |
+| Exfiltration destinations | 3 | `Domain(pastebin.com)`, `Domain(*.ngrok.io)`, `Domain(transfer.sh)` |
+
+**`permissions.ask` (6)**
+
+`Shell(git push *)`, `Shell(git remote *)`, `Shell(npm publish *)`,
+`Shell(curl *)`, `Shell(Invoke-WebRequest *)`, `Shell(Invoke-RestMethod *)`
+
+These are the commands that move code or data off the device.
+
+### 4. Opt-in — written only when you pass the parameter
+
+Not checked by `Detect-CopilotPolicy.ps1`, so omitting them does **not** mark the
+fleet non-compliant. Pilot each one before fleet-wide rollout — a wrong value
+here breaks the fleet rather than failing safe.
+
+| Parameter | Registry value | Key | Note |
+| --- | --- | --- | --- |
+| `-AllowedExtensions` | `AllowedExtensions` | VSCode | Extension allowlist |
+| `-ExtensionGalleryUrl` | `ExtensionGalleryServiceUrl` | VSCode | Private marketplace |
+| `-McpGalleryUrl` | `McpGalleryServiceUrl` | VSCode | **Strongly recommended.** Without it, `-McpAccess registry` still resolves to the *public* GitHub MCP registry |
+| `-AllowedMcpServers` | `ChatAllowedMcpServers` + `allowedMcpServers` | both | Per-server MCP allowlist |
+| `-DeniedMcpServers` | `ChatDeniedMcpServers` + `deniedMcpServers` | both | Per-server MCP denylist |
+| `-DefaultChatModel` | `ChatDefaultModel` + `model` | both | Pin the model |
+| `-OtlpHeaders` | `CopilotOtelHeaders` | VSCode | Collector auth headers |
+| `-OtlpResourceAttributes` | `CopilotOtelResourceAttributes` | VSCode | Extra OTel resource attributes |
+| `-StrictPluginOnlyCustomization` | `ChatStrictPluginOnlyCustomization` + `strictKnownMarketplaces` | both | Only admin-delivered customisation files load |
+| `-EnableNetworkFilter` | `ChatAgentNetworkFilter` | VSCode | **Deny-by-default** — see below |
+| `-AllowedNetworkDomains` | `ChatAgentAllowedNetworkDomains` | VSCode | JSON array; written with the filter |
+| `-DeniedNetworkDomains` | `ChatAgentDeniedNetworkDomains` | VSCode | JSON array; written only when non-empty |
+| `-ApprovedGitHubOrgs` | `ChatApprovedAccountOrganizations` | VSCode | Gates every AI feature behind an approved org sign-in |
+
+> **`-EnableNetworkFilter` is deny-by-default.** Turning the filter on with an
+> empty `-AllowedNetworkDomains` blocks *every* domain for the fetch tool, the
+> integrated browser, and sandboxed terminal commands.
+
+### 5. Cannot be enforced
+
+`chat.agent.sandbox.retryWithAllowNetworkRequests` defaults to `true` and lets a
+sandboxed command retry with unrestricted network after user confirmation.
+Microsoft publishes **no enterprise policy** for it, so it cannot be locked down.
+Record as an accepted risk.
+
+---
+
 ## A. Pre-flight / environment
 
 | # | Scenario | How to test | Expected |
