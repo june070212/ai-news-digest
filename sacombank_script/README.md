@@ -40,13 +40,70 @@ independent and have different prerequisites (the hook needs Git for Windows).
 | `github.copilot.chat.otel.otlpEndpoint` | `CopilotOtelEndpoint` / `telemetry.endpoint` | both | `-OtlpEndpoint` |
 | hardening extras | `ChatAgentExtensionTools`, `ChatToolsTerminalEnableAutoApprove`, `ChatHooks`, `EnableFeedback`, `CopilotOtelCaptureContent`, `allowManagedMcpServersOnly`, `permissions.deny` | both | see script |
 
-Two corrections against the reference list:
+Three corrections against the reference list:
 
 - `chat.mcp.access` accepts `all`, `registry`, or `none`. There is no
   `registryOnly`; `registry` is the registry-only value.
 - The OTel settings are `chat.agentHost.otel.*`, enforced by the
   `CopilotOtel*` policies or by the `telemetry.*` Copilot managed keys, not by
   `github.copilot.chat.otel.*`.
+- The exporter-type policy is `CopilotOtelProtocol`, **not**
+  `CopilotOtelExporterType`. Earlier builds of this package wrote the latter,
+  which is not a registered policy name, so the OTel exporter configuration
+  was silently ignored. `Remove-CopilotPolicy.ps1` still deletes the old name
+  so devices that received the earlier build are cleaned up.
+
+## Additional hardening policies
+
+Reviewed against the full published policy list. These are applied by default
+on top of the settings requested above.
+
+| Registry value | Applied | Why it matters here |
+| --- | --- | --- |
+| `CopilotSessionSync` | `0` | Chat session history stays on the device instead of syncing to GitHub.com |
+| `Claude3PIntegration` | `0` | Blocks prompts/code routing through Anthropic as a non-GitHub processor |
+| `Codex3PIntegration` | `0` | Same, for OpenAI Codex |
+| `ChatAgentSandboxEnabled` | `on` | Agent mode is already off; this is the backstop if it is ever piloted |
+| `ChatAgentSandboxAllowNetwork` | `0` | No network egress from sandboxed commands |
+| `ChatAgentSandboxAllowUnsandboxedCommands` | `0` | No escape hatch out of the sandbox |
+| `ChatAgentSandboxAllowAutoApprove` | `0` | Sandbox cannot self-approve |
+| `ChatAllowManagedHooksOnly` | `1` | Only admin-delivered hooks run |
+| `ChatPluginsEnabled` | `0` | No third-party chat plugins |
+| `ChatToolsEligibleForAutoApproval` | all `false` | `runInTerminal`, `runTask`, `fetch` can never be auto-approved |
+| `BrowserChatTools` | `0` | The integrated browser is a proxy-bypassing exfiltration path |
+| `DictationEnabled` | `0` | No microphone capture |
+| `TelemetryLevel` | `off` | Suppresses Microsoft-bound telemetry; the bank's own OTel export is unaffected |
+| `UpdateMode` | `manual` | SCCM owns the update cadence |
+| `ExtensionsAutoUpdateDelay` | `168` (hours) | A malicious marketplace release can be pulled before it reaches the fleet |
+| `permissions.ask` | 6 rules | Forces a human decision on `git push`, `git remote`, `npm publish`, `curl`, `Invoke-WebRequest`, `Invoke-RestMethod` |
+| `permissions.deny` | 26 rules | SSH/AWS/Azure/kube/gnupg/gcloud stores, `.env*`, `*.pem`/`*.pfx`/`*.p12`, `id_rsa*`, `appsettings.Production.json`, plus `pastebin.com`, `*.ngrok.io`, `transfer.sh` |
+
+`permissions` precedence is **deny > ask > allow > default**. A `deny` rule
+blocks with no approval option; an `ask` rule cannot be bypassed by "Bypass
+Approvals" or "Autopilot".
+
+### Opt-in — pilot before fleet-wide rollout
+
+These are off unless you pass the parameter, because a wrong value breaks the
+fleet rather than failing safe.
+
+| Parameter | Registry value | Note |
+| --- | --- | --- |
+| `-McpGalleryUrl` | `McpGalleryServiceUrl` | **Strongly recommended.** Without it, `-McpAccess registry` still resolves to the *public* GitHub MCP registry, not a bank-curated one |
+| `-AllowedExtensions` | `AllowedExtensions` | Extension allowlist |
+| `-ExtensionGalleryUrl` | `ExtensionGalleryServiceUrl` | Private marketplace |
+| `-AllowedMcpServers` / `-DeniedMcpServers` | `ChatAllowedMcpServers` / `ChatDeniedMcpServers` | Per-server MCP control |
+| `-EnableNetworkFilter` + `-AllowedNetworkDomains` / `-DeniedNetworkDomains` | `ChatAgentNetworkFilter`, `ChatAgent*NetworkDomains` | **Deny-by-default**: enabling the filter with an empty allow list blocks *all* domains for the fetch tool, integrated browser, and sandboxed commands |
+| `-DefaultChatModel` | `ChatDefaultModel` | Pin the model |
+| `-StrictPluginOnlyCustomization` | `ChatStrictPluginOnlyCustomization` | Only admin-delivered customisation files load |
+| `-AllowSessionSync` / `-AllowThirdPartyAgents` | re-enables the corresponding hardening policy above | Escape hatches for a sanctioned pilot |
+
+### Known gap with no enterprise policy
+
+`chat.agent.sandbox.retryWithAllowNetworkRequests` defaults to `true` and lets
+a sandboxed command retry with unrestricted network after user confirmation.
+Microsoft publishes **no policy** to enforce this value, so it cannot be
+locked down. Raise it with the security reviewer.
 
 ## Deploy as an SCCM Application
 
@@ -172,7 +229,21 @@ Useful parameters:
 | `-OtlpProtocol` | `otlp-http` | or `otlp-grpc` |
 | `-McpAccess` | `registry` | `all` \| `registry` \| `none` |
 | `-ApprovedGitHubOrgs` | none | Gates all AI features behind approved orgs; `*` allows any GitHub account |
+| `-McpGalleryUrl` | none | Private MCP registry — see "Opt-in" above |
+| `-TelemetryLevel` | `off` | `off` \| `crash` \| `error` \| `all` |
+| `-UpdateMode` | `manual` | `none` \| `manual` \| `start` \| `default` |
+| `-ExtensionsAutoUpdateDelay` | `168` | Hours to hold back extension auto-updates |
+| `-AllowSessionSync` | off | Re-enables chat history sync to GitHub.com |
+| `-AllowThirdPartyAgents` | off | Re-enables Anthropic/OpenAI agent integrations |
+| `-EnableNetworkFilter` | off | Deny-by-default domain filter; pair with `-AllowedNetworkDomains` |
 | `-IncludeFileChannel` | off | Also write `managed-settings.json` |
+
+> Any parameter you pass to `Apply-CopilotPolicy.ps1` that the detection script
+> also accepts (`-OtlpEndpoint`, `-TelemetryLevel`, `-UpdateMode`,
+> `-AllowThirdPartyAgents`, `-AllowSessionSync`) **must be passed identically to
+> `Detect-CopilotPolicy.ps1`**, or every device reports non-compliant forever.
+> Optional policies are deliberately not checked by detection, so omitting them
+> does not mark the fleet non-compliant.
 
 ## Validation status
 
@@ -196,6 +267,8 @@ surface on a `pwsh` 7 developer machine:
 | 3 | `${env:ProgramFiles(x86)}` is `$null` on ARM64 hosts | `Join-Path` throws and kills the script while building the search path | Filter roots before joining; also probe `Git\bin\git.exe` |
 | 4 | `.Trim()` on possibly-null `git config` output | Throws under `Set-StrictMode` | Null guard, plus assert the value actually persisted |
 | 5 | Inline `WindowsIdentity::GetCurrent()` | Admin check was untestable | Extracted to `Test-Administrator` |
+| 6 | Empty-key cleanup in `Remove-CopilotPolicy.ps1` was not fault-isolated | A failure while deleting the emptied `VSCode` key aborted the whole uninstall, so the **`GitHubCopilot` key was never cleaned** — policies stayed enforced while SCCM reported a failed uninstall | Wrap the `Get-Item`/`Remove-Item` cleanup in `try/catch` and downgrade to a warning |
+| 7 | `CopilotOtelExporterType` is not a registered policy name | The OTel exporter type was **silently never applied**; it would show under "Non-applied Policy" in `Developer: Policy Diagnostics` | Renamed to `CopilotOtelProtocol`; the old name stays in the removal list |
 
 ### What the simulation does *not* prove
 
@@ -207,6 +280,13 @@ Still requires a pilot VM before broad rollout:
 - `eventcreate.exe` writing to the Windows Application log
 - Downloading `gitleaks.exe` from GitHub Releases through the corporate proxy
 - The exact `CopilotOtel*` ADMX value names - confirm against the shipped `vscode.admx`
+- The value **names and data types** of the additional hardening policies. They
+  come from the published policy reference table, not from a shipped
+  `vscode.admx`. In particular `ChatAgentSandboxEnabled` is written as a
+  `String` (`on`) because the docs say "set the policy to `on`"; the ADMX may
+  declare it as an enum or DWORD. Confirm all of them with
+  `Developer: Policy Diagnostics` on a pilot VM - any policy that appears under
+  **Non-applied Policy** has the wrong name or type.
 
 ## References
 

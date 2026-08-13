@@ -34,10 +34,15 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\Apply-CopilotPolicy.p
   -OtlpEndpoint "https://otel.sacombank.local:4318" `
   -OtlpProtocol otlp-http `
   -McpAccess registry `
+  -McpGalleryUrl "https://mcp.sacombank.local" `
   -ServiceName "vscode-copilot" `
   -ApprovedGitHubOrgs "sacombank" `
   -IncludeFileChannel
 ```
+
+> `-McpGalleryUrl` matters: without it, `-McpAccess registry` still resolves to
+> the **public** GitHub MCP registry. Add `-EnableNetworkFilter` with
+> `-AllowedNetworkDomains` only after a pilot — the filter is deny-by-default.
 
 | Parameter | Default | Notes |
 | --- | --- | --- |
@@ -202,6 +207,32 @@ command palette, and by attempting the user action.
 | B21 | `-IncludeFileChannel` used alongside registry | Registry (native MDM) wins over `managed-settings.json` |
 | B22 | `managed-settings.json` made world-writable | File is **ignored** by design — confirm the ACL the script sets is intact |
 
+### B′. Additional hardening policies
+
+| # | Test case | Expected result |
+| --- | --- | --- |
+| B23 | Inspect `CopilotOtelProtocol` after apply | Present with the `-OtlpProtocol` value; `CopilotOtelExporterType` **absent** (it is not a real policy name) |
+| B24 | Upgrade a device that received an earlier build | Uninstall/re-apply clears the stale `CopilotOtelExporterType` value |
+| B25 | Sign in, start a chat, sign in on a second device | History does **not** follow the user — `CopilotSessionSync=0` |
+| B26 | Try to select a Claude or Codex model | Unavailable — `Claude3PIntegration=0`, `Codex3PIntegration=0` |
+| B27 | Re-run with `-AllowSessionSync -AllowThirdPartyAgents` | Those three policies flip to `1`; everything else unchanged |
+| B28 | Pilot agent mode via a policy exception | Sandbox stays on with no network, no unsandboxed commands, no auto-approve |
+| B29 | Ask Copilot to run a terminal command | Never auto-approved — `ChatToolsEligibleForAutoApproval` is all `false` |
+| B30 | Open the integrated browser tool | Unavailable — `BrowserChatTools=0` (proxy-bypassing egress path) |
+| B31 | Invoke dictation | Unavailable — `DictationEnabled=0` |
+| B32 | Check VS Code telemetry | `TelemetryLevel=off`; the bank's own OTel export still flows to the collector |
+| B33 | Leave a device idle for a week | VS Code does not self-update (`UpdateMode=manual`); extensions hold back 168 h |
+| B34 | Ask Copilot to `git push` / `curl` / `npm publish` | Prompts every time; cannot be bypassed by "Bypass Approvals" or "Autopilot" |
+| B35 | Ask Copilot to read `~/.aws/credentials`, `*.pem`, `.env`, `id_rsa` | Denied outright, no approval offered |
+| B36 | Ask Copilot to reach `pastebin.com` / `*.ngrok.io` / `transfer.sh` | Denied by `permissions.deny` domain rules |
+| B37 | Apply **without** `-McpGalleryUrl` | `McpGalleryServiceUrl` not written — MCP registry resolves to the **public** GitHub registry. Confirm this is intended |
+| B38 | Apply **with** `-McpGalleryUrl` | Only the bank-curated registry is reachable |
+| B39 | `-EnableNetworkFilter` with an **empty** allow list | **All** domains blocked for fetch, browser, and sandboxed commands — deny-by-default. Pilot first |
+| B40 | `-EnableNetworkFilter -AllowedNetworkDomains api.github.com,*.sacombank.local` | Only those domains resolve |
+| B41 | Apply with no optional parameters | None of the opt-in values are written; detection still returns `Installed` |
+| B42 | Run `Developer: Policy Diagnostics` on a pilot VM | **Every** value appears under applied policies. Anything under **Non-applied Policy** has a wrong ADMX name or data type — fix before fleet rollout |
+| B43 | Attempt to enforce `chat.agent.sandbox.retryWithAllowNetworkRequests` | **Not possible** — Microsoft publishes no policy for it. Document as an accepted risk |
+
 ---
 
 ## C. Detection & compliance (Copilot policy)
@@ -215,6 +246,11 @@ command palette, and by attempting the user action.
 | C5 | Detection script throws | Exits 0 so SCCM retries rather than hard-failing |
 | C6 | After `Remove-CopilotPolicy.ps1` | Not detected; policy keys removed; VS Code settings return to user control |
 | C7 | Removal is surgical | Only the values this package wrote are deleted; a key is removed only when it ends up empty |
+| C8 | Detection called with **different** parameters than apply | Reports non-compliant forever. `-OtlpEndpoint`, `-TelemetryLevel`, `-UpdateMode`, `-AllowThirdPartyAgents`, `-AllowSessionSync` must match the install command exactly |
+| C9 | Apply baseline only, then detect | `Installed` — detection deliberately ignores opt-in policies so omitting them does not mark the fleet non-compliant |
+| C10 | Drift on any newly added hardening policy (e.g. `CopilotSessionSync`) | Detected; re-apply remediates |
+| C11 | Uninstall when the first key fails to delete | Uninstall still clears the second key and exits 0 — the cleanup is fault-isolated |
+| C12 | Run uninstall twice | Second run is a clean no-op, exit 0 |
 
 ---
 

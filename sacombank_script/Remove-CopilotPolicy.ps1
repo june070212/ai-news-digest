@@ -48,16 +48,45 @@ function Write-Log {
 $vsCodeValues = @(
     'ChatAgentMode', 'ChatToolsAutoApprove', 'ChatMCP', 'ChatAgentExtensionTools',
     'ChatToolsTerminalEnableAutoApprove', 'ChatHooks', 'EnableFeedback',
-    'CopilotOtelEnabled', 'CopilotOtelEndpoint', 'CopilotOtelExporterType',
-    'CopilotOtelCaptureContent', 'CopilotOtelServiceName',
-    'ChatApprovedAccountOrganizations'
+
+    # OTel export. CopilotOtelExporterType is kept in this list only to clean up
+    # devices that received the earlier, incorrectly-named value.
+    'CopilotOtelEnabled', 'CopilotOtelEndpoint', 'CopilotOtelProtocol',
+    'CopilotOtelExporterType', 'CopilotOtelCaptureContent',
+    'CopilotOtelServiceName', 'CopilotOtelHeaders', 'CopilotOtelResourceAttributes',
+
+    'ChatApprovedAccountOrganizations',
+
+    # Data residency / third-party processors
+    'CopilotSessionSync', 'Claude3PIntegration', 'Codex3PIntegration',
+
+    # Defence in depth behind ChatAgentMode = 0
+    'ChatAgentSandboxEnabled', 'ChatAgentSandboxAllowNetwork',
+    'ChatAgentSandboxAllowUnsandboxedCommands', 'ChatAgentSandboxAllowAutoApprove',
+    'ChatAllowManagedHooksOnly', 'ChatPluginsEnabled',
+    'ChatToolsEligibleForAutoApproval', 'BrowserChatTools', 'DictationEnabled',
+    'ChatStrictPluginOnlyCustomization',
+
+    # Client and supply-chain management
+    'TelemetryLevel', 'UpdateMode', 'ExtensionsAutoUpdateDelay',
+    'AllowedExtensions', 'ExtensionGalleryServiceUrl',
+
+    # MCP governance
+    'McpGalleryServiceUrl', 'ChatAllowedMcpServers', 'ChatDeniedMcpServers',
+
+    # Agent network filtering
+    'ChatAgentNetworkFilter', 'ChatAgentAllowedNetworkDomains',
+    'ChatAgentDeniedNetworkDomains',
+
+    'ChatDefaultModel'
 )
 
 $copilotValues = @(
-    'permissions.disableBypassPermissionsMode', 'permissions.deny',
+    'permissions.disableBypassPermissionsMode', 'permissions.deny', 'permissions.ask',
     'telemetry.enabled', 'telemetry.endpoint', 'telemetry.protocol',
     'telemetry.captureContent', 'telemetry.lockCaptureContent',
-    'telemetry.serviceName', 'allowManagedMcpServersOnly'
+    'telemetry.serviceName', 'allowManagedMcpServersOnly',
+    'model', 'allowedMcpServers', 'deniedMcpServers', 'strictKnownMarketplaces'
 )
 
 function Remove-PolicyValues {
@@ -82,10 +111,19 @@ function Remove-PolicyValues {
         }
     }
 
-    $key = Get-Item -LiteralPath $Path
-    if ($key.ValueCount -eq 0 -and $key.SubKeyCount -eq 0) {
-        Remove-Item -LiteralPath $Path -Force
-        Write-Log "Removed empty key $Path"
+    # Deleting the now-empty key is best-effort. It must never abort the
+    # uninstall: this function is called once per policy key, and an
+    # exception here would leave the remaining key fully populated while
+    # SCCM reports a failed uninstall.
+    try {
+        $key = Get-Item -LiteralPath $Path -ErrorAction Stop
+        if ($key.ValueCount -eq 0 -and $key.SubKeyCount -eq 0) {
+            Remove-Item -LiteralPath $Path -Force
+            Write-Log "Removed empty key $Path"
+        }
+    }
+    catch {
+        Write-Log "Could not evaluate/remove empty key $Path : $($_.Exception.Message)" -Level WARN
     }
 }
 

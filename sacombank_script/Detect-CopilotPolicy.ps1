@@ -22,25 +22,61 @@
 param(
     [string] $OtlpEndpoint = 'https://otel-collector.contoso.com:4318',
     [ValidateSet('all', 'registry', 'none')]
-    [string] $McpAccess    = 'registry'
+    [string] $McpAccess    = 'registry',
+    [ValidateSet('all', 'error', 'crash', 'off')]
+    [string] $TelemetryLevel = 'off',
+    [ValidateSet('none', 'manual', 'start', 'default')]
+    [string] $UpdateMode     = 'manual',
+    [switch] $AllowThirdPartyAgents,
+    [switch] $AllowSessionSync
 )
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
-$expected = @(
-    @{ Path = 'HKLM:\SOFTWARE\Policies\Microsoft\VSCode'; Name = 'ChatAgentMode';                      Value = 0 }
-    @{ Path = 'HKLM:\SOFTWARE\Policies\Microsoft\VSCode'; Name = 'ChatToolsAutoApprove';               Value = 0 }
-    @{ Path = 'HKLM:\SOFTWARE\Policies\Microsoft\VSCode'; Name = 'ChatMCP';                            Value = $McpAccess }
-    @{ Path = 'HKLM:\SOFTWARE\Policies\Microsoft\VSCode'; Name = 'ChatAgentExtensionTools';            Value = 0 }
-    @{ Path = 'HKLM:\SOFTWARE\Policies\Microsoft\VSCode'; Name = 'ChatToolsTerminalEnableAutoApprove'; Value = 0 }
-    @{ Path = 'HKLM:\SOFTWARE\Policies\Microsoft\VSCode'; Name = 'ChatHooks';                          Value = 0 }
-    @{ Path = 'HKLM:\SOFTWARE\Policies\Microsoft\VSCode'; Name = 'CopilotOtelEnabled';                 Value = 1 }
-    @{ Path = 'HKLM:\SOFTWARE\Policies\Microsoft\VSCode'; Name = 'CopilotOtelEndpoint';                Value = $OtlpEndpoint }
+$VS  = 'HKLM:\SOFTWARE\Policies\Microsoft\VSCode'
+$CP  = 'HKLM:\SOFTWARE\Policies\GitHubCopilot'
 
-    @{ Path = 'HKLM:\SOFTWARE\Policies\GitHubCopilot';    Name = 'permissions.disableBypassPermissionsMode'; Value = 'disable' }
-    @{ Path = 'HKLM:\SOFTWARE\Policies\GitHubCopilot';    Name = 'telemetry.enabled';                        Value = 'true' }
-    @{ Path = 'HKLM:\SOFTWARE\Policies\GitHubCopilot';    Name = 'telemetry.endpoint';                       Value = $OtlpEndpoint }
+# Sentinel values only. Optional policies (-AllowedExtensions, network filter,
+# private galleries) are deliberately NOT checked here: an admin who deploys
+# without them must not see the whole fleet reported non-compliant.
+$expected = @(
+    @{ Path = $VS; Name = 'ChatAgentMode';                      Value = 0 }
+    @{ Path = $VS; Name = 'ChatToolsAutoApprove';               Value = 0 }
+    @{ Path = $VS; Name = 'ChatMCP';                            Value = $McpAccess }
+    @{ Path = $VS; Name = 'ChatAgentExtensionTools';            Value = 0 }
+    @{ Path = $VS; Name = 'ChatToolsTerminalEnableAutoApprove'; Value = 0 }
+    @{ Path = $VS; Name = 'ChatHooks';                          Value = 0 }
+    @{ Path = $VS; Name = 'CopilotOtelEnabled';                 Value = 1 }
+    @{ Path = $VS; Name = 'CopilotOtelEndpoint';                Value = $OtlpEndpoint }
+    @{ Path = $VS; Name = 'CopilotOtelProtocol';                Value = $null }
+
+    # Data residency and third-party processors
+    @{ Path = $VS; Name = 'CopilotSessionSync';   Value = [int][bool]$AllowSessionSync }
+    @{ Path = $VS; Name = 'Claude3PIntegration';  Value = [int][bool]$AllowThirdPartyAgents }
+    @{ Path = $VS; Name = 'Codex3PIntegration';   Value = [int][bool]$AllowThirdPartyAgents }
+
+    # Defence in depth behind ChatAgentMode = 0
+    @{ Path = $VS; Name = 'ChatAgentSandboxEnabled';                  Value = 'on' }
+    @{ Path = $VS; Name = 'ChatAgentSandboxAllowNetwork';             Value = 0 }
+    @{ Path = $VS; Name = 'ChatAgentSandboxAllowUnsandboxedCommands'; Value = 0 }
+    @{ Path = $VS; Name = 'ChatAllowManagedHooksOnly';                Value = 1 }
+    @{ Path = $VS; Name = 'ChatPluginsEnabled';                       Value = 0 }
+    @{ Path = $VS; Name = 'BrowserChatTools';                         Value = 0 }
+    @{ Path = $VS; Name = 'DictationEnabled';                         Value = 0 }
+    @{ Path = $VS; Name = 'ChatToolsEligibleForAutoApproval';         Value = $null }
+
+    # Client and supply-chain management
+    @{ Path = $VS; Name = 'TelemetryLevel'; Value = $TelemetryLevel }
+    @{ Path = $VS; Name = 'UpdateMode';     Value = $UpdateMode }
+
+    @{ Path = $CP; Name = 'permissions.disableBypassPermissionsMode'; Value = 'disable' }
+    @{ Path = $CP; Name = 'telemetry.enabled';                        Value = 'true' }
+    @{ Path = $CP; Name = 'telemetry.endpoint';                       Value = $OtlpEndpoint }
+    @{ Path = $CP; Name = 'telemetry.lockCaptureContent';             Value = 'true' }
+    @{ Path = $CP; Name = 'allowManagedMcpServersOnly';               Value = 'true' }
+    @{ Path = $CP; Name = 'permissions.deny';                         Value = $null }
+    @{ Path = $CP; Name = 'permissions.ask';                          Value = $null }
 )
 
 try {
@@ -52,7 +88,12 @@ try {
             $actual = (Get-ItemProperty -LiteralPath $e.Path -Name $e.Name -ErrorAction Stop).($e.Name)
         } catch { exit 0 }
 
-        if ("$actual" -ne "$($e.Value)") { exit 0 }
+        # Value = $null means "must exist and be non-empty", used for JSON blobs
+        # whose exact text is not worth pinning in a detection rule.
+        if ($null -eq $e.Value) {
+            if ([string]::IsNullOrWhiteSpace("$actual")) { exit 0 }
+        }
+        elseif ("$actual" -ne "$($e.Value)") { exit 0 }
     }
 
     Write-Output 'Installed'
