@@ -63,6 +63,27 @@ stories.
 3. `.github/workflows/deploy.yml` runs on every push to `main`, twice daily on a
    cron, and on demand via **Run workflow**.
 
+## Agentic workflows
+
+Two [GitHub Agentic Workflows](https://github.github.com/gh-aw/), adapted from
+[githubnext/agentics](https://github.com/githubnext/agentics):
+
+| Workflow | Trigger | Output |
+| --- | --- | --- |
+| CI Doctor (`ci-doctor.md`) | A failed run of the deploy workflow on `main` | `[CI failure]` issue, or a comment on an existing one |
+| Repo Status (`repo-status.md`) | Daily, or **Run workflow** | `[repo-status]` issue; older reports are closed |
+
+Both need a `COPILOT_GITHUB_TOKEN` repository secret (a fine-grained PAT with
+the **Copilot Requests** permission):
+
+```sh
+gh secret set COPILOT_GITHUB_TOKEN   # prompts for the value
+```
+
+The `.md` files are the source; after editing one, run `gh aw compile` and
+commit the regenerated `.lock.yml` alongside it. If the deploy workflow's
+`name:` changes, update `on.workflow_run.workflows` in `ci-doctor.md` to match.
+
 ## Structure
 
 ```
@@ -81,4 +102,6 @@ scripts/
   net.mjs                      Allow-listed, timeout-bounded fetch
 .nojekyll                      Serve files as-is (skip Jekyll)
 .github/workflows/deploy.yml   Build + Pages deploy workflow
+.github/workflows/ci-doctor.md      Agentic CI failure investigator (+ .lock.yml)
+.github/workflows/repo-status.md    Agentic daily status report (+ .lock.yml)
 ```
