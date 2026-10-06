@@ -71,7 +71,7 @@ Two [GitHub Agentic Workflows](https://github.github.com/gh-aw/), adapted from
 | Workflow | Trigger | Output |
 | --- | --- | --- |
 | CI Doctor (`ci-doctor.md`) | A failed run of the deploy workflow on `main` | `[CI failure]` issue, or a comment on an existing one |
-| Repo Status (`repo-status.md`) | Daily, or **Run workflow** | `[repo-status]` issue; older reports are closed |
+| Repo Status (`repo-status.md`) | Daily at 09:00 Vietnam time (02:00 UTC), or **Run workflow** | `[repo-status]` issue; older reports are closed |
 
 Both need a `COPILOT_GITHUB_TOKEN` repository secret (a fine-grained PAT with
 the **Copilot Requests** permission):

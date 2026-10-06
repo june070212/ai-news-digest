@@ -6,7 +6,8 @@ description: |
   and project recommendations.
 
 on:
-  schedule: daily
+  schedule:
+    - cron: "0 2 * * *" # 09:00 Vietnam time (UTC+7, no DST)
   workflow_dispatch:
 
 permissions:
