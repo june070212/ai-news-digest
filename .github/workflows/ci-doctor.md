@@ -18,10 +18,22 @@ permissions:
   issues: read
   pull-requests: read
 
+tools:
+  github:
+    # `actions` exposes workflow runs, jobs, and job logs for triage.
+    toolsets: [default, actions]
+
 safe-outputs:
   create-issue:
     title-prefix: "[CI failure] "
+    labels: [ci-failure]
+    max: 1
+    expires: 30
   add-comment:
+    # workflow_run has no triggering issue, so allow commenting on an
+    # existing [CI failure] issue chosen by the agent.
+    target: "*"
+    max: 1
 
 timeout-minutes: 10
 ---
