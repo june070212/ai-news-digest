@@ -9,8 +9,14 @@ on:
     workflows: ["Build digest and deploy to GitHub Pages"]
     types: [completed]
     branches: [main]
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: "ID of a failed workflow run to diagnose"
+        required: true
+        type: string
 
-if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'failure' }}
 
 permissions:
   actions: read
@@ -35,6 +41,9 @@ safe-outputs:
     target: "*"
     max: 1
 
+concurrency:
+  job-discriminator: ${{ github.run_id }}
+
 timeout-minutes: 10
 ---
 
@@ -49,6 +58,11 @@ likely root cause and give maintainers specific, evidence-backed next steps.
 - **Workflow run**: ${{ github.event.workflow_run.id }}
 - **Run URL**: ${{ github.event.workflow_run.html_url }}
 - **Head SHA**: ${{ github.event.workflow_run.head_sha }}
+- **Manually requested run ID**: ${{ github.event.inputs.run_id }}
+
+If the workflow run fields above are empty, this investigation was started
+manually: diagnose the manually requested run ID, and look up its workflow,
+URL, and head SHA yourself.
 
 ## Investigation protocol
 
