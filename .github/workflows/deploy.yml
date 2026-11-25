@@ -65,6 +65,13 @@ jobs:
             require("fs").appendFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join("\n") + "\n");
             if (bad.length) console.log(`::warning::${bad.length} feed(s) unreachable; published ${d.stories.length} stories from ${ok.length} feeds.`);
           '
+      # The artifact is built from the repo root, so anything left in the
+      # working tree gets served publicly. These paths are developer tooling
+      # fixtures for the upgrade-agent dashboard canvas, not part of the site,
+      # and Pages would otherwise expose them -- including a sample Web.config.
+      # .github is already excluded by upload-pages-artifact itself.
+      - name: Prune non-site files from the deploy artifact
+        run: rm -rf sample .vs
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
