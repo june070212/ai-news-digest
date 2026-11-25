@@ -27,7 +27,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url || steps.retry_deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -73,6 +73,24 @@ jobs:
           # Publish the whole repo root. All links are relative, so no base
           # path rewriting is needed.
           path: '.'
+          name: github-pages-${{ github.run_attempt }}
       - name: Deploy to GitHub Pages
         id: deployment
+        continue-on-error: true
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages-${{ github.run_attempt }}
+      # Artifact discovery can briefly return no results just after upload.
+      # Only retry before a deployment has been created.
+      - name: Wait before retrying deployment
+        if: steps.deployment.outcome == 'failure' && steps.deployment.outputs.page_url == ''
+        run: sleep 10
+      - name: Retry deployment
+        id: retry_deployment
+        if: steps.deployment.outcome == 'failure' && steps.deployment.outputs.page_url == ''
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages-${{ github.run_attempt }}
+      - name: Report deployment failure
+        if: steps.deployment.outcome == 'failure' && steps.deployment.outputs.page_url != ''
+        run: exit 1
